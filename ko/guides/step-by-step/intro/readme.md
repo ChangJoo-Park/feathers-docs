@@ -1,44 +1,30 @@
-# Introduction
+# 소개
 
-We will start with writing snippets of Feathers code by hand.
-We'll take a step by step approach, introducing a few new concepts each time.
+작은 코드를 작성하면서 Feathers를 시작하겠습니다.
+매 과정마다 단계별로 배우는 방식으로 새로운 개념을 알아봅니다.
 
-Each step is backed by a working example in the `examples/step/` folder of the docs.
-The code samples in this guide are extracts from those examples.
-Code snippets may be ambiguous, misleading or confusing.
-Working examples reduce these problems,
-and let you learn more by modifying them yourself.
+각 단계의 문서는 `examples/step/` 폴더에 작동가능한 예제가 있습니다.
+이 가이드의 코드 샘플을 해당 예제에서 가져온 것 입니다.
+코드 조각은 모호하거나 잘못 이해하여 혼동할 여지가 있습니다.
+작동가능한 예제는 이러한 문제가 적고 직접 수정하면서 더 많은 것을 배울 수 있습니다.
 
-One example may continue with changes from a previous example.
-In such cases, a summary of the differences between the two examples may be shown
-to help you understand the changes.
+한 예제는 이전 예제의 변경사항에서 시작합니다.
+그러한 경우 두 예제간 차이점에 대한 요약을 표시합니다. 변경사항을 이해하는데 도움이 될 것입니다.
 
-> **Warning.** The clients in the examples log results to the browser console.
-So open the console log before pointing the browser at an example URL.
+> **주의.** 예제는 클라이언트의 결과를 브라우저 콘솔에 기록합니다.
+따라서 브라우저에서 예제 URL을 열기 전에 콘솔 로그를 열어두세요.
 
-Feathers has a definite **a-ha!** moment,
-that moment when you realize how much it accomplishes and how simply.
-We want to get to that moment quickly, while fully understanding what is happening.
+Feahters에는 확실한 **아하!**할 순간이 있습니다. 그 순간에 얼마나 많은 일이 이루어지고 얼마나 단순한 것인지 꺠달을 것입니다.
+어떻게 돌아가는지 살펴볼수록 그 순간이 빠릴 올 것입니다.
 
-We'll develop a solid enough understanding of Feathers basics that,
-by the time we get to Feathers' generators,
-we'll be mostly interested in how they structure projects rather than in the code they produce.
+우리는 Feathers의 기초를 충분히 이해하게 될 것입니다. Feathers의 제너레이터를 사용하기 전까지는 코드가 어떻게 생성되는가 보다는 어떻게 코드를 구성할 것인지가 더 중요합니다.
 
-## Our intended audience
+## 잠재적인 독자
 
-Readers should have reasonable JavaScript experience, some experience with
-[Node](https://nodejs.org/en/),
-the concept of [HTTP REST](https://en.wikipedia.org/wiki/Representational_state_transfer),
-and an idea of what [WebSockets](https://www.html5rocks.com/en/tutorials/websockets/basics/) are.
-Having some experience with [ExpressJS](http://expressjs.com/) is an asset.
-We assume everyone has worked with database tables.
+이 글을 읽는 여러분은 JavaScript 경험과 [Node](https://nodejs.org/en/) 경험 [HTTP REST](https://en.wikipedia.org/wiki/Representational_state_transfer)의 개념과 [WebSockets](https://www.html5rocks.com/en/tutorials/websockets/basics/)이 무엇을 하는지, [ExpressJS](http://expressjs.com/)을 다루어본 경험이 약간 있어야 합니다. 그리고 데이터베이스 테이블을 다루어봤다고 가정합니다.
 
-This guide should be a comfortable introduction to Feathers for people learning new technologies,
-such as those coming from PHP, Ruby, or Meteor.
+이 가이드는 신기술을 배우는 사람들을 위한 Feathers의 소개입니다. Ruby, PHP, Meteor에서 영향을 받은 것들이 있습니다.
 
-It may be productive for seasoned developers, experienced in Node, REST and WebSockets,
-to skim the text, paying more attention to the code extracts.
+Node, REST와 웹소켓에 숙련된 개발자는 생산성을 높일 수 있습니다. 코드의 산출물에 더 많은 주의를 기울일 수 있습니다.
 
-They should however make sure to absorb fully the [Generators](../generators/readme.md) section.
-That should save them some time compared to putting together
-their own understanding of how projects are structured.
+반드시 [Generators](../generators/readme.md) 섹션을 완전히 흡수해야합니다. 프로젝트 구성 방법에 관한 이해를 모으는 것보다 시간을 절약할 수 있습니다.

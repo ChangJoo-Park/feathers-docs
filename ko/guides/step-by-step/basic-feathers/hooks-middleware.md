@@ -1,35 +1,34 @@
-# Hooks middleware
+# 훅 미들웨어
 
-## Linux pipes
+## 리눅스 파이프
 
-One of the more powerful features of Linux is pipes,
-which has shaped its toolbox philosophy.
-A pipeline is a sequence of processes chained together,
-so that the output of each process feeds directly as input to the next one.
+파이프는 도구상자 철학을 만든 리눅스의 가장 강력한 기능 중 하나입니다.
+파이프라인은 서로 연결된 일련의 프로세스이므로 각 프로세스의 출력이 다음 프로세스의 입력으로 직접 입력됩니다.
 
-For example, to list files in the current directory (ls),
-retain only the lines of ls output containing the string "key" (grep),
-and view the result in a scrolling page (less),
-a user types the following into the command line of a terminal:
+예를 들어, 현재 디렉토리의 파일을 출력하고 (ls),
+문자열 "key"가 포합된 ls 출력 행만 보존하고 (grep),
+스크롤 페이지에서 결과를 보려면(less),
+사용자는 터미널에서 아래와 같이 입력하면 됩니다.
+
 ```text
 ls -l | grep key | less
 ```
 
-## Express middleware
+## Express 미들웨어
 
-At the heart of pipes lies a design pattern:
-[Chain of Responsibility (CoR)](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern).
-The CoR pattern uses a chain of objects to handle a request.
-Objects in the chain forward the request along the chain.
-Processing stops after an event is handled.
+파이프의 중심에는 [Chain of Responsibility (CoR)](https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern) 디자인 패턴이 있습니다.
+CoR 패턴은 일련의 객체를 사용해 요청을 처리합니다.
+체인의 객체는 체인을 따라 요청을 전달합니다.
+이벤트 처리 후 처리가 멈춥니다.
 
 ![middleware pattern](../assets/middleware.jpg)
 
 [Express](https://expressjs.com/)
 [middleware](https://expressjs.com/en/guide/using-middleware.html)
-uses the CoR pattern.
-You should be familiar with the following code if you've ever used Express.
-A HTTP request is handled by each of these Express functions in sequence.
+는 CoR 패턴을 사용합니다.
+Express를 사용한 경험이 있다면 아래 코드에 익숙할 것입니다.
+HTTP 요청은 Express 함수 각각에 의해 순서대로 처리됩니다.
+
 ```javascript
 app.use(cors());
 app.use(helmet());
@@ -40,24 +39,21 @@ app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 app.use('/', feathers.static(app.get('public')));
 ```
 
-The CoR pattern promotes the idea of [loose coupling](https://en.wikipedia.org/wiki/Loose_coupling)
-and it lets us combine simple functions to build solutions for specific needs.
+CoR패턴은 [loose coupling](https://en.wikipedia.org/wiki/Loose_coupling) 아이디어를 촉진하고 특정 기능을 구현하는 간단한 기능들을 결합할 수 있도록 합니다.
 
-## Feathers hooks
+## Feathers 훅
 
-Applications are about more than the reading and writing of raw database items.
-Application-specific logic often needs to run before and after service calls.
+애플리케이션은 원시 데이터베이스 아이템의 읽기 및 쓰기 이상의 기능을 합니다.
+애플리케이션 별 로직은 서비스 호출 전 후에 실행해야하는 경우가 많습니다.
 
-You will implement most of your business requirements with [service hooks](../../../api/hooks.md),
-which are middleware functions that run for each service method.
-Feathers calls the data passed between these hooks the `context` object
-(in order not to confused them with the HTTP `request` object).
+ [service hooks](../../../api/hooks.md)를 사용하여 대부분의 비즈니스 요구사항을 구현할 수 있습니다. 각 서비스 메소드에 대해 실행되는 미들웨어 기능입니다. Feathers는 이 훅들 사이에 전달된 데이터를 `context`객체라고 부릅니다.
 
-Hook middleware is organized like this:
+훅 미들웨어는 다음과 같이 구성됩니다.
 
 ![create hooks](../assets/hook-flow-1-create.jpg)
 
-and the corresponding Feathers code would be:
+위의 Feathers 코드는 다음과 같습니다.
+
 ```javascript
 const messagesHooks = {
   before: {
@@ -71,39 +67,33 @@ const messages = app.service('messages');
 messages.hooks(messagesHooks);
 ```
 
-You can see that a series of hooks are run between the service call and the actual call to the database.
-These hooks may, for example:
-- Ensure the user is authenticated,
-- Ensure the user is allowed to perform this operation,
-- Validate the data for the service call. i.e. the data in the `context` object,
-- Update the record's `updatedAt` value, thus modifying the `context` object,
-- Perhaps not allow the service call to proceed, or return a specified response for it.
+서비스 호출과 데이터베이스에 대한 실제 호출 사이에 일련의 훅이 실행되는 것을 볼 수 있습니다.
+훅의 예는 다음과 같습니다.
+- 사용자가 인증되었는지 확인하고,
+- 사용자가 해당 조작이 가능한지 확인하고,
+- 서비스 호출에 대한 데이트 검증을 합니다.즉, `context` 객체 내의 데이터입니다.
+- 레코드의 `updatedAt` 값을 업데이트 하여 `context` 객체를 수정합니다.
+- 서비스 호출을 계속 진행하거나 특정 응답을 반환하지 않을 수도 있습니다.
 
-> **ProTip** Hooks may be synchronous or async (using promises or async/await).
-The next hook will run only when the current one finishes (sync) or resolves (async),
-so hooks are always run sequentially.
+> **ProTip** 훅은 동기 또는 비동기 (Promise 또는 async/await)일 수 있습니다. 다음 훅은 현재의 훅이 종료(sync) 또는 해결 (async)인 경우에만 실행됩니다. 따라서 훅은 항상 순차적으로 실행됩니다.
 
-A series of hooks is also run after the actual call to the database, if that call was successful.
-These hooks may:
-- Populate the response with related information,
-e.g. information about the user who created the returned record,
-- Remove information for security reasons, e.g. the user password.
+일련의 훅은 해당 호출이 성공한 경우 데이터베이스를 실제 호출 후 실행됩니다.
+이 훅은
+- 관련 정보로 응답을 채웁니다.
+예를 들어 반환된 레코드를 생성한 사용자에 대한 정보로 채웁니다.
+- 보안상의 이유로 정보를 제거합니다. 예를 들어 사용자의 비밀번호
 
-You can implement all your business logic related to service calls with hooks.
+훅을 사용해 서비스 호출과 관련된 모든 비즈니스 로직을 구현할 수 있습니다.
 
-> **ProTip** The DB call is middleware too!
-It uses the information in the `context` object to call the database,
-and then updates `context` with the result.
+> **ProTip** DB 호출 또한 미들웨어 입니다.
+`context` 객체의 정보를 사용하여 데이터베이스를 호출하고,
+그 결과로 `context`를 갱신합니다.
 
 
-> **ProTip** Services are usually database adapters, but they need not be.
-You can create a service which writes to the server log for example.
-A client could post logs using this service.
-Hooks may be defined for all services, regardless of their type.
+> **ProTip** 서비스는 대개 데이터베이스 어댑터이지만 필수적인 것은 아닙니다. 예를 들어 서버 로그에 기록하는 서비스를 작성할 수 있습니다. 클라이언트는 이 서비스를 사용하여 로그를 게시할 수 있습니다. 훅은 형태에 관계없이 모든 서비스에 정의할 수 있습니다.
 
 
-> **ProTip** Some people may call the `context` object the `hook` object.
-The two terms are interchangeable.
- 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Middleware&body=Comment:Step-Basic-Middleware)
+> **ProTip** 어떤 사람들은 `context` 객체를 `hook` 객체라고 부를 수도 있습니다. 두 용어는 서로 바꿔 사용할 수 있습니다.
+
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Middleware&body=Comment:Step-Basic-Middleware)

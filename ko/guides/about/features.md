@@ -1,40 +1,41 @@
-# Features
+# 기능들
 
-Feathers provides a lot of the things that you need for building modern web and mobile applications. Here are some of the things that you get out of the box with Feathers. All of them are optional so you can choose exactly what you need. No more, no less.
+Feathers는 모던 웹과 모바일 애플리케이션을 위한 수많은 기능들을 제공합니다. 약간의 Feathers의 기능들을 살펴봅니다. 모든 것은 선택사항이므로 필요한 것들을 필요한 때에 적절하게 선택할 수 있습니다.
 
-We like to think of Feathers as a _"batteries included but easily swappable"_ framework.
+우리는 Feathers가 _"배터리가 포함된, 하지만 쉽게 교체할 수 있는"_ 프레임워크라고 생각합니다.
+
 
 <table>
   <tr>
-    <td width="30%"><strong>Instant REST APIs</strong></td>
-    <td width="70%">Feathers automatically provides REST APIs for all your services. This industry best practice makes it easy for mobile applications, a web front-end and other developers to communicate with your application.</td>
+    <td width="30%"><strong>인스턴트 REST API</strong></td>
+    <td width="70%">Feathers는 서비스에 필요한 모든 REST API를 자동으로 만들어줍니다. 이 베스트 프랙티스는 모바일 앱, 웹 프론트엔드 및 기타 개발자가 애플리케이션과 쉽게 통신할 수 있도록 합니다.</td>
   </tr>
   <tr>
-    <td width="30%"><strong>Unparalleled Database Support</strong></td>
-    <td width="70%">With Feathers service adapters you can connect to all of the most popular databases, and query them with a unified interface no matter which one you use. This makes it easy to swap databases and use entirely different DBs in the same app without changing your application code.</td>
+    <td width="30%"><strong>견줄데 없는 데이터베이스 지원</strong></td>
+    <td width="70%">Feathers 서비스 어댑터는 대부분의 유명한 데이터베이스를 사용할 수 있습니다. 그리고 어떤 인터페이스를 사용하든 통일된 인터페이스로 쿼리할 수 있습니다. 이렇게 하면 애플리케이션 코드를 변경하지 않더라도 동일한 애플리케이션에서 데이터베이스를 쉽게 교체하고 완전히 다른 DB를 사용할 수 있습니다.</td>
   </tr>
   <tr>
-    <td width="30%"><strong>Real Time</strong></td>
-    <td width="70%">Feathers services can notify clients when something has been created, updated or removed. To get even better performance, you can communicate with your services through websockets, by sending and receiving data directly.</td>
+    <td width="30%"><strong>리얼타임</strong></td>
+    <td width="70%">Feathers 서비스는 무언가 만들어지고, 변경되거나 제거되었을때 클라이언트에 알려줄 수 있습니다. 더 나은 성능을 얻으려면 데이터를 직접 송수신하여 웹 소켓을 통해 서비스와 통신할 수 있습니다.</td>
   </tr>
   <tr>
-    <td width="30%"><strong>Cross-Cutting Concerns</strong></td>
-    <td width="70%">Using "hooks" you have an extremely flexible way to share common functionality or <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern" target="_blank">concerns</a>. Keeping with the Unix philosophy, these hooks are small functions that do one thing and are easily tested but can be chained to create complex processes.</td>
+    <td width="30%"><strong>공통적으로 고려해야하는 관심사</strong></td>
+    <td width="70%">"훅"을 사용하면 매우 유연하게 공통적으로 처리해야하는 <a href="https://en.wikipedia.org/wiki/Cross-cutting_concern" target="_blank">관심사</a>들을 처리할 수 있습니다. Unix 철학을 고수하여, 이러한 훅은 한가지 기능만을 수행하고 쉽게 테스트할 수 있으며 복잡한 프로세스를 만들 때 체이닝할 수 있는 작은 함수입니다.</td>
   </tr>
   <tr>
-    <td width="30%"><strong>Universal Usage</strong></td>
-    <td width="70%">Services and hooks are a powerful and flexible way to build full stack applications. In addition to the server, these constructs also work incredibly well on the client. That's why Feathers works the same in NodeJS, the browser and React Native.</td>
+    <td width="30%"><strong>범용적인 사용법</strong></td>
+    <td width="70%">서비스와 훅은 풀스택 애플리케이션을 만들 수 있는 강력하고 유연한 방법입니다. 서버 외에도 이러한 구성은 클라이언트에서도 매우 잘 작동합니다. 그래서 Feathers는 NodeJS와 브라우저 및 리액트 네이티브에서 동일하게 작동합니다.</td>
   </tr>
   <tr>
-    <td width="30%"><strong>Authentication</strong></td>
-    <td width="70%">Almost every app needs authentication so Feathers comes with support for email/password, OAuth and Token (JWT) authentication out of the box.</td>
+    <td width="30%"><strong>인증</strong></td>
+    <td width="70%">거의 모든 앱에는 인증이 필요하므로 Feathers는 이메일/비밀번호, OAuth 및 Token(JWT) 인증을 기본적으로 지원합니다.</td>
   </tr>
   <tr>
-    <td width="30%"><strong>Pagination</strong></td>
-    <td width="70%">Today's applications are very data rich so most of the time you cannot load all the data for a resource all at once. Therefore, Feathers gives you pagination for every service from the start.</td>
+    <td width="30%"><strong>페이지네이션</strong></td>
+    <td width="70%">요즘의 애플리케이션은 데이터가 매우 많아 리소스의 모든 데이터를 한번에 불러올 수 없습니다. 따라서 Feathers는 처음부터 모든 서비스에 대한 페이지네이션을 제공합니다.</td>
   </tr>
   <tr>
-    <td width="30%"><strong>Error Handling</strong></td>
-    <td width="70%">Feathers removes the pain of defining errors and handling them. Feathers services automatically return appropriate errors, including validation errors, and return them to the client in a easily consumable format.</td>
+    <td width="30%"><strong>에러 핸들링</strong></td>
+    <td width="70%">Feathers는 에러 정의 및 처리에 관한 골치아픈 문제를 해결하도록 도와줍니다. Feathers 서비스는 유효성 검증을 포함하여 적절한 오류를 자동으로 리턴하고 이를 사용할 수 있는 형태로 클라이언트에 보내줍니다.</td>
   </tr>
 </table>

@@ -1,39 +1,45 @@
-# Guides
+# 가이드
 
-## Official guides
+## 공식 가이드
 
-### [About Feathers](./about/readme.md)
+### [Feathers에 관하여](./about/readme.md)
 
 Learn about Feathers features, philosophy and how it compares with some other frameworks.
+Feathers의 특징, 철학 그리고 다른 프레임워크와의 차이점을 다룹니다.
 
-### [The Basics - A Step-by-Step Intro to Feathers](./step-by-step/readme.md)
+### [기초 - Feathers를 한단계씩 익혀봅니다](./step-by-step/readme.md)
 
 The goal of this guide is to get you to the "A-ha!" moment as efficiently as possible.  You will learn how the primary parts of the core work together.  You'll also learn how to start new applications with the generator.
+이 가이드의 목적은 "아하!" 모멘트를 경험하게 만드는데 목적이 있습니다. 코어의 주요 부분들이 어떻게 동작하는지 알아봅니다. 그리고 제너레이터를 이용해 새 애플리케이션을 시작하는 방법을 배웁니다.
 
-### [The Generator (CLI)](./step-by-step/generators/readme.md)
+### [제너레이터 (CLI)](./step-by-step/generators/readme.md)
 
 An overview of the `feathers-cli` and the application it generates.
+`feathers-cli`의 개요와 제너레이트를 이용해 만든 애플리케이션을 살펴봅니다.
 
 ### [A Chat Application](./chat/readme.md)
 
 Learn how to create a chat REST and real-time API complete with authentication and data processing and how to use Feathers on the client in a simple browser app.
+브라우저에서 작동하는 간단한 채팅 앱을 만듭니다. 인증과 데이터를 처리하는 REST, 리얼타임 API를 만들고 어떻게 Feathers를 클라이언트에서 사용하는지 배웁니다.
 
-### [Authentication](./auth/readme.md)
+### [인증](./auth/readme.md)
 
 Learn how to add local (username & password), OAuth1, and OAuth2 authentication to your Feathers Applications.
+Feathers 애플리케이션에 local(username & password를 이용), OAuth1 그리고 OAuth2 인증을 추가하는 방법을 알아봅니다.
 
-### [Advanced topics](./advanced/readme.md)
+### [고급 주제](./advanced/readme.md)
 
 Guides for more advanced Feathers topics like debugging, configuration, file uploads and more.
+Feathers의 더욱 심화된 주제를 다룹니다. 디버깅, 설정, 파일업로드 등을 다룹니다.
 
-
-## Video tutorials
+## 비디오 튜토리얼
 
 ### [The FeathersJS Youtube playlist](https://www.youtube.com/playlist?list=PLwSdIiqnDlf_lb5y1liQK2OW5daXYgKOe)
 
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/CuM4vLkBaik/0.jpg)](https://www.youtube.com/playlist?list=PLwSdIiqnDlf_lb5y1liQK2OW5daXYgKOe "The FeathersJS Youtube playlist")
 
 A growing collection of Feathers related talks, tutorials and discussions.
+계속 증가하는 Feathers에 관련한 발표, 튜토리얼과 토의를 모아둔 컬렉션입니다.
 
 ### [FeathersJS Real-Time Chat App - Tutorial](https://www.youtube.com/watch?v=CuM4vLkBaik)
 

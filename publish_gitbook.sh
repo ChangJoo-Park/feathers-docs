@@ -1,27 +1,31 @@
 # install the plugins and build the static site
 gitbook install && gitbook build
 
-# checkout to the gh-pages branch
-git checkout gh-pages
+git add _book && git commit -m "Update book"
 
-# pull the latest updates
-git pull origin gh-pages --rebase
+git push origin `git subtree split --prefix _book korean`:gh-pages --force
 
-# copy the static site files into the current directory.
-cp -R _book/* .
+# # checkout to the gh-pages branch
+# git checkout gh-pages
 
-# remove 'node_modules' and '_book' directory
-git clean -fx node_modules
-git clean -fx _book
+# # pull the latest updates
+# git pull origin gh-pages --rebase
 
-# add all files
-git add .
+# # copy the static site files into the current directory.
+# cp -R _book/* .
 
-# commit
-git commit -a -m "Update docs"
+# # remove 'node_modules' and '_book' directory
+# git clean -fx node_modules
+# git clean -fx _book
 
-# push to the origin
-git push origin korean
+# # add all files
+# git add .
 
-# checkout to the master branch
-git checkout korean
+# # commit
+# git commit -a -m "Update docs"
+
+# # push to the origin
+# git push origin korean
+
+# # checkout to the master branch
+# git checkout korean

@@ -12,7 +12,7 @@ Feathers 앱은 데이터베이스에 큰 관심을 갖지 않습니다.
 
 ## 인증.
 
-Feathers authentication wraps [PassportJS](http://passportjs.org/) so Feathers can do anything Passport does.
+Feathers 인증은 [PassportJS](http://passportjs.org/)를 래핑한 것 입니다 그러므로 Passport가 할 수 있는 모든 기능을 지원합니다. 
 
 ## React, Angular, Vue를 사용할 수 있습니까?
 

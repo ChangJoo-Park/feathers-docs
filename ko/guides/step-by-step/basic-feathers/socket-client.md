@@ -1,36 +1,36 @@
 # A Feathers WebSocket Client
 
 We already have a Feathers REST frontend.
-Its simple to convert that to one using WebSockets.
+REST 프론트엔드를 작성해보았습니다.
+간단하게 웹소켓으로 바꾸어봅니다.
 
-> **WebSockets.** Feathers can use eight of the most popular WebSocket libraries.
-We will use the popular Socket.io in this guide.
+> **WebSockets.** Feathers는 8개의 가장 인기있는 웹소켓 라이브러리를 사용할 수 있습니다.
+이 가이드에서는 Socket.io를 사용합니다.
 
 
-## Working example
+## 작동하는 예제
 
-- Server code: [examples/step/01/websocket/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/websocket/1.js)
-- Client code: [common/public/socketio.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/socketio.html)
+- 서버 코드: [examples/step/01/websocket/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/websocket/1.js)
+- 클라이언트 코드: [common/public/socketio.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/socketio.html)
 and
 [feathers-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app.js)
-- Start the server: `node ./examples/step/01/websocket/1`
-- Point the browser at: `localhost:3030/socketio.html`
-- Compare with last page's server
+- 서버 시작: `node ./examples/step/01/websocket/1`
+- 브라우저 접속 주소: `localhost:3030/socketio.html`
+- 이전 페이지의 서버와의 비교
 [examples/step/01/rest/2.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/rest/2.js):
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-1-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-1-side.html)
-- Compare with last page's HTML
+- 이전 페이지의 HTML과의 비교
 [common/public/socketio.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/socketio.html)
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-socketio-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-socketio-side.html)
 
 
-## Change the server to support clients using either Feathers REST **or** WebSocket calls
+## Feathers REST **또는** WebSocket 호출을 클라이언트에서 지원하도록 서버 변경
 
-Add 2 lines to the server code so it supports
-either REST **or** WebSocket calls from the Feathers client.
+2개의 서버측 코드만 추가하면 REST **또는** 웹소켓 호출을 사용하도록 클라이언트를 지원합니다.
 
 ```javascript
 const rest = require('feathers-rest');
@@ -42,14 +42,14 @@ const app = httpServerConfig()
   .configure(services)
   .configure(middleware);
 ```
-- See what changed:
+- 변경된 부분:
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-1-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-1-side.html)
 
-## Changing the HTML for Feathers client WebSocket calls
+## Feathers 클라이언트 웹소켓을 지원하도록 HTML 변경
 
-We replace the REST code we had in the HTML with the equivalent WebSocket code.
+HTML에있는 REST 코드를 동등한 WebSocket 코드로 대체합니다.
 
 ```html
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/core-js/2.1.4/core.min.js"></script>
@@ -63,29 +63,28 @@ We replace the REST code we had in the HTML with the equivalent WebSocket code.
 </script>
 <script src="/feathers-app.js"></script>
 ```
-- See what changed:
+- 변경된 부분:
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-socketio-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-websocket-socketio-side.html)
-- `src="/socket.io.min.js"` load the Socket.io client code.
-- `const socket = io(serverUrl);` create a WebSocket.
-- `.configure(feathers.socketio(socket))` configure Feathers client to use the WebSocket.
+- `src="/socket.io.min.js"` Socket.io 클라이언트 코드를 불러옵니다.
+- `const socket = io(serverUrl);` WebSocket을 만듭니다..
+- `.configure(feathers.socketio(socket))` 클라이언트가 웹소켓을 사용하도록 설정합니다.
 
-## Changing the frontend code
+## 프론트엔드 코드 변경
 
-We've already said that most of the Feathers frontend doesn't care
-if it's communicating with the server using REST or WebSockets.
-**No more changes are necessary.**
+이미 Feathers는 프론트엔드가 REST 또는 웹소켓 처리를 하는데 문제가 없다고 설명했습니다.
+
+**더 이상의 변경은 필요 없습니다.**
 
 > **REST vs WebSockets.**
-There is a huge technical difference involved in communicating via REST or WebSockets.
-Feathers hides this so you can get on with what's important
-rather than handling such details.
+기술적으로 REST와 WebSocket은 큰 차이가 있습니다.
+Feathers는 그런 세부사항을 다루는 것보다 중요한 것을 해야한다고 생각해 숨겼습니다.
 
-## Results
+## 결과
 
-And that's all there is to it.
-The results are identical to that for [A Feathers REST Client](./rest-client.md)
- 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Socket-client&body=Comment:Step-Basic-Socket-client)
+이게 전부입니다.
+결과는 [A Feathers REST Client](./rest-client.md)와 같습니다.
+
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Socket-client&body=Comment:Step-Basic-Socket-client)

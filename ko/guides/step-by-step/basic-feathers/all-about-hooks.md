@@ -1,13 +1,14 @@
-# All About Hooks
+# 훅의 모든 것
 
-## Method hooks
+## 메소드 훅
 
-Each service method may have its own hooks.
-After all, you'll likely need to do something different for `create` than for a `find`.
+각 서비스 메소드에는 고유한 훅이 있을 수 있습니다.
+`find`보다는 `create`와 다른 것을 할 필요가 있을 것입니다.
 
 ![method hooks](../assets/hook-flow-2-methods.jpg)
 
-The Feathers code would be:
+Feathers 코드입니다.
+
 ```javascript
 const messagesHooks = {
   before: {
@@ -30,14 +31,15 @@ const messages = app.service('messages');
 messages.hooks(messagesHooks);
 ```
 
-## Service hooks
+## 서비스 훅
 
-Some hooks, such as authentication, may need to be run for every method.
-You can specify them once rather than repeating them for every method.
+인증과 같은 일부 훅은 모든 메소드 이전에 실행하여야 합니다.
+모든 메소드에 반복하지않고 한번만 지정할 수 있습니다.
 
 ![service hooks](../assets/hook-flow-3-service.jpg)
 
-Your Feathers code would *additionally* include:
+ *추가적인* Feathers 코드입니다.
+
 ```javascript
 const messagesHooks = {
   before: {
@@ -49,15 +51,15 @@ const messagesHooks = {
 };
 ```
 
-## App hooks
+## 앱 훅
 
-You may want to run some hooks for every service.
-The [Feathers profiler](https://github.com/feathersjs/feathers-profiler),
-for example, adds before and after hooks to time each service call.
+모든 서비스에 대해 몇가지 훅을 실행할 수 있습니다. [Feathers profiler](https://github.com/feathersjs/feathers-profiler)입니다. 예를 들어 각 서비스 호출 이전과 이후에 훅을 추가할 수 있습니다.
+
 
 ![app hooks](../assets/hook-flow-4-app.jpg)
 
-The Feathers code for these application level hooks would be:
+앱 수준 훅의 코드는 다음과 같습니다.
+
 ```javascript
 app.hooks({
   before: {
@@ -69,12 +71,11 @@ app.hooks({
 });
 ```
 
-## Errors and error hooks
+## 에러와 에러 훅
 
-Errors may be thrown inside hooks - by JavaScript, by the Feathers database adapter,
-or by your own code.
+JavaScript, Feathers 데이터베이스 어댑터 또는 자신의 코드로 때문에 훅 내부에 에러가 발생할 수 있습니다.
+예를 들어 훅은 다음과 같이 형식이 지정된 메시지를 받을 수 있습니다.
 
-Your hook can, for example, return a formatted message as follows:
 ```javascript
 // On server
 const errors = require('feathers-errors');
@@ -89,11 +90,12 @@ messages.create(...)
   });
 ```
 
-You can optionally deal with thrown errors in the service:
+서비스에서 발생하는 에러를 선택적으로 처리할 수 있습니다.
 
 ![full hooks](../assets/hook-flow-5.jpg)
 
-Your Feathers code would *additionally* include:
+ *추가적인* Feathers 코드입니다.
+ 
 ```javascript
 app.hooks({
   error: {
@@ -103,6 +105,6 @@ app.hooks({
 });
 ```
 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-About-Hooks-2&body=Comment:Step-Basic-About-Hooks-2)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-About-Hooks-2&body=Comment:Step-Basic-About-Hooks-2)
 

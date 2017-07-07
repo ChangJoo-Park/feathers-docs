@@ -70,8 +70,6 @@ HTML 작성은 어렵습니다.
 
 ## 결과
 
-The results in the console window of the browser are the same as they were
-running [Writing a Database Connector](./database-connector.md).
 브라우저의 콘솔에 표시된 결과는 이전[Database Connector 작성](./database-connector.md)과 동일합니다.
 
 ```text`

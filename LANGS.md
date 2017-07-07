@@ -1,5 +1,5 @@
 # Languages
 
 * [English](en/)
-* [Korean](ko/)
+* [한국어](ko/)
 

@@ -1,82 +1,78 @@
-# A Feathers REST Client
+# Feathers REST 클라이언트
 
-We already have a Feathers REST API server from the previous example.
-Let's write a JavaScript frontend for it.
+이전 예제에서 REST API 서버를 만들었습니다.
+프론트엔드 작업을 할 차례입니다.
 
-## Working example
+## 작동하는 예제
 
-- Server code: [examples/step/01/rest/2.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/rest/2.js)
-- Client code:
+- 서버 코드: [examples/step/01/rest/2.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/rest/2.js)
+- 클라이언트 코드:
 [common/public/rest.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/rest.html)
-and
+와
 [feathers-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app.js)
-- Start the server: `node ./examples/step/01/rest/2`
-- Point the browser at: `localhost:3030/rest.html`
-- Compare with last page's server
+- 서버 시작: `node ./examples/step/01/rest/2`
+- 브라우저 접속 주소: `localhost:3030/rest.html`
+- 이전 페이지의 서버와의 비교
 [examples/step/01/rest/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/rest/1.js):
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-rest-2-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-rest-2-side.html)
 
-## Writing a server for Feathers client REST calls
+## Feathers 클라이언트 REST요청을 위한 서버 작성
 
 [rest/2.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/rest/2.js)
-, our server for Feathers REST clients, is exactly the same as
-[rest/1.js.](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/rest/1.js)
-, our previous server for HTTP REST API calls. 
-**No new server code is required to handle Feathers REST clients.**
+, Feathers 클라이언트 REST요청을 위한 서버는 정확히
+[rest/1.js.](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/rest/1.js)와 같고
+, 이전의 서버는 HTTP REST API 호출을 위한 것입니다.
+**Feathers REST 클라이언트를 처리하는 데 새로운 서버 코드는 필요하지 않습니다.**
 
-Compare the two:
+두개를 비교하세요:
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-rest-2-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-rest-2-side.html).
 
 
-## Writing the frontend HTML
+## 프론트엔드 HTML 작성
 
-We'll soon see most of the frontend doesn't care if we're communicating with the server
-using REST or WebSockets.
-To keep things DRY, we are isolating code unique to REST in
-[common/public/rest.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/rest.html).
+우리는 곧 REST 나 WebSocket을 사용하여 서버와 통신하는 방법을 대부분의 프론트엔드에서 걱정할 필요가 없음을 알게 될 것입니다.
+
+DRY 규칙을 유지하기 위해, 우리는 REST에 고유한 코드
+[common/public/rest.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/rest.html)를 만듭니다.
 [import](../../../examples/step/01/common/public/rest.html)
 
 - `https://cdnjs.cloudflare.com/ajax/libs/core-js/2.1.4/core.min.js`
-loads a polyfill for [fetch](https://davidwalsh.name/fetch) if required.
-- `src="https://unpkg.com/feathers-client@^2.0.0/dist/feathers.js"` loads the Feathers client code.
-- `src="/serverUrl.js"` loads the URL of the server.
-The default is `var serverUrl = 'http://localhost:3030';`.
-Change the value if you need to.
-- `const feathersClient  = feathers()` instantiates a Feathers client.
-- `.configure(feathers.rest(serverUrl).fetch(fetch))` configures the client to use REST
-when communicating with the server.
-It points to the server,
-and passes the `fetch` instruction as the interface for fetching resources.
-- `src="/feathers-app.js"` loads the main application.
+는 [fetch](https://davidwalsh.name/fetch)가 필요한 경우 폴리필 합니다.
+- `src="https://unpkg.com/feathers-client@^2.0.0/dist/feathers.js"` 로 Feathers의 클라이언트 코드를 불러옵니다.
+- `src="/serverUrl.js"` 는 서버측 URL입니다.
+기본 값은 `var serverUrl = 'http://localhost:3030';`입니다.
+필요하다면 값을 변경하세요.
+- `const feathersClient  = feathers()` Feathers client를 인스턴스화 합니다.
+- `.configure(feathers.rest(serverUrl).fetch(fetch))` 서버와 통신할 때 REST를 사용할 수 있도록 설정합니다.
 
-## Writing the Feathers frontend
+이는 서버를 가리키며 `fetch` 명령어를 리소스를 가져오기 위한 인터페이스로 전달합니다.
+- `src="/feathers-app.js"` 는 메인 앱을 불러옵니다.
 
-Writing the HTML was actually the hard part.
-The frontend
-[common/public/feathers-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app.js)
-is essentially the same as the server code we used in
-[Writing a Database Connector](./database-connector.md)!
+## Feathers 프론트엔드 작성
+
+HTML 작성은 어렵습니다.
+프론트엔드 코드는
+[common/public/feathers-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app.js) 본질적으로 [Writing a Database Connector](./database-connector.md)에서 사용한 코드와 동일합니다!
 [import](../../../examples/step/01/common/public/feathers-app.js)
 
-- See what changed:
+- 변경한 부분을 보세요:
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-rest-2-client-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-rest-2-client-side.html).
 
-> **Feathers "a-ha!" moment.**
-We can run **exactly** the same code on the frontend as on the server.
-We can code the frontend as if the database was sitting on it.
-That's part of the magic of Feathers,
-and it makes frontend development significantly simpler.
+> **Feathers "아하!" 모멘트.**
+우리는 **완벽하게** 동일한 코드를 서버와 프론트엔드에서 사용합니다.
+프론트엔드는 데이터베이스가 있는 것 처럼 코딩할 수 있습니다. 이는 Feathers의 마법의 일부이며 프론트엔드 개발을 엄청나게 단순하게 만듭니다.
 
-## Results
+## 결과
 
 The results in the console window of the browser are the same as they were
 running [Writing a Database Connector](./database-connector.md).
+브라우저의 콘솔에 표시된 결과는 이전[Database Connector 작성](./database-connector.md)과 동일합니다.
 
 ```text`
 created Jane Doe item
@@ -104,6 +100,6 @@ find all items
      role: "user"
   length: 3
 ```
- 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Rest-client&body=Comment:Step-Basic-Rest-client)
+
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Rest-client&body=Comment:Step-Basic-Rest-client)

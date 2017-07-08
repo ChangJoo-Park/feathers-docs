@@ -1,32 +1,30 @@
-# Hooks, part 1
+# 훅, 파트1
 
-## Common hooks
+## 일반적으로 사용하는 훅
 
-Hooks allows us to combine simple functions to build complicated solutions.
-Most hooks will be general in nature and they may be used with multiple services.
+훅을 사용하면 간단한 기능들을 결합하여 복잡한 솔루션을 만들 수 있습니다.
+대부분의 훅은 본질적으로 일반적이며 여러 서비스에서 사용할 수 있습니다.
 
-Feathers comes with a set of
-[commonly useful hooks](../../../api/hooks-common.md).
-Let's work with some of them.
+Feathers는 [일반적으로 사용할만한 유용한 훅](../../../api/hooks-common.md)을 제공합니다.
+이제 이것 중 일부를 사용해 보겠습니다.
 
+## 작동하는 예제
 
-## Working example
-
-- Server code: [examples/step/01/hooks/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/hooks/1.js)
-- Client code: [common/public/rest.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/rest.html)
-and
+- 서버 코드: [examples/step/01/hooks/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/hooks/1.js)
+- 클라이언트 코드: [common/public/rest.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/rest.html)
+그리고
 [feathers-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app.js)
-- Start the server: `node ./examples/step/01/hooks/1`
-- Point the browser at: `localhost:3030/rest.html`
-- Compare with last page's server
+- 서버 시작: `node ./examples/step/01/hooks/1`
+- 브라우저 접속 주소: `localhost:3030/rest.html`
+- 이전 페이지의 서버와의 비교
 [examples/step/01/hooks/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/hooks/1.js):
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-1-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-1-side.html)
 
-## Writing hooks
+## 훅 작성하기
 
-Let's add some hooks to the server we've used with the Feathers REST and WebSocket clients.
+Feathers REST와 WebSocket 클라이언트에서 사용했던 서버에 훅을 추가해보겠습니다.
 
 ```javascript
 const authHooks = require('feathers-authentication-local').hooks;
@@ -72,7 +70,7 @@ function userSchema() {
   };
 }
 ```
-- See what changed:
+- 변경된 부분입니다:
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-1-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-1-side.html)
@@ -80,110 +78,92 @@ function userSchema() {
 
 ### - .configure(hooks())
 
-We include support for hooks in the configuration.
+설정에 훅 지원을 추가합니다.
 
 ### - this.configure(user);
 
-The user service is now more complex, so we configure it on its own.
+사용자 서비스는 더 복잡하지므로 독자적으로 구성할 수 있습니다.
 
 ### - const { validateSchema, setCreatedAt, setUpdatedAt, unless, remove } = commonHooks;
 
-Feathers comes with a library of useful hooks.
-Here we get some common hooks from
-[`feathers-hooks-common`](../../../api/hooks-common.md).
-More specialized hooks come bundled with their specialized packages.
+Feathers는 유용한 훅 라이브러리를 제공합니다.
+[`feathers-hooks-common`](../../../api/hooks-common.md)은 일반적으로 사용할만한 훅의 모음입니다.
+보다 특수한 훅은 전용 패키지와 함께 번들로 제공합니다.
 
 ### - userService.before({ ... });
 
-These hooks will be run before the operation on the database.
+이러한 훅은 데이터베이스 작업 전에 실행합니다.
 
 ### - create: [ ... ]
 
-These hooks will be run before all `create` operations on the database.
-`all` (all service methods), `get`, `update`', `patch`, `remove`, `find` may also be included.
+이 훅은 데이터베이스의 모든 `create` 이전에 실행됩니다.
+`all` (all 서비스 메소드), `get`, `update`', `patch`, `remove`, `find`도 포함할 수 있습니다.
 
 ### - validateSchema(userSchema(), Ajv)
 
-Validate the data we are to add using [ajv](https://github.com/epoberezkin/ajv).
-The service's [JSON schema](https://github.com/json-schema-org/json-schema-spec)
-is provided by `function userSchema`.
+서비스의 [JSON schema](https://github.com/json-schema-org/json-schema-spec)의  `function userSchema`에 의해 제공됩니다.
 
-There are
-[good tutorials](https://code.tutsplus.com/tutorials/validating-data-with-json-schema-part-1--cms-25343)
-on validating data with JSON schema.
+여기에 JSON 스키마를 이용해 데이터를 검증하는
+[좋은 예제](https://code.tutsplus.com/tutorials/validating-data-with-json-schema-part-1--cms-25343)가 있습니다.
 
 ### - authHooks.hashPassword()
 
-The data has a `password` field.
-This specialized authentication hook will replace it with a hashed version
-so the password may be stored safely.
+데이터는 `password` 필드를 가집니다.
+이 특수한 인증 훅은 해시된 버전으로 변경하여 암호를 안전하게 저장할 수 있습니다.
 
-> **bcrypt.** Feathers hashes passwords using [bcrypt](https://www.npmjs.com/package/bcryptjs).
-bcrypt has the best kind of repute that can be achieved for a cryptographic algorithm:
-it has been around for quite some time, used quite widely, "attracted attention",
-and yet remains unbroken to date.
+> **bcrypt.** Feathers는 암호 해시에 [bcrypt](https://www.npmjs.com/package/bcryptjs)를 사용합니다.
+bcrypt는 암호화 알고리즘 중 가장 높은 평판을 가지고 있습니다. 꽤 오래동안 사용하였고 광범위하게 사용되었습니다. 큰 관심을 받고 있고 아직까지 깨지지 않았습니다.
 [(Reference.)](http://security.stackexchange.com/questions/4781/do-any-security-experts-recommend-bcrypt-for-password-storage)
 
-> **JSON webtoken.** Feathers Authentication uses JSON webtoken (JWT) for secure authentication
-between a client and server as opposed to cookies and sessions.
-The cookies vs token debate
-[favors token-based authentication](https://auth0.com/blog/cookies-vs-tokens-definitive-guide/).
-The avoidance of sessions makes Feathers apps more easily scalable.
+> **JSON webtoken.** Feathers 인증은 보안인증에 쿠키나 세션이 아니라 클라이언트와 서버사이의 JSON Webtoken(JWT)을 사용합니다.  
+쿠키와 토큰에 관한 토론에서 [토큰 기반 인증을 선호하게 되었습니다](https://auth0.com/blog/cookies-vs-tokens-definitive-guide/).
+세션을 사용하지 않으면 Feathers 앱을 보다 쉽게 확장할 수 있습니다.
 
 ### - setCreatedAt(), setUpdatedAt()
 
-These hooks add `createdAt` and `updatedAt` properties to the data.
+이 훅들은  `createdAt`와  `updatedAt` 속성을 데이터의 속성에 추가할 수 있습니다.
 
 ### - userService.after({ ... });
 
-These hooks are run after the operation on the database.
-They act on all the results returned by the operation.
+이러한 훅은 데이터베이스 작업 후에 실행됩니다.
+그들은 작업에서 반환 된 모든 결과에 따라 작동합니다.
 
 ### - unless(hook => hook.method === 'find', remove('password'))
 
-- `hook => hook.method === 'find'` returns true if the database operation was a `find`.
-All hooks are passed a [hook object](../../../api/hooks.md#hook-objects)
-which contains information about the operation.
+- `hook => hook.method === 'find'`는 데이터베이스 연산이 `find`이면 참을 반환합니다.
+모든 훅은  [hook object](../../../api/hooks.md#hook-objects)를 통해 전달됩니다. 여기에 연산에 대한 모든 정보가 들어있습니다.
 
 - `remove('password')`
-removes the `password` property from the results.
+결과에서  `password` 속성을 제거합니다.
 
 - `unless(predicate, ...hooks)`
-runs the hooks if the predicate is false.
+predicate가 거짓이면 훅이 실행됩니다.
 
-Its not secure to return the encoded password to the client, so this hook removes it.
-We have made an exception for the find operation because we want you to see something
-in the results.
+인코딩 된 암호를 클라이언트에 반환하는 것이 안전하지 않으므로이 후크에서 암호를 제거합니다.
+결과에서 무언가를 보길 원하기 때문에 find 연산에 대한 예외를 만들었습니다.
 
-> **Hooks.** We are now doing some processing typical of apps.
-Before we add a new user, we verify the data, encode the password,
-and add createdAt plus updatedAt properties.
-We remove the password field before we return the results to the client.
+> **훅.** 우리는 전형적인 애플리케이션을 처리하고 있습니다.
+새 사용자를 추가하기 전에 데이터를 확인하고 암호를 인코딩 한 후 `createdAt` 와 `updatedAt` 속성을 추가합니다. 그리고 결과를 클라이언트에 반환하기 전에 암호 필드를 제거합니다.
 
 ## Hooks
 
-Many of your common needs are already handled by hooks in the
-[common hooks library](../../../api/hooks-common.md).
-This may significantly reduce the code you need to write.
+공통적인 요구사항 중 많은 부분은 이미 [common hooks library](../../../api/hooks-common.md)에 준비되어 있습니다. 이를 사용하면 작성해야하는 코드의 양이 매우 줄어듭니다.
 
-Hooks are just small middleware functions that get applied before and after a service method executes.
+훅은 서비스 메소드가 실행되기 전후에 적용되는 작은 미들웨어 함수입니다.
 
-Hooks are transport independent. It does not matter if the service request come through
-HTTP REST, Feathers REST, Feathers WebSockets, or any other transport Feathers may support in the future.
+훅은 독립적으로 전달됩니다. 서비스 요청의 완료 여부는 중요하지 않습니다. HTTP REST, Feathers REST, Feathers WebSockets 또는 기타 전송 Feather가 향후 지원 될 수 있습니다.
 
-Most hooks can be used with any service.
-This allows you to easily decouple the actual service logic from things like
-authorization, data pre-processing (sanitizing and validating),
-data post processing (serialization),
-or sending notifications like emails or text messages after something happened.
+대부분의 훅은 어떤 서비스와도 함께 사용할 수 있습니다.
+이렇게하면 실제 서비스 로직을 다음과 같은 것들과 쉽게 분리 할 수 있습니다.
+권한 부여, 데이터 사전 처리 (불필요한 데이터 제거 및 유효성 검사), 데이터 후 처리 (직렬화),
+이메일이나 문자 메시지와 같은 알림을 전송할 수 있습니다.
 
-You can swap databases with minimal application code changes.
-You can also share validations for multiple databases in the same app, across multiple apps,
-and with your client.
+최소한의 애플리케이션 코드 변경으로 데이터베이스를 교체할 수 있습니다.
+동일한 앱, 여러 앱 및 클라이언트에서 여러 데이터베이스에 대한 유효성을 공유 할 수도 있습니다.
 
-## Results
+## 결과
 
-The browser console displays
+브라우저 콘솔 출력입니다.
 
 ```text
 created Jane Doe item
@@ -218,10 +198,9 @@ find all items
     length: 3
 ```
 
-- `createdAt` and `updatedAt` have been added to the items.
-- `password` is not included in the data returned for the create and delete operations.
-- An encoded `password` is included for the find operation,
-because of the special coding we included in the example.
+- `createdAt`와 `updatedAt` 아이템에 추가되었습니다.
+- `password`는 생성 및 삭제 작업을 위해 반환되는 데이터에 포함되지 않습니다.
+- 인코딩 된 `password`는 검색  연산에 포함되어 있습니다. 왜냐하면 예제에 포함 된 특별한 코드 때문입니다.
 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Hooks-1&body=Comment:Step-Basic-Hooks-1)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Hooks-1&body=Comment:Step-Basic-Hooks-1)

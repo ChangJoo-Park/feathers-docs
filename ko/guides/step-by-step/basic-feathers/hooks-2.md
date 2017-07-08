@@ -1,34 +1,34 @@
-# Hooks, part 2
+# 훅, 파트2
 
-If you have an archive of stock movements,
-you cannot simply delete a stock item you no longer want to keep.
-You would not be able to properly present historical data if you did so.
+주식 이동 기록 보관소가있는 경우,
+더 이상 보관하지 않으려는 재고 항목을 단순히 삭제할 수 없습니다.
+삭제한다면 과거 데이터를 제대로 표시 할 수 없습니다.
 
-The solution is to keep the data but mark it as deleted.
-We can ignore the `deleted` flag when we know we are accessing historical, and possibly deleted, items.
-Otherwise we want the application to act as if the item didn't exist.
+해결책은 데이터를 유지하면서 삭제된 것으로 표시하는 것입니다.
+역사적으로 삭제 된 항목에 액세스하는 것을 알고있을 때 `deleted` 플래그를 무시할 수 있습니다.
+그렇지 않으면 항목이 존재하지 않는 것처럼 애플리케이션이 작동하기를 원합니다.
 
-It would be fairly complex to implement **soft delete** support yourself,
-however its easy to do using the `softDelete` hook.
+**소프트 삭제**를 구현하는 것은 상당히 복잡 합니다.
+그러나 `softDelete` 훅을 사용하여 쉽게 할 수 있습니다.
 
-## Working example
+## 작동하는 예제
 
-- Server code: [examples/step/01/hooks/2.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/hooks/2.js)
-- Client code: [common/public/rest-del.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/rest.html)
-and
+- 서버 코드: [examples/step/01/hooks/2.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/hooks/2.js)
+- 클라이언트 코드: [common/public/rest-del.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/rest.html)
+와
 [common/public/feathers-app-del.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app-del.js)
-- Start the server: `node ./examples/step/01/hooks/2`
-- Point the browser at: `localhost:3030/rest-del.html`
-- Compare with last page's server
+- 서버 시작: `node ./examples/step/01/hooks/2`
+- 브라우저 접속 주소: `localhost:3030/rest-del.html`
+- 이전 페이지의 서버와의 비교
 [hooks/1.js.](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/hooks/1.js):
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-2-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-2-side.html)
 
-## Using softDelete
+## softDelete 사용
 
-We need to make just one change to our previous server example.
-We use the when hook to run the softDelete hook if the service method is not find.
+이전 서버 예제를 단 하나만 변경합니다.
+서비스 메소드가 발견되지 않으면 when hook을 사용하여 softDelete 후크를 실행합니다.
 
 ```javascript
 const {
@@ -41,14 +41,14 @@ userService.before({
     create: [ /* ... */ ]
 });
 ```
-- See what changed:
+- 변경된 부분을 확인하세요:
 [Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-2-line.html)
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/01-hooks-2-side.html)
 
-## The results
+## 결과
 
-The browser console displays
+브라우저 콘솔 출력입니다.
 
 ```text
 created Jane Doe item
@@ -101,9 +101,8 @@ find all items
     length: 4
 ```
 
-- The result returned when the Jack Doe item was deleted contains `deleted: true`.
-- The results returned for find also contain `deleted: true` for Jack Doe
-because of how we conditioned the softDelete hook.
+- Jack Doe 아이템이 삭제되었을 때 리턴 된 결과는`deleted : true`를 포함합니다.
+- find에 대해 반환 된 결과에는 softDelete 훅을 컨디셔닝하는 방법 때문에 Jack Doe에 대한 `deleted : true`도 포함됩니다.
 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Hooks-2&body=Comment:Step-Basic-Hooks-2)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Hooks-2&body=Comment:Step-Basic-Hooks-2)

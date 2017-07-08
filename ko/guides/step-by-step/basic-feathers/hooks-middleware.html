@@ -1670,30 +1670,27 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="hooks-middleware">Hooks middleware</h1>
-<h2 id="linux-pipes">Linux pipes</h2>
-<p>One of the more powerful features of Linux is pipes,
-which has shaped its toolbox philosophy.
-A pipeline is a sequence of processes chained together,
-so that the output of each process feeds directly as input to the next one.</p>
-<p>For example, to list files in the current directory (ls),
-retain only the lines of ls output containing the string &quot;key&quot; (grep),
-and view the result in a scrolling page (less),
-a user types the following into the command line of a terminal:</p>
+                                <h1 id="&#xD6C5;-&#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4;">&#xD6C5; &#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4;</h1>
+<h2 id="&#xB9AC;&#xB205;&#xC2A4;-&#xD30C;&#xC774;&#xD504;">&#xB9AC;&#xB205;&#xC2A4; &#xD30C;&#xC774;&#xD504;</h2>
+<p>&#xD30C;&#xC774;&#xD504;&#xB294; &#xB3C4;&#xAD6C;&#xC0C1;&#xC790; &#xCCA0;&#xD559;&#xC744; &#xB9CC;&#xB4E0; &#xB9AC;&#xB205;&#xC2A4;&#xC758; &#xAC00;&#xC7A5; &#xAC15;&#xB825;&#xD55C; &#xAE30;&#xB2A5; &#xC911; &#xD558;&#xB098;&#xC785;&#xB2C8;&#xB2E4;.
+&#xD30C;&#xC774;&#xD504;&#xB77C;&#xC778;&#xC740; &#xC11C;&#xB85C; &#xC5F0;&#xACB0;&#xB41C; &#xC77C;&#xB828;&#xC758; &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC774;&#xBBC0;&#xB85C; &#xAC01; &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC758; &#xCD9C;&#xB825;&#xC774; &#xB2E4;&#xC74C; &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC758; &#xC785;&#xB825;&#xC73C;&#xB85C; &#xC9C1;&#xC811; &#xC785;&#xB825;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, &#xD604;&#xC7AC; &#xB514;&#xB809;&#xD1A0;&#xB9AC;&#xC758; &#xD30C;&#xC77C;&#xC744; &#xCD9C;&#xB825;&#xD558;&#xACE0; (ls),
+&#xBB38;&#xC790;&#xC5F4; &quot;key&quot;&#xAC00; &#xD3EC;&#xD569;&#xB41C; ls &#xCD9C;&#xB825; &#xD589;&#xB9CC; &#xBCF4;&#xC874;&#xD558;&#xACE0; (grep),
+&#xC2A4;&#xD06C;&#xB864; &#xD398;&#xC774;&#xC9C0;&#xC5D0;&#xC11C; &#xACB0;&#xACFC;&#xB97C; &#xBCF4;&#xB824;&#xBA74;(less),
+&#xC0AC;&#xC6A9;&#xC790;&#xB294; &#xD130;&#xBBF8;&#xB110;&#xC5D0;&#xC11C; &#xC544;&#xB798;&#xC640; &#xAC19;&#xC774; &#xC785;&#xB825;&#xD558;&#xBA74; &#xB429;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-text">ls -l | grep key | less
 </code></pre>
-<h2 id="express-middleware">Express middleware</h2>
-<p>At the heart of pipes lies a design pattern:
-<a href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" target="_blank">Chain of Responsibility (CoR)</a>.
-The CoR pattern uses a chain of objects to handle a request.
-Objects in the chain forward the request along the chain.
-Processing stops after an event is handled.</p>
+<h2 id="express-&#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4;">Express &#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4;</h2>
+<p>&#xD30C;&#xC774;&#xD504;&#xC758; &#xC911;&#xC2EC;&#xC5D0;&#xB294; <a href="https://en.wikipedia.org/wiki/Chain-of-responsibility_pattern" target="_blank">Chain of Responsibility (CoR)</a> &#xB514;&#xC790;&#xC778; &#xD328;&#xD134;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+CoR &#xD328;&#xD134;&#xC740; &#xC77C;&#xB828;&#xC758; &#xAC1D;&#xCCB4;&#xB97C; &#xC0AC;&#xC6A9;&#xD574; &#xC694;&#xCCAD;&#xC744; &#xCC98;&#xB9AC;&#xD569;&#xB2C8;&#xB2E4;.
+&#xCCB4;&#xC778;&#xC758; &#xAC1D;&#xCCB4;&#xB294; &#xCCB4;&#xC778;&#xC744; &#xB530;&#xB77C; &#xC694;&#xCCAD;&#xC744; &#xC804;&#xB2EC;&#xD569;&#xB2C8;&#xB2E4;.
+&#xC774;&#xBCA4;&#xD2B8; &#xCC98;&#xB9AC; &#xD6C4; &#xCC98;&#xB9AC;&#xAC00; &#xBA48;&#xCDA5;&#xB2C8;&#xB2E4;.</p>
 <p><img src="../assets/middleware.jpg" alt="middleware pattern"></p>
 <p><a href="https://expressjs.com/" target="_blank">Express</a>
 <a href="https://expressjs.com/en/guide/using-middleware.html" target="_blank">middleware</a>
-uses the CoR pattern.
-You should be familiar with the following code if you&apos;ve ever used Express.
-A HTTP request is handled by each of these Express functions in sequence.</p>
+&#xB294; CoR &#xD328;&#xD134;&#xC744; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.
+Express&#xB97C; &#xC0AC;&#xC6A9;&#xD55C; &#xACBD;&#xD5D8;&#xC774; &#xC788;&#xB2E4;&#xBA74; &#xC544;&#xB798; &#xCF54;&#xB4DC;&#xC5D0; &#xC775;&#xC219;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.
+HTTP &#xC694;&#xCCAD;&#xC740; Express &#xD568;&#xC218; &#xAC01;&#xAC01;&#xC5D0; &#xC758;&#xD574; &#xC21C;&#xC11C;&#xB300;&#xB85C; &#xCC98;&#xB9AC;&#xB429;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript">app.use(cors());
 app.use(helmet());
 app.use(compress());
@@ -1702,18 +1699,14 @@ app.use(bodyParser.urlencoded({ extended: <span class="hljs-literal">true</span>
 app.use(favicon(path.join(app.get(<span class="hljs-string">&apos;public&apos;</span>), <span class="hljs-string">&apos;favicon.ico&apos;</span>)));
 app.use(<span class="hljs-string">&apos;/&apos;</span>, feathers.static(app.get(<span class="hljs-string">&apos;public&apos;</span>)));
 </code></pre>
-<p>The CoR pattern promotes the idea of <a href="https://en.wikipedia.org/wiki/Loose_coupling" target="_blank">loose coupling</a>
-and it lets us combine simple functions to build solutions for specific needs.</p>
-<h2 id="feathers-hooks">Feathers hooks</h2>
-<p>Applications are about more than the reading and writing of raw database items.
-Application-specific logic often needs to run before and after service calls.</p>
-<p>You will implement most of your business requirements with <a href="../../../api/hooks.html">service hooks</a>,
-which are middleware functions that run for each service method.
-Feathers calls the data passed between these hooks the <code>context</code> object
-(in order not to confused them with the HTTP <code>request</code> object).</p>
-<p>Hook middleware is organized like this:</p>
+<p>CoR&#xD328;&#xD134;&#xC740; <a href="https://en.wikipedia.org/wiki/Loose_coupling" target="_blank">loose coupling</a> &#xC544;&#xC774;&#xB514;&#xC5B4;&#xB97C; &#xCD09;&#xC9C4;&#xD558;&#xACE0; &#xD2B9;&#xC815; &#xAE30;&#xB2A5;&#xC744; &#xAD6C;&#xD604;&#xD558;&#xB294; &#xAC04;&#xB2E8;&#xD55C; &#xAE30;&#xB2A5;&#xB4E4;&#xC744; &#xACB0;&#xD569;&#xD560; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="feathers-&#xD6C5;">Feathers &#xD6C5;</h2>
+<p>&#xC560;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158;&#xC740; &#xC6D0;&#xC2DC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xC544;&#xC774;&#xD15C;&#xC758; &#xC77D;&#xAE30; &#xBC0F; &#xC4F0;&#xAE30; &#xC774;&#xC0C1;&#xC758; &#xAE30;&#xB2A5;&#xC744; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC560;&#xD50C;&#xB9AC;&#xCF00;&#xC774;&#xC158; &#xBCC4; &#xB85C;&#xC9C1;&#xC740; &#xC11C;&#xBE44;&#xC2A4; &#xD638;&#xCD9C; &#xC804; &#xD6C4;&#xC5D0; &#xC2E4;&#xD589;&#xD574;&#xC57C;&#xD558;&#xB294; &#xACBD;&#xC6B0;&#xAC00; &#xB9CE;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p> <a href="../../../api/hooks.html">service hooks</a>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xB300;&#xBD80;&#xBD84;&#xC758; &#xBE44;&#xC988;&#xB2C8;&#xC2A4; &#xC694;&#xAD6C;&#xC0AC;&#xD56D;&#xC744; &#xAD6C;&#xD604;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xAC01; &#xC11C;&#xBE44;&#xC2A4; &#xBA54;&#xC18C;&#xB4DC;&#xC5D0; &#xB300;&#xD574; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4; &#xAE30;&#xB2A5;&#xC785;&#xB2C8;&#xB2E4;. Feathers&#xB294; &#xC774; &#xD6C5;&#xB4E4; &#xC0AC;&#xC774;&#xC5D0; &#xC804;&#xB2EC;&#xB41C; &#xB370;&#xC774;&#xD130;&#xB97C; <code>context</code>&#xAC1D;&#xCCB4;&#xB77C;&#xACE0; &#xBD80;&#xB985;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD6C5; &#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC774; &#xAD6C;&#xC131;&#xB429;&#xB2C8;&#xB2E4;.</p>
 <p><img src="../assets/hook-flow-1-create.jpg" alt="create hooks"></p>
-<p>and the corresponding Feathers code would be:</p>
+<p>&#xC704;&#xC758; Feathers &#xCF54;&#xB4DC;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> messagesHooks = {
   before: {
     create: [ hook31(), hook32() ]
@@ -1725,41 +1718,35 @@ Feathers calls the data passed between these hooks the <code>context</code> obje
 <span class="hljs-keyword">const</span> messages = app.service(<span class="hljs-string">&apos;messages&apos;</span>);
 messages.hooks(messagesHooks);
 </code></pre>
-<p>You can see that a series of hooks are run between the service call and the actual call to the database.
-These hooks may, for example:</p>
+<p>&#xC11C;&#xBE44;&#xC2A4; &#xD638;&#xCD9C;&#xACFC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xC5D0; &#xB300;&#xD55C; &#xC2E4;&#xC81C; &#xD638;&#xCD9C; &#xC0AC;&#xC774;&#xC5D0; &#xC77C;&#xB828;&#xC758; &#xD6C5;&#xC774; &#xC2E4;&#xD589;&#xB418;&#xB294; &#xAC83;&#xC744; &#xBCFC; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xD6C5;&#xC758; &#xC608;&#xB294; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <ul>
-<li>Ensure the user is authenticated,</li>
-<li>Ensure the user is allowed to perform this operation,</li>
-<li>Validate the data for the service call. i.e. the data in the <code>context</code> object,</li>
-<li>Update the record&apos;s <code>updatedAt</code> value, thus modifying the <code>context</code> object,</li>
-<li>Perhaps not allow the service call to proceed, or return a specified response for it.</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xC778;&#xC99D;&#xB418;&#xC5C8;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD558;&#xACE0;,</li>
+<li>&#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xD574;&#xB2F9; &#xC870;&#xC791;&#xC774; &#xAC00;&#xB2A5;&#xD55C;&#xC9C0; &#xD655;&#xC778;&#xD558;&#xACE0;,</li>
+<li>&#xC11C;&#xBE44;&#xC2A4; &#xD638;&#xCD9C;&#xC5D0; &#xB300;&#xD55C; &#xB370;&#xC774;&#xD2B8; &#xAC80;&#xC99D;&#xC744; &#xD569;&#xB2C8;&#xB2E4;.&#xC989;, <code>context</code> &#xAC1D;&#xCCB4; &#xB0B4;&#xC758; &#xB370;&#xC774;&#xD130;&#xC785;&#xB2C8;&#xB2E4;.</li>
+<li>&#xB808;&#xCF54;&#xB4DC;&#xC758; <code>updatedAt</code> &#xAC12;&#xC744; &#xC5C5;&#xB370;&#xC774;&#xD2B8; &#xD558;&#xC5EC; <code>context</code> &#xAC1D;&#xCCB4;&#xB97C; &#xC218;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC11C;&#xBE44;&#xC2A4; &#xD638;&#xCD9C;&#xC744; &#xACC4;&#xC18D; &#xC9C4;&#xD589;&#xD558;&#xAC70;&#xB098; &#xD2B9;&#xC815; &#xC751;&#xB2F5;&#xC744; &#xBC18;&#xD658;&#xD558;&#xC9C0; &#xC54A;&#xC744; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
 </ul>
 <blockquote>
-<p><strong>ProTip</strong> Hooks may be synchronous or async (using promises or async/await).
-The next hook will run only when the current one finishes (sync) or resolves (async),
-so hooks are always run sequentially.</p>
+<p><strong>ProTip</strong> &#xD6C5;&#xC740; &#xB3D9;&#xAE30; &#xB610;&#xB294; &#xBE44;&#xB3D9;&#xAE30; (Promise &#xB610;&#xB294; async/await)&#xC77C; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB2E4;&#xC74C; &#xD6C5;&#xC740; &#xD604;&#xC7AC;&#xC758; &#xD6C5;&#xC774; &#xC885;&#xB8CC;(sync) &#xB610;&#xB294; &#xD574;&#xACB0; (async)&#xC778; &#xACBD;&#xC6B0;&#xC5D0;&#xB9CC; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;. &#xB530;&#xB77C;&#xC11C; &#xD6C5;&#xC740; &#xD56D;&#xC0C1; &#xC21C;&#xCC28;&#xC801;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.</p>
 </blockquote>
-<p>A series of hooks is also run after the actual call to the database, if that call was successful.
-These hooks may:</p>
+<p>&#xC77C;&#xB828;&#xC758; &#xD6C5;&#xC740; &#xD574;&#xB2F9; &#xD638;&#xCD9C;&#xC774; &#xC131;&#xACF5;&#xD55C; &#xACBD;&#xC6B0; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xB97C; &#xC2E4;&#xC81C; &#xD638;&#xCD9C; &#xD6C4; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.
+&#xC774; &#xD6C5;&#xC740;</p>
 <ul>
-<li>Populate the response with related information,
-e.g. information about the user who created the returned record,</li>
-<li>Remove information for security reasons, e.g. the user password.</li>
+<li>&#xAD00;&#xB828; &#xC815;&#xBCF4;&#xB85C; &#xC751;&#xB2F5;&#xC744; &#xCC44;&#xC6C1;&#xB2C8;&#xB2E4;.
+&#xC608;&#xB97C; &#xB4E4;&#xC5B4; &#xBC18;&#xD658;&#xB41C; &#xB808;&#xCF54;&#xB4DC;&#xB97C; &#xC0DD;&#xC131;&#xD55C; &#xC0AC;&#xC6A9;&#xC790;&#xC5D0; &#xB300;&#xD55C; &#xC815;&#xBCF4;&#xB85C; &#xCC44;&#xC6C1;&#xB2C8;&#xB2E4;.</li>
+<li>&#xBCF4;&#xC548;&#xC0C1;&#xC758; &#xC774;&#xC720;&#xB85C; &#xC815;&#xBCF4;&#xB97C; &#xC81C;&#xAC70;&#xD569;&#xB2C8;&#xB2E4;. &#xC608;&#xB97C; &#xB4E4;&#xC5B4; &#xC0AC;&#xC6A9;&#xC790;&#xC758; &#xBE44;&#xBC00;&#xBC88;&#xD638;</li>
 </ul>
-<p>You can implement all your business logic related to service calls with hooks.</p>
+<p>&#xD6C5;&#xC744; &#xC0AC;&#xC6A9;&#xD574; &#xC11C;&#xBE44;&#xC2A4; &#xD638;&#xCD9C;&#xACFC; &#xAD00;&#xB828;&#xB41C; &#xBAA8;&#xB4E0; &#xBE44;&#xC988;&#xB2C8;&#xC2A4; &#xB85C;&#xC9C1;&#xC744; &#xAD6C;&#xD604;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <blockquote>
-<p><strong>ProTip</strong> The DB call is middleware too!
-It uses the information in the <code>context</code> object to call the database,
-and then updates <code>context</code> with the result.</p>
-<p><strong>ProTip</strong> Services are usually database adapters, but they need not be.
-You can create a service which writes to the server log for example.
-A client could post logs using this service.
-Hooks may be defined for all services, regardless of their type.</p>
-<p><strong>ProTip</strong> Some people may call the <code>context</code> object the <code>hook</code> object.
-The two terms are interchangeable.</p>
+<p><strong>ProTip</strong> DB &#xD638;&#xCD9C; &#xB610;&#xD55C; &#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4; &#xC785;&#xB2C8;&#xB2E4;.
+<code>context</code> &#xAC1D;&#xCCB4;&#xC758; &#xC815;&#xBCF4;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xACE0;,
+&#xADF8; &#xACB0;&#xACFC;&#xB85C; <code>context</code>&#xB97C; &#xAC31;&#xC2E0;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p><strong>ProTip</strong> &#xC11C;&#xBE44;&#xC2A4;&#xB294; &#xB300;&#xAC1C; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xC5B4;&#xB311;&#xD130;&#xC774;&#xC9C0;&#xB9CC; &#xD544;&#xC218;&#xC801;&#xC778; &#xAC83;&#xC740; &#xC544;&#xB2D9;&#xB2C8;&#xB2E4;. &#xC608;&#xB97C; &#xB4E4;&#xC5B4; &#xC11C;&#xBC84; &#xB85C;&#xADF8;&#xC5D0; &#xAE30;&#xB85D;&#xD558;&#xB294; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC791;&#xC131;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xC774; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xB85C;&#xADF8;&#xB97C; &#xAC8C;&#xC2DC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xD6C5;&#xC740; &#xD615;&#xD0DC;&#xC5D0; &#xAD00;&#xACC4;&#xC5C6;&#xC774; &#xBAA8;&#xB4E0; &#xC11C;&#xBE44;&#xC2A4;&#xC5D0; &#xC815;&#xC758;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p><strong>ProTip</strong> &#xC5B4;&#xB5A4; &#xC0AC;&#xB78C;&#xB4E4;&#xC740; <code>context</code> &#xAC1D;&#xCCB4;&#xB97C; <code>hook</code> &#xAC1D;&#xCCB4;&#xB77C;&#xACE0; &#xBD80;&#xB97C; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. &#xB450; &#xC6A9;&#xC5B4;&#xB294; &#xC11C;&#xB85C; &#xBC14;&#xAFD4; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 </blockquote>
-<h3 id="is-anything-wrong-unclear-missing">Is anything wrong, unclear, missing?</h3>
-<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Middleware&amp;body=Comment:Step-Basic-Middleware" target="_blank">Leave a comment.</a></p>
+<h3 id="&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098;-&#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098;-&#xB204;&#xB77D;&#xB41C;-&#xBD80;&#xBD84;&#xC774;-&#xC788;&#xC2B5;&#xB2C8;&#xAE4C;">&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098; &#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098; &#xB204;&#xB77D;&#xB41C; &#xBD80;&#xBD84;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xAE4C;?</h3>
+<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Middleware&amp;body=Comment:Step-Basic-Middleware" target="_blank">&#xB313;&#xAE00;&#xC744; &#xB0A8;&#xACA8;&#xC8FC;&#xC138;&#xC694;.</a></p>
 
                                 
                                 </section>
@@ -1803,7 +1790,7 @@ The two terms are interchangeable.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Hooks middleware","level":"1.2.2.10","depth":3,"next":{"title":"All about hooks","level":"1.2.2.11","depth":3,"path":"guides/step-by-step/basic-feathers/all-about-hooks.md","ref":"guides/step-by-step/basic-feathers/all-about-hooks.md","articles":[]},"previous":{"title":"The \"a-ha!\" moment","level":"1.2.2.9","depth":3,"path":"guides/step-by-step/basic-feathers/a-ha.md","ref":"guides/step-by-step/basic-feathers/a-ha.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/hooks-middleware.md","mtime":"2017-07-07T07:10:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-07T14:22:03.011Z"},"basePath":"../../..","book":{"language":"ko"}});
+            gitbook.page.hasChanged({"page":{"title":"Hooks middleware","level":"1.2.2.10","depth":3,"next":{"title":"All about hooks","level":"1.2.2.11","depth":3,"path":"guides/step-by-step/basic-feathers/all-about-hooks.md","ref":"guides/step-by-step/basic-feathers/all-about-hooks.md","articles":[]},"previous":{"title":"The \"a-ha!\" moment","level":"1.2.2.9","depth":3,"path":"guides/step-by-step/basic-feathers/a-ha.md","ref":"guides/step-by-step/basic-feathers/a-ha.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/hooks-middleware.md","mtime":"2017-07-07T23:21:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-08T04:59:22.333Z"},"basePath":"../../..","book":{"language":"ko"}});
         });
     </script>
 </div>

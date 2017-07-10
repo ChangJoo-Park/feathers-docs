@@ -1670,11 +1670,11 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="testing-hooks">Testing Hooks</h1>
-<h2 id="self-contained-hooks">Self contained hooks</h2>
-<p>Testing hooks that do not depend on services or other hooks is straight forward.
-Create a <code>context</code> object, call the inner hook function, and check the returned <code>context</code>.</p>
-<p>Here is part of the mocha test for <code>disableMultiItemChange</code>.</p>
+                                <h1 id="&#xD6C5;-&#xD14C;&#xC2A4;&#xD305;">&#xD6C5; &#xD14C;&#xC2A4;&#xD305;</h1>
+<h2 id="&#xC2A4;&#xC2A4;&#xB85C;-&#xC874;&#xC7AC;&#xD558;&#xB294;-&#xD6C5;">&#xC2A4;&#xC2A4;&#xB85C; &#xC874;&#xC7AC;&#xD558;&#xB294; &#xD6C5;</h2>
+<p>&#xC11C;&#xBE44;&#xC2A4;&#xB098; &#xB2E4;&#xB978; &#xD6C5;&#xC5D0; &#xC758;&#xC874;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xD6C5;&#xC758; &#xD14C;&#xC2A4;&#xD2B8;&#xB294; &#xAC04;&#xB2E8;&#xD569;&#xB2C8;&#xB2E4;.
+<code>context</code> &#xAC1D;&#xCCB4;&#xB97C; &#xB9CC;&#xB4E4;&#xACE0;, &#xB0B4;&#xBD80; &#xD6C5; &#xD568;&#xC218;&#xB97C; &#xD638;&#xCD9C;&#xD55C; &#xD6C4; &#xBC18;&#xD658;&#xB41C; <code>context</code>&#xB97C; &#xD655;&#xC778;&#xD558;&#xC138;&#xC694;.</p>
+<p><code>disableMultiItemChange</code>&#xB97C; mocha &#xB85C; &#xD14C;&#xC2A4;&#xD2B8;&#xD55C; &#xC608;&#xC81C;&#xC758; &#xC77C;&#xBD80;&#xBD84; &#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { assert } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;chai&apos;</span>;
 <span class="hljs-keyword">import</span> { disableMultiItemChange } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../src/services&apos;</span>;
 
@@ -1714,7 +1714,7 @@ Create a <code>context</code> object, call the inner hook function, and check th
   });
 });
 </code></pre>
-<p>Here is part of the mocha test for <code>pluck</code>.</p>
+<p><code>pluck</code>&#xC744; mocha&#xB85C; &#xD14C;&#xC2A4;&#xD2B8;&#xD55C; &#xC608;&#xC81C;&#xC758; &#xC77C;&#xBD80;&#xBD84;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { assert } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;chai&apos;</span>;
 <span class="hljs-keyword">import</span> hooks <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;../../src/services&apos;</span>;
 
@@ -1822,11 +1822,10 @@ describe(<span class="hljs-string">&apos;services pluck&apos;</span>, () =&gt; {
   });
 });
 </code></pre>
-<h2 id="hooks-requiring-a-feathers-app">Hooks requiring a Feathers app</h2>
-<p>Some hooks call services, or they depend on other hooks running.
-Its much simpler to create a Feathers app plus a memory-backed service
-than to try to mock them out.</p>
-<p>Here is part of the mocha test for <code>stashBefore</code>.</p>
+<h2 id="feathers-&#xC571;&#xC774;-&#xD544;&#xC694;&#xD55C;-&#xD6C5;">Feathers &#xC571;&#xC774; &#xD544;&#xC694;&#xD55C; &#xD6C5;</h2>
+<p>&#xC5B4;&#xB5A4; &#xD6C5;&#xC740; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xAC70;&#xB098; &#xB2E4;&#xB978; &#xD6C5;&#xC774; &#xC2E4;&#xD589; &#xC911;&#xC774;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC774;&#xB4E4;&#xC744; &#xAC00;&#xC9DC;&#xB85C; &#xB9CC;&#xB4DC;&#xB824;&#xACE0; &#xC2DC;&#xB3C4;&#xD558;&#xB294; &#xAC83;&#xBCF4;&#xB2E4; Feathers app&#xACFC; &#xBA54;&#xBAA8;&#xB9AC; &#xAE30;&#xBC18; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xB9CC;&#xB4DC;&#xB294; &#xAC83;&#xC774; &#xD6E8;&#xC52C; &#xAC04;&#xB2E8;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p><code>stashBefore</code>&#xB97C; mocha&#xB85C; &#xD14C;&#xC2A4;&#xD2B8;&#xD55C; &#xC608;&#xC81C;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> assert = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;chai&apos;</span>).assert;
 <span class="hljs-keyword">const</span> feathers = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;feathers&apos;</span>);
 <span class="hljs-keyword">const</span> memory = <span class="hljs-built_in">require</span>(<span class="hljs-string">&apos;feathers-memory&apos;</span>);
@@ -1910,11 +1909,11 @@ describe(<span class="hljs-string">&apos;services stash-before&apos;</span>, () 
   <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.parse(<span class="hljs-built_in">JSON</span>.stringify(obj));
 }
 </code></pre>
-<p>You might not want to use the Feathers NeDB adapter as it may not be opened more than once in a process.
-You can work around this with mocha&apos;s <code>--require</code> option,
-opening it once and attaching it to Nodejs&apos; <code>global</code> object to the tests.</p>
-<h3 id="is-anything-wrong-unclear-missing">Is anything wrong, unclear, missing?</h3>
-<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Testing-Hooks&amp;body=Comment:Step-Basic-Testing-Hooks" target="_blank">Leave a comment.</a></p>
+<p>Feathers&#xC758; NeDB &#xC5B4;&#xB311;&#xD130;&#xB294; &#xD504;&#xB85C;&#xC138;&#xC2A4;&#xC5D0;&#xC11C; &#xB450;&#xBC88; &#xC774;&#xC0C1; &#xC5F4;&#xB9AC;&#xC9C0; &#xC54A;&#xC744; &#xC218; &#xC788;&#xC73C;&#xBBC0;&#xB85C; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xBABB; &#xD560;&#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xC774;&#xB97C; &#xD574;&#xACB0;&#xD558;&#xAE30; &#xC704;&#xD574; mocha&#xC758; <code>--require</code> &#xC635;&#xC158;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xC138;&#xC694;
+&#xD55C;&#xBC88;&#xB9CC; &#xC5F4;&#xACE0; Nodejs&#xC758; <code>global</code> &#xAC1D;&#xCCB4;&#xC5D0; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xCCA8;&#xBD80;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098;-&#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098;-&#xB204;&#xB77D;&#xB41C;-&#xBD80;&#xBD84;&#xC774;-&#xC788;&#xC2B5;&#xB2C8;&#xAE4C;">&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098; &#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098; &#xB204;&#xB77D;&#xB41C; &#xBD80;&#xBD84;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xAE4C;?</h3>
+<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Testing-Hooks&amp;body=Comment:Step-Basic-Testing-Hooks" target="_blank">&#xB313;&#xAE00;&#xC744; &#xB0A8;&#xACA8;&#xC8FC;&#xC138;&#xC694;.</a></p>
 
                                 
                                 </section>
@@ -1958,7 +1957,7 @@ opening it once and attaching it to Nodejs&apos; <code>global</code> object to t
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"훅 테스팅","level":"1.2.2.15","depth":3,"next":{"title":"리얼타임","level":"1.2.2.16","depth":3,"path":"guides/step-by-step/basic-feathers/real-time.md","ref":"guides/step-by-step/basic-feathers/real-time.md","articles":[]},"previous":{"title":"직접 훅을 만드세요","level":"1.2.2.14","depth":3,"path":"guides/step-by-step/basic-feathers/writing-hooks.md","ref":"guides/step-by-step/basic-feathers/writing-hooks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/testing-hooks.md","mtime":"2017-07-07T07:10:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T12:54:35.932Z"},"basePath":"../../..","book":{"language":"ko"}});
+            gitbook.page.hasChanged({"page":{"title":"훅 테스팅","level":"1.2.2.15","depth":3,"next":{"title":"리얼타임","level":"1.2.2.16","depth":3,"path":"guides/step-by-step/basic-feathers/real-time.md","ref":"guides/step-by-step/basic-feathers/real-time.md","articles":[]},"previous":{"title":"직접 훅을 만드세요","level":"1.2.2.14","depth":3,"path":"guides/step-by-step/basic-feathers/writing-hooks.md","ref":"guides/step-by-step/basic-feathers/writing-hooks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/testing-hooks.md","mtime":"2017-07-10T13:21:03.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T13:34:40.104Z"},"basePath":"../../..","book":{"language":"ko"}});
         });
     </script>
 </div>

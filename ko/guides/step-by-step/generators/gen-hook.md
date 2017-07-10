@@ -1,4 +1,4 @@
-# Add the populate hook
+# populate 훅 추가
 
 When we obtain a teams record, we want to add the team's users to the team record.
 This requires a hook and therefore we generate the scaffolding for a hook using:
@@ -16,14 +16,14 @@ You can see all the changes here:
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/02-gen4-side.html)
 
 
-## New modules
+## 새 모듈
 
 The directory has changed:
 
 ![Compare gen3 and gen4 folders](../assets/gen3-4-dir.jpg)
 
 
-## The populateTeams hook
+## populateTeams 훅
 
 The generator has roughed out an after hook for the `teams` service.
 This hook doesn't do anything so far, but its been placed in the structure and wired into the app.
@@ -51,10 +51,9 @@ You'd likely use the `populate` hook for DB adapters other than Sequelize.
 You may decide to use the more performant internal populate features for Sequelize.
 The generator creates a hook which does nothing.
 
-## What's next?
+## 이제 무엇을 해야하나요?
 
 The generated code, once again, contains no surprises for us as we have covered it before. Now we can [run our application](./gen-run.md).
 
-### Is anything wrong, unclear, missing?
-
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Hook&body=Comment:Step-Generators-Hook)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Hook&body=Comment:Step-Generators-Hook)

@@ -1,9 +1,9 @@
-# Generators
+# 제너레이터
 
 We've been writing code "by hand" in order to understand how basic Feathers works.
 We will now start using Feathers generators since we have the background to understand what they produce.
 
-## Generators help eliminate boilerplate.
+## 제너레이터로 보일러플레이트를 없앨 수 있습니다
 
 We've seen that Feathers, even when coded "by hand",
 eliminates the majority of the boilerplate typically in a CRUD project.
@@ -17,25 +17,24 @@ Some other frameworks make things “seem” easy by generating thousands of lin
 and, in the process, making it almost impossible to implement anything not supported out of the box
 by their generators.
 
-### Generators structure your app.
+### 제너레이터 앱 구조
 
 The generated modules are structured as recommended by the Feathers team.
 
-### Generators handle database specifics.
+### 제너레이터로 데이터베이스 조작하기
 
 The generators will generate code for different databases
 so you don't have to investigate how to do so.
 
-## Install the generators
+## 제너레이터 설치
 
 You can install the Feathers generators with
 
 `npm install -g feathers-cli`
 
-## What's next?
+## 이제 무엇을 해야하나요?
 
 Now that we installed the Feathers command line tool we can [generate the application](./gen-app.md).
 
-### Is anything wrong, unclear, missing?
-
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Readme&body=Comment:Step-Generators-Readme)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Readme&body=Comment:Step-Generators-Readme)

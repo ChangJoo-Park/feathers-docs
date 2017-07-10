@@ -1,4 +1,4 @@
-# Add the teams service
+# Teams 서비스 추가
 
 We now generate the teams service using
 
@@ -15,13 +15,13 @@ You can see all the changes here:
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/02-gen3-side.html)
 
 
-## New modules
+## 새 모듈
 
 The directory has changed:
 
 ![Compare gen2 and gen3 folders](../assets/gen2-3-dir.jpg)
 
-## The teams service
+## Teams 서비스
 
 We saw the `users` service being added previously.
 The `teams` service has been added in exactly the same way.
@@ -34,6 +34,5 @@ creating something in its approximate, but not finished, form.
 The generators will write most of the boilerplate you need,
 while you concentrate on the unique needs of the project.
 
-### Is anything wrong, unclear, missing?
-
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Service&body=Comment:Step-Generators-Service)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Service&body=Comment:Step-Generators-Service)

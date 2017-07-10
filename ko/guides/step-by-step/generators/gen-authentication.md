@@ -1,4 +1,4 @@
-# Add authentication
+# 인증 추가
 
 We can now use the generator to add some local authentication to the app by running
 
@@ -15,13 +15,13 @@ You can see all the changes here:
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/02-gen2-side.html)
 
 
-## New modules
+## 새 모듈
 
 The directory has changed:
 
 ![Compare app and authentication folders](../assets/gen1-2-dir.jpg)
 
-## The users service
+## 사용자 서비스
 
 The generator has added a `users` service to the app
 because local authentication requires we keep a database of users.
@@ -36,15 +36,15 @@ describes how `users` is indexed. `NeDB` is a
 
     - [users.service.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen2/src/services/users/users.service.js)
     configures the service.
-    
+
     - [users.hooks.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen2/src/services/users/users.hooks.js)
     configures the hooks for the service.
     The `authenticate('jwt')` hooks ensure only authenticated users can perform method calls.
     The `hashPassword()` hook encrypts the password when a new user is added.
-    
+
     - [users.filters.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen2/src/services/users/users.filters.js)
     will allow you to control which clients are notified when a user is mutated.
-    
+
 - [test/services/users.test.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen2/test/services/users.test.js)
 tests that the service gets configured.
 
@@ -55,7 +55,7 @@ The service has to be wired into the app, so the generator made the following ch
 |
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/02-gen2-default-side.html))
 keeps the path of the NeDB tables.
- 
+
 - **src/services/index.js** now
 ([Unified](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/02-gen2-service-line.html)
 |
@@ -63,7 +63,7 @@ keeps the path of the NeDB tables.
 configures the `users` service.
 
 
-## The authentication service
+## 인증 서비스
 
 The generator also added an `authentication` service to the app.
 Its responsible for authenticating clients against the `users` service,
@@ -90,7 +90,7 @@ retains authentication information.
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/02-gen2-app-side.html))
 configures the `authentication` service.
 
-## Other changes
+## 변경 사항
 
 The changes to our app have introduced new dependencies and they need to be defined.
 
@@ -100,7 +100,7 @@ The changes to our app have introduced new dependencies and they need to be defi
 [Split](http://htmlpreview.github.io/?https://github.com/feathersjs/feathers-docs/blob/master/examples/step/_diff/02-gen2-package-side.html))
 records them.
 
-## What's next?
+## 이제 무엇을 해야하나요?
 
 We have not previously covered Feathers authentication,
 so the authentication service written for that is brand new to us.
@@ -112,6 +112,5 @@ That generated code contains no surprises for us as we have covered it before.
 
 Next, we will [generate a new service](./gen-service.md).
 
-### Is anything wrong, unclear, missing?
-
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Auth&body=Comment:Step-Generators-Auth)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Auth&body=Comment:Step-Generators-Auth)

@@ -1,9 +1,9 @@
-# Run the generated application
+# 생성된 앱 실행
 
 Now we are good to run the automated tests for our application and start the server.
 
 
-## Run the tests
+## 테스트 실행
 
 The generator wrote
 [some basic tests](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen4/test/)
@@ -39,7 +39,7 @@ So we can now be sure that:
 - The generated code follows established best-practices for syntax and basic coding patterns.
 - The generated code is wired together properly.
 
-## Start the server
+## 서버 실행
 
 Since everything looks OK, let's start the server.
 
@@ -80,7 +80,7 @@ SET NODE_CONFIG_DIR=path/to/app/config
 node path/to/app/src
 ```
 
-## What's next?
+## 이제 무엇을 해야하나요?
 
 The Feathers generators are great for roughing out a project,
 creating something in its approximate, but not finished, form.
@@ -93,6 +93,5 @@ We now have the boilerplate for our app, and we start adding the custom code it 
 We've learned how the generator works, and we understand the code it produces.
 Let's now use this knowledge to build a [Chat Application](../../chat/readme.md).
 
-### Is anything wrong, unclear, missing?
-
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Run&body=Comment:Step-Generators-Run)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Run&body=Comment:Step-Generators-Run)

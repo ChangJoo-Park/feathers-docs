@@ -1,53 +1,46 @@
-# Real-time
+# 리얼타임
 
-In Feathers, [real-time](../../../api/events.md) means that services automatically send
-created, updated, patched and removed events when
-a create, update, patch or remove service method is complete.
-Clients can listen for these events and then react accordingly.
+Feathers에서 [실시간](../../../api/events.md)이란 서비스가 생성, 갱신, 수정 또는 제거 서비스가 완료될 때 자동으로 만들고, 갱신하고, 수정하고 제거되는 이벤트가 발생하는 것을 말합니다.
+
+클라이언트는 이러한 이벤트에 따라 반응합니다.
 
 ![Feathers Realtime](/img/real-time-events-flow.jpg)
 
-The client in a chat room app, for example,
-could automatically receive all messages posted by any of the participants,
-and then display them.
-This is **much** simpler than the traditional design pattern
-which requires long-polling of the server.
+예를 들어, 채팅 앱의 방의 클라이언트는 참가자들이 올린 메시지를 자동으로 받고 표시합니다.
+이는 전통적인 롱-폴링을 요구하는 디자인패턴보다 **훨씬** 간단합니다.
 
-As another example, the client could maintain a local copy of
-part of a database table.
-It can keep it up to date by listening to events for that table.
+또 다른 예로, 클라이언트는 데이터베이스 테이블의 일부에 대한 로컬 사본을 유지할 수 있습니다.
+해당 테이블에 대한 이벤트를 받아 최신으로 유지할 수도 있습니다.
 
-> **Real-time.** Real-time events are sent only to Feathers WebSocket clients.
-They are not sent to Feathers REST nor HTTP REST clients.
-These would have to implement a traditional long-polling design.
-**Conclusion:** Use Feathers WebSocket clients.
+> **리얼타임.** 리얼타임 이벤트는 오직 Feathers의 웹소켓 클라이언트에만 전송됩니다.
+Feathers REST 또는 HTTP REST 클라이언트에는 전송되지 않습니다.
+이들은 전통적인 롱-폴링 디자인으로 만들어야합니다.
+**결론:** Feathers WebSocket 클라이언트를 사용하세요.
 
-Let's create an event listener for the [Feathers Websocket Client](./socket-client.md)
-we already have.
+이미 익힌 [Feathers Websocket Client](./socket-client.md)를 확인하세요
 
-## Working example
+## 작동하는 예제
 
-- Server code: [examples/step/01/websocket/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/websocket/1.js)
-- Listener code: [common/public/listener.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener.html)
+- 서버 코드: [examples/step/01/websocket/1.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/websocket/1.js)
+- 리스너 코드: [common/public/listener.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener.html)
 and
 [listener-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener-app.js)
-- Client code: [common/public/socketio.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/socketio.html)
+- 클라이언트 코드: [common/public/socketio.html](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/socketio.html)
 and
 [feathers-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app.js)
-- Start the server: `node ./examples/step/01/websocket/1.js`
-- Start the listener by pointing a browser tab at `localhost:3030/listener.html`
-- Start making changes by pointing a browser tab at: `localhost:3030/socketio.html`
+- 서버 시작: `node ./examples/step/01/websocket/1.js`
+- 브라우저에서 `localhost:3030/listener.html`를 열어 리스너를 확인하세요
+- 브라우저에서 `localhost:3030/socketio.html`를 열어 변경해보세요
 
-## Implementing a listener
+## 리스너 구현
 
-Implementing the listener
-[common/public/listener-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener-app.js)
-is straight forward.
+리스너를 구현하는 것 [common/public/listener-app.js](https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener-app.js)은 직관적입니다.
+
 [import](../../../examples/step/01/common/public/listener-app.js)
 
-## Filtering
+## 필터링
 
-Our listener's console displays:
+리스너의 콘솔에 출력되는 내용입니다.
 
 ```text
 Listening for user events.
@@ -59,18 +52,17 @@ created
 {email: "judy.doe@gmail.com", password: "33333", role: "user", _id: "qeYSi2KrkwIUMoaE"}
 ```
 
-You usually wouldn't want to send passwords to clients.
+일반적으로 클라이언트에 패스워드를 보내지는 않습니다.
 
-In many cases you probably want to be able to send certain events to certain clients,
-say maybe only ones that are authenticated.
+대다수의 경우에 특정 이벤트는 해당하는 클라이언트에게만 보내기를 원할 것 입니다. 어쩌면 인증된 경우에만 보내야합니다.
 
-The server can control what data is sent to which clients with
-[event filters](../../../api/events.html#event-filtering).
+서버는 [event filters](../../../api/events.html#event-filtering)를 사용하여 어떤 데이터가 어떤 클라이언트로 보내지는 지 제어할 수 있습니다.
 
 ![Feathers Realtime](/img/event-filter-diagram.jpg)
 
-For example, we could send `users` events only to authenticated users
-and remove `password` from the payload by adding this to the server code:
+에를 들어 `users` 이벤트를 인증된 사용자에게만 보내야 합니다.
+이를 서버 코드에 추가해 `password`를 제거하세요.
+
 ```javascript
 const users = app.service('users');
 users.filter((data, connection) => {
@@ -78,6 +70,6 @@ users.filter((data, connection) => {
   return connection.user ? data : false;
 });
 ```
- 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Real-time&body=Comment:Step-Basic-Real-time)
+
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Real-time&body=Comment:Step-Basic-Real-time)

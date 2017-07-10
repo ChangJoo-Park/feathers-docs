@@ -1,40 +1,37 @@
 # 제너레이터
 
-We've been writing code "by hand" in order to understand how basic Feathers works.
-We will now start using Feathers generators since we have the background to understand what they produce.
+여태까지 Feathers의 기본 작동 방식을 알아보기 위해 "직접" 코드를 작성했습니다.
+Feathers 제너레이터는 생성되는 코드에 대한 이해가 필요합니다.
 
 ## 제너레이터로 보일러플레이트를 없앨 수 있습니다
 
-We've seen that Feathers, even when coded "by hand",
-eliminates the majority of the boilerplate typically in a CRUD project.
-Generators will eliminate even more.
+"직접 작성한" Feathers 코드를 보더라도,
+일반적인 CRUD 프로젝트에서 사용하는 보일러플레이트의 대부분이 제거된 것을 확인할 수 있었습니다.
+제너레이터는 더 많은 것들을 없앨 것 입니다.
 
-> **Generators.**
-Feathers generators produce very little code because Feathers is so succinct.
-You can easily understand the generated code because its no different from what we've been
-coding "by hand" so far.
-Some other frameworks make things “seem” easy by generating thousands of lines of code for you
-and, in the process, making it almost impossible to implement anything not supported out of the box
-by their generators.
+> **제너레이터.**
+Feathers 제너레이터는 매우 간결하고 아주 적은 코드를 만듭니다.
+"직접 작성한" 코드와 큰 차이가 없기 때문에 이해하는데 어려움이 없을 것 입니다.
+일부 다른 프레임워크는 수천줄의 코드를 만들면서 쉬워보인다고 합니다.
+그리고 그 과정에서 지원하지 않는 것을 구현하는 것은 거의 불가능한 경우가 있습니다.
 
 ### 제너레이터 앱 구조
 
-The generated modules are structured as recommended by the Feathers team.
+생성된 모듈을 Feathers 팀에서 권장한바대로 구조를 만듭니다.
 
 ### 제너레이터로 데이터베이스 조작하기
 
-The generators will generate code for different databases
-so you don't have to investigate how to do so.
+제너레이터는 다양한 데이터베이스 관련 코드를 만듭니다. 어떻게 그렇게 되는지는 깊게 살펴볼 필요는 없습니다.
 
 ## 제너레이터 설치
 
-You can install the Feathers generators with
+Feathers 제너레이터를 설치하려면 아래의 명령어를 입력하세요
 
 `npm install -g feathers-cli`
 
 ## 이제 무엇을 해야하나요?
 
-Now that we installed the Feathers command line tool we can [generate the application](./gen-app.md).
+이제 설치된 Feathers 커맨드라인 툴을 이용해 [앱을 생성하세요](./gen-app.md)
 
 ### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
 [댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-Readme&body=Comment:Step-Generators-Readme)

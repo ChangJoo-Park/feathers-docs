@@ -1,11 +1,11 @@
-# Testing Hooks
+# 훅 테스팅
 
-## Self contained hooks
+## 스스로 존재하는 훅
 
-Testing hooks that do not depend on services or other hooks is straight forward.
-Create a `context` object, call the inner hook function, and check the returned `context`.
+서비스나 다른 훅에 의존하지 않는 훅의 테스트는 간단합니다.
+`context` 객체를 만들고, 내부 훅 함수를 호출한 후 반환된 `context`를 확인하세요.
 
-Here is part of the mocha test for `disableMultiItemChange`.
+`disableMultiItemChange`를 mocha 로 테스트한 예제의 일부분 입니다.
 
 ```javascript
 import { assert } from 'chai';
@@ -48,7 +48,7 @@ var hookBefore;
 });
 ```
 
-Here is part of the mocha test for `pluck`.
+`pluck`을 mocha로 테스트한 예제의 일부분입니다.
 
 ```javascript
 import { assert } from 'chai';
@@ -159,13 +159,12 @@ describe('services pluck', () => {
 });
 ```
 
-## Hooks requiring a Feathers app
+## Feathers 앱이 필요한 훅
 
-Some hooks call services, or they depend on other hooks running.
-Its much simpler to create a Feathers app plus a memory-backed service
-than to try to mock them out.
+어떤 훅은 서비스를 호출하거나 다른 훅이 실행 중이어야 합니다.
+이들을 가짜로 만드려고 시도하는 것보다 Feathers app과 메모리 기반 서비스를 만드는 것이 훨씬 간단합니다.
 
-Here is part of the mocha test for `stashBefore`.
+`stashBefore`를 mocha로 테스트한 예제입니다.
 
 ```javascript
 const assert = require('chai').assert;
@@ -252,10 +251,9 @@ function clone (obj) {
 }
 ```
 
-You might not want to use the Feathers NeDB adapter as it may not be opened more than once in a process.
-You can work around this with mocha's `--require` option,
-opening it once and attaching it to Nodejs' `global` object to the tests.
+Feathers의 NeDB 어댑터는 프로세스에서 두번 이상 열리지 않을 수 있으므로 사용하지 못 할수도 있습니다.
+이를 해결하기 위해 mocha의 `--require` 옵션을 사용하세요
+한번만 열고 Nodejs의 `global` 객체에 테스트를 첨부합니다.
 
- 
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Testing-Hooks&body=Comment:Step-Basic-Testing-Hooks)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Testing-Hooks&body=Comment:Step-Basic-Testing-Hooks)

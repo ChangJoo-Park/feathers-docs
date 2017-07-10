@@ -2,10 +2,9 @@
 
 Feathers는 모던 애플리케이션 개발을 위한 오픈소스 REST, 리얼타임 API 레이어입니다.
 
-*[FeathersJS']의 주된 특징은 초경량입니다.
+__*[FeathersJS']의 주된 특징은 초경량입니다.
 간단하고 논리적인 워크플로우로 몇 시간이 걸리는 API개발을 간소화하여 몇분만에 빌드할 수 있는 API를 만들 수 있습니다.
-마법과 컨트롤이 완벽하게 조화를 이루며 API가 어떻게 작동하는지 완벽하게 제어할 수 있어 훨씬 쉬워집니다.* --
---
+마법과 컨트롤이 완벽하게 조화를 이루며 API가 어떻게 작동하는지 완벽하게 제어할 수 있어 훨씬 쉬워집니다.*__
 [Medium - "FeathersJS — A framework that will spoil you"](https://medium.com/@codingfriend/feathersjs-a-framework-that-will-spoil-you-109525dfd35e#.8kf707x3k)
 
 > 주의: Feathers는 중독성이 있습니다.
@@ -21,9 +20,9 @@ Feathers는 모던 애플리케이션 개발을 위한 오픈소스 REST, 리얼
     - 이메일 전송,
     - 결제 처리,
     - 위치에 기반한 날씨 반환 등
-        
+
 ## 훅
-        
+
 [Hooks](../../api/hooks.md)은 서비스가 호출되기 전이나 후에 자동으로 실행되는 함수입니다.
 서비스의 게이트키퍼가 될 수 있으며 모든 작업을 허용하거나 필수 정보를 요구할 수 있습니다.
 또한 클라이언트에 반환해야하는 데이터만 반환하도록 할 수 있습니다.
@@ -34,14 +33,14 @@ Feathers는 모던 애플리케이션 개발을 위한 오픈소스 REST, 리얼
 
 서비스가 완료되면 [Events](../../api/events.md)는 클라이언트(또는 feathers-sync 패키지가 사용되는 경우 다른 서버)로 전송됩니다.
 `created`, `updated`, `patched`, 그리고 `removed`를 실시간으로 전달할 수 있습니다.
-    
+
 [이벤트 필터링](../../api/events.md#event-filtering)은 어떤 사용자가 어떤 이벤트를 받아야할지 결정합니다.
 Socket.io의 방(room)의 대체입니다.
 이는 반응형 애플리케이션을 확장할 수 있는 지능적인 접근 방식입니다.
 
 ## 인증
 
-Feathers는 
+Feathers는
 [local](../../api/authentication/local.md),
 [JSON Web Token](../../api/authentication/jwt.md),
 [OAuth1](../../api/authentication/oauth1.md)
@@ -60,16 +59,16 @@ Feathers는
 [uWebSockets a.k.a. uws](https://github.com/uWebSockets/uWebSockets),
 [SockJS](https://github.com/sockjs/sockjs-node),
 [Faye](https://faye.jcoglan.com/))
-    
+
 ## 미들웨어
-  
+
 [Express middleware](https://expressjs.com/en/guide/using-middleware.html)는 꼭 필요한 것은 아니지만 최적화/로깅에 좋을 수 있습니다.
 - before service methods: 압축, CORS 등
 - after service methods: 로그, 에러핸들러 등
-    
+
 ## 이 가이드의 목적
 
-이 가이드가 다루는 범위는 
+이 가이드가 다루는 범위는
 - 데이터베이스와 함께 사용하는 서비스
 - 훅.
 - 이벤트.

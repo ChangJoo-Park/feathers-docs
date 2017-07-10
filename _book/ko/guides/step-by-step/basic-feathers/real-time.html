@@ -1670,45 +1670,36 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="real-time">Real-time</h1>
-<p>In Feathers, <a href="../../../api/events.html">real-time</a> means that services automatically send
-created, updated, patched and removed events when
-a create, update, patch or remove service method is complete.
-Clients can listen for these events and then react accordingly.</p>
+                                <h1 id="&#xB9AC;&#xC5BC;&#xD0C0;&#xC784;">&#xB9AC;&#xC5BC;&#xD0C0;&#xC784;</h1>
+<p>Feathers&#xC5D0;&#xC11C; <a href="../../../api/events.html">&#xC2E4;&#xC2DC;&#xAC04;</a>&#xC774;&#xB780; &#xC11C;&#xBE44;&#xC2A4;&#xAC00; &#xC0DD;&#xC131;, &#xAC31;&#xC2E0;, &#xC218;&#xC815; &#xB610;&#xB294; &#xC81C;&#xAC70; &#xC11C;&#xBE44;&#xC2A4;&#xAC00; &#xC644;&#xB8CC;&#xB420; &#xB54C; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xB9CC;&#xB4E4;&#xACE0;, &#xAC31;&#xC2E0;&#xD558;&#xACE0;, &#xC218;&#xC815;&#xD558;&#xACE0; &#xC81C;&#xAC70;&#xB418;&#xB294; &#xC774;&#xBCA4;&#xD2B8;&#xAC00; &#xBC1C;&#xC0DD;&#xD558;&#xB294; &#xAC83;&#xC744; &#xB9D0;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xC774;&#xB7EC;&#xD55C; &#xC774;&#xBCA4;&#xD2B8;&#xC5D0; &#xB530;&#xB77C; &#xBC18;&#xC751;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <p><img src="../../../img/real-time-events-flow.jpg" alt="Feathers Realtime"></p>
-<p>The client in a chat room app, for example,
-could automatically receive all messages posted by any of the participants,
-and then display them.
-This is <strong>much</strong> simpler than the traditional design pattern
-which requires long-polling of the server.</p>
-<p>As another example, the client could maintain a local copy of
-part of a database table.
-It can keep it up to date by listening to events for that table.</p>
+<p>&#xC608;&#xB97C; &#xB4E4;&#xC5B4;, &#xCC44;&#xD305; &#xC571;&#xC758; &#xBC29;&#xC758; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xCC38;&#xAC00;&#xC790;&#xB4E4;&#xC774; &#xC62C;&#xB9B0; &#xBA54;&#xC2DC;&#xC9C0;&#xB97C; &#xC790;&#xB3D9;&#xC73C;&#xB85C; &#xBC1B;&#xACE0; &#xD45C;&#xC2DC;&#xD569;&#xB2C8;&#xB2E4;.
+&#xC774;&#xB294; &#xC804;&#xD1B5;&#xC801;&#xC778; &#xB871;-&#xD3F4;&#xB9C1;&#xC744; &#xC694;&#xAD6C;&#xD558;&#xB294; &#xB514;&#xC790;&#xC778;&#xD328;&#xD134;&#xBCF4;&#xB2E4; <strong>&#xD6E8;&#xC52C;</strong> &#xAC04;&#xB2E8;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB610; &#xB2E4;&#xB978; &#xC608;&#xB85C;, &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB294; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xD14C;&#xC774;&#xBE14;&#xC758; &#xC77C;&#xBD80;&#xC5D0; &#xB300;&#xD55C; &#xB85C;&#xCEEC; &#xC0AC;&#xBCF8;&#xC744; &#xC720;&#xC9C0;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xD574;&#xB2F9; &#xD14C;&#xC774;&#xBE14;&#xC5D0; &#xB300;&#xD55C; &#xC774;&#xBCA4;&#xD2B8;&#xB97C; &#xBC1B;&#xC544; &#xCD5C;&#xC2E0;&#xC73C;&#xB85C; &#xC720;&#xC9C0;&#xD560; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <blockquote>
-<p><strong>Real-time.</strong> Real-time events are sent only to Feathers WebSocket clients.
-They are not sent to Feathers REST nor HTTP REST clients.
-These would have to implement a traditional long-polling design.
-<strong>Conclusion:</strong> Use Feathers WebSocket clients.</p>
+<p><strong>&#xB9AC;&#xC5BC;&#xD0C0;&#xC784;.</strong> &#xB9AC;&#xC5BC;&#xD0C0;&#xC784; &#xC774;&#xBCA4;&#xD2B8;&#xB294; &#xC624;&#xC9C1; Feathers&#xC758; &#xC6F9;&#xC18C;&#xCF13; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC5D0;&#xB9CC; &#xC804;&#xC1A1;&#xB429;&#xB2C8;&#xB2E4;.
+Feathers REST &#xB610;&#xB294; HTTP REST &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC5D0;&#xB294; &#xC804;&#xC1A1;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xC774;&#xB4E4;&#xC740; &#xC804;&#xD1B5;&#xC801;&#xC778; &#xB871;-&#xD3F4;&#xB9C1; &#xB514;&#xC790;&#xC778;&#xC73C;&#xB85C; &#xB9CC;&#xB4E4;&#xC5B4;&#xC57C;&#xD569;&#xB2C8;&#xB2E4;.
+<strong>&#xACB0;&#xB860;:</strong> Feathers WebSocket &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC138;&#xC694;.</p>
 </blockquote>
-<p>Let&apos;s create an event listener for the <a href="socket-client.html">Feathers Websocket Client</a>
-we already have.</p>
-<h2 id="working-example">Working example</h2>
+<p>&#xC774;&#xBBF8; &#xC775;&#xD78C; <a href="socket-client.html">Feathers Websocket Client</a>&#xB97C; &#xD655;&#xC778;&#xD558;&#xC138;&#xC694;</p>
+<h2 id="&#xC791;&#xB3D9;&#xD558;&#xB294;-&#xC608;&#xC81C;">&#xC791;&#xB3D9;&#xD558;&#xB294; &#xC608;&#xC81C;</h2>
 <ul>
-<li>Server code: <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/websocket/1.js" target="_blank">examples/step/01/websocket/1.js</a></li>
-<li>Listener code: <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener.html" target="_blank">common/public/listener.html</a>
+<li>&#xC11C;&#xBC84; &#xCF54;&#xB4DC;: <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/websocket/1.js" target="_blank">examples/step/01/websocket/1.js</a></li>
+<li>&#xB9AC;&#xC2A4;&#xB108; &#xCF54;&#xB4DC;: <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener.html" target="_blank">common/public/listener.html</a>
 and
 <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener-app.js" target="_blank">listener-app.js</a></li>
-<li>Client code: <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/socketio.html" target="_blank">common/public/socketio.html</a>
+<li>&#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; &#xCF54;&#xB4DC;: <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/socketio.html" target="_blank">common/public/socketio.html</a>
 and
 <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/feathers-app.js" target="_blank">feathers-app.js</a></li>
-<li>Start the server: <code>node ./examples/step/01/websocket/1.js</code></li>
-<li>Start the listener by pointing a browser tab at <code>localhost:3030/listener.html</code></li>
-<li>Start making changes by pointing a browser tab at: <code>localhost:3030/socketio.html</code></li>
+<li>&#xC11C;&#xBC84; &#xC2DC;&#xC791;: <code>node ./examples/step/01/websocket/1.js</code></li>
+<li>&#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xC5D0;&#xC11C; <code>localhost:3030/listener.html</code>&#xB97C; &#xC5F4;&#xC5B4; &#xB9AC;&#xC2A4;&#xB108;&#xB97C; &#xD655;&#xC778;&#xD558;&#xC138;&#xC694;</li>
+<li>&#xBE0C;&#xB77C;&#xC6B0;&#xC800;&#xC5D0;&#xC11C; <code>localhost:3030/socketio.html</code>&#xB97C; &#xC5F4;&#xC5B4; &#xBCC0;&#xACBD;&#xD574;&#xBCF4;&#xC138;&#xC694;</li>
 </ul>
-<h2 id="implementing-a-listener">Implementing a listener</h2>
-<p>Implementing the listener
-<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener-app.js" target="_blank">common/public/listener-app.js</a>
-is straight forward.</p>
+<h2 id="&#xB9AC;&#xC2A4;&#xB108;-&#xAD6C;&#xD604;">&#xB9AC;&#xC2A4;&#xB108; &#xAD6C;&#xD604;</h2>
+<p>&#xB9AC;&#xC2A4;&#xB108;&#xB97C; &#xAD6C;&#xD604;&#xD558;&#xB294; &#xAC83; <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/01/common/public/listener-app.js" target="_blank">common/public/listener-app.js</a>&#xC740; &#xC9C1;&#xAD00;&#xC801;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript">
 <span class="hljs-keyword">const</span> users = feathersClient.service(<span class="hljs-string">&apos;/users&apos;</span>);
 
@@ -1717,8 +1708,8 @@ users.on(<span class="hljs-string">&apos;removed&apos;</span>, user =&gt; <span 
 
 <span class="hljs-built_in">console</span>.log(<span class="hljs-string">&apos;Listening for user events.&apos;</span>);
 </code></pre>
-<h2 id="filtering">Filtering</h2>
-<p>Our listener&apos;s console displays:</p>
+<h2 id="&#xD544;&#xD130;&#xB9C1;">&#xD544;&#xD130;&#xB9C1;</h2>
+<p>&#xB9AC;&#xC2A4;&#xB108;&#xC758; &#xCF58;&#xC194;&#xC5D0; &#xCD9C;&#xB825;&#xB418;&#xB294; &#xB0B4;&#xC6A9;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-text">Listening for user events.
 created
 {email: &quot;jane.doe@gmail.com&quot;, password: &quot;11111&quot;, role: &quot;admin&quot;, _id: &quot;qyRMR6abq8RHV29R&quot;}
@@ -1727,22 +1718,20 @@ created
 created
 {email: &quot;judy.doe@gmail.com&quot;, password: &quot;33333&quot;, role: &quot;user&quot;, _id: &quot;qeYSi2KrkwIUMoaE&quot;}
 </code></pre>
-<p>You usually wouldn&apos;t want to send passwords to clients.</p>
-<p>In many cases you probably want to be able to send certain events to certain clients,
-say maybe only ones that are authenticated.</p>
-<p>The server can control what data is sent to which clients with
-<a href="../../../api/events.html#event-filtering">event filters</a>.</p>
+<p>&#xC77C;&#xBC18;&#xC801;&#xC73C;&#xB85C; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC5D0; &#xD328;&#xC2A4;&#xC6CC;&#xB4DC;&#xB97C; &#xBCF4;&#xB0B4;&#xC9C0;&#xB294; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB300;&#xB2E4;&#xC218;&#xC758; &#xACBD;&#xC6B0;&#xC5D0; &#xD2B9;&#xC815; &#xC774;&#xBCA4;&#xD2B8;&#xB294; &#xD574;&#xB2F9;&#xD558;&#xB294; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC5D0;&#xAC8C;&#xB9CC; &#xBCF4;&#xB0B4;&#xAE30;&#xB97C; &#xC6D0;&#xD560; &#xAC83; &#xC785;&#xB2C8;&#xB2E4;. &#xC5B4;&#xCA4C;&#xBA74; &#xC778;&#xC99D;&#xB41C; &#xACBD;&#xC6B0;&#xC5D0;&#xB9CC; &#xBCF4;&#xB0B4;&#xC57C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC11C;&#xBC84;&#xB294; <a href="../../../api/events.html#event-filtering">event filters</a>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC5EC; &#xC5B4;&#xB5A4; &#xB370;&#xC774;&#xD130;&#xAC00; &#xC5B4;&#xB5A4; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xB85C; &#xBCF4;&#xB0B4;&#xC9C0;&#xB294; &#xC9C0; &#xC81C;&#xC5B4;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <p><img src="../../../img/event-filter-diagram.jpg" alt="Feathers Realtime"></p>
-<p>For example, we could send <code>users</code> events only to authenticated users
-and remove <code>password</code> from the payload by adding this to the server code:</p>
+<p>&#xC5D0;&#xB97C; &#xB4E4;&#xC5B4; <code>users</code> &#xC774;&#xBCA4;&#xD2B8;&#xB97C; &#xC778;&#xC99D;&#xB41C; &#xC0AC;&#xC6A9;&#xC790;&#xC5D0;&#xAC8C;&#xB9CC; &#xBCF4;&#xB0B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC774;&#xB97C; &#xC11C;&#xBC84; &#xCF54;&#xB4DC;&#xC5D0; &#xCD94;&#xAC00;&#xD574; <code>password</code>&#xB97C; &#xC81C;&#xAC70;&#xD558;&#xC138;&#xC694;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> users = app.service(<span class="hljs-string">&apos;users&apos;</span>);
 users.filter((data, connection) =&gt; {
   <span class="hljs-keyword">delete</span> data.password;
   <span class="hljs-keyword">return</span> connection.user ? data : <span class="hljs-literal">false</span>;
 });
 </code></pre>
-<h3 id="is-anything-wrong-unclear-missing">Is anything wrong, unclear, missing?</h3>
-<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Real-time&amp;body=Comment:Step-Basic-Real-time" target="_blank">Leave a comment.</a></p>
+<h3 id="&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098;-&#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098;-&#xB204;&#xB77D;&#xB41C;-&#xBD80;&#xBD84;&#xC774;-&#xC788;&#xC2B5;&#xB2C8;&#xAE4C;">&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098; &#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098; &#xB204;&#xB77D;&#xB41C; &#xBD80;&#xBD84;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xAE4C;?</h3>
+<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Real-time&amp;body=Comment:Step-Basic-Real-time" target="_blank">&#xB313;&#xAE00;&#xC744; &#xB0A8;&#xACA8;&#xC8FC;&#xC138;&#xC694;.</a></p>
 
                                 
                                 </section>
@@ -1786,7 +1775,7 @@ users.filter((data, connection) =&gt; {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"리얼타임","level":"1.2.2.16","depth":3,"next":{"title":"제너레이터 (CLI)","level":"1.2.3","depth":2,"path":"guides/step-by-step/generators/readme.md","ref":"guides/step-by-step/generators/readme.md","articles":[{"title":"애플리케이션 생성","level":"1.2.3.1","depth":3,"path":"guides/step-by-step/generators/gen-app.md","ref":"guides/step-by-step/generators/gen-app.md","articles":[]},{"title":"인증 추가","level":"1.2.3.2","depth":3,"path":"guides/step-by-step/generators/gen-authentication.md","ref":"guides/step-by-step/generators/gen-authentication.md","articles":[]},{"title":"Teams 서비스 추가","level":"1.2.3.3","depth":3,"path":"guides/step-by-step/generators/gen-service.md","ref":"guides/step-by-step/generators/gen-service.md","articles":[]},{"title":"Populate 훅 생성","level":"1.2.3.4","depth":3,"path":"guides/step-by-step/generators/gen-hook.md","ref":"guides/step-by-step/generators/gen-hook.md","articles":[]},{"title":"애플리케이션 실행","level":"1.2.3.5","depth":3,"path":"guides/step-by-step/generators/gen-run.md","ref":"guides/step-by-step/generators/gen-run.md","articles":[]}]},"previous":{"title":"훅 테스팅","level":"1.2.2.15","depth":3,"path":"guides/step-by-step/basic-feathers/testing-hooks.md","ref":"guides/step-by-step/basic-feathers/testing-hooks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/real-time.md","mtime":"2017-07-07T07:10:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T12:54:35.932Z"},"basePath":"../../..","book":{"language":"ko"}});
+            gitbook.page.hasChanged({"page":{"title":"리얼타임","level":"1.2.2.16","depth":3,"next":{"title":"제너레이터 (CLI)","level":"1.2.3","depth":2,"path":"guides/step-by-step/generators/readme.md","ref":"guides/step-by-step/generators/readme.md","articles":[{"title":"애플리케이션 생성","level":"1.2.3.1","depth":3,"path":"guides/step-by-step/generators/gen-app.md","ref":"guides/step-by-step/generators/gen-app.md","articles":[]},{"title":"인증 추가","level":"1.2.3.2","depth":3,"path":"guides/step-by-step/generators/gen-authentication.md","ref":"guides/step-by-step/generators/gen-authentication.md","articles":[]},{"title":"Teams 서비스 추가","level":"1.2.3.3","depth":3,"path":"guides/step-by-step/generators/gen-service.md","ref":"guides/step-by-step/generators/gen-service.md","articles":[]},{"title":"Populate 훅 생성","level":"1.2.3.4","depth":3,"path":"guides/step-by-step/generators/gen-hook.md","ref":"guides/step-by-step/generators/gen-hook.md","articles":[]},{"title":"애플리케이션 실행","level":"1.2.3.5","depth":3,"path":"guides/step-by-step/generators/gen-run.md","ref":"guides/step-by-step/generators/gen-run.md","articles":[]}]},"previous":{"title":"훅 테스팅","level":"1.2.2.15","depth":3,"path":"guides/step-by-step/basic-feathers/testing-hooks.md","ref":"guides/step-by-step/basic-feathers/testing-hooks.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/real-time.md","mtime":"2017-07-10T13:32:35.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T13:34:40.104Z"},"basePath":"../../..","book":{"language":"ko"}});
         });
     </script>
 </div>

@@ -59,7 +59,7 @@ who gets to see which events.
 
 These messages are logged just to remind you to do so.
 
-## About the config files
+## 설정 파일에 관하여
 
 We changed to the generated app's directory (`gen4`) to start the server.
 Its nice to use `npm run start` as then we don't need to know where the server starting code resides.

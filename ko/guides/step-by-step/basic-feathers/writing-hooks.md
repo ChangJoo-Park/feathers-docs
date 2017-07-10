@@ -1,43 +1,41 @@
-# Writing Your Own Hooks
+# 사용자 정의 훅 만들기
 
 
-## Hook function template
+## 훅 함수 템플릿
 
-Hook functions should be written like this:
+훅 함수는 반드시 아래의 형태를 갖추어야 합니다.
+
 ```javascript
-// Outer function initializes the hook function
+// 외부 함수는 훅 함수를 초기화합니다.
 function myHook(options) {
-  // The hook function itself is returned.
+  // 훅 그 자체를 리턴합니다.
   return context => {
-    // You can use the options param to condition behavior within the hook.
+    // 옵션 매개변수를 사용하여 훅 내의 동작을 조절할 수 있습니다.
   };
 }
 ```
 
-Feathers calls the inner function with the [context object](../../../api/hooks.md#hook-objects).
+Feathers는 [context object](../../../api/hooks.md#hook-objects) 객체를 이용해 내부 함수를 호출할 수 있습니다.
 
-`context.result` is an object or array for all method calls other than `find`.
-It is [an object](../../../api/databases/common.html#pagination) if the `find` is paginated.
-Otherwise it is an array.
+`context.result`는 `find`를 제외한 모든 메소드 호출을 위한 객체 또는 배열입니다.
+`find`는 페이징을 하게 된다면 [객체](../../../api/databases/common.html#pagination)입니다.
 
-The hook function may either return synchronously or it may return a Promise.
-The return value (sync) or resolved value from the Promise (async) may be either
-a new context object, or `undefined`.
+그 외에는 배열입니다.
 
-> **ProTip** The context object is not changed if `undefined` is returned.
+훅 함수는 동기적으로 리턴하거나 Promise를 리턴할 수 있습니다.
+반환된 값(sync) 또는 Promise(async)로부터 해결된 값은 새로운 컨텍스트 객체이거나 `undefined`입니다.
+
+> **ProTip** 컨텍스트 객체는 `undefined`를 반환받은 경우 변경되지 않습니다.
 
 
 
-> **ProTip** Mutating the `context` param inside a hook function without returning it
-does not change the context object passed to the next hook.
+> **ProTip** `context` 매개변수를 반환하지 않고 훅 함수 내부에서 변경한 다음 훅에 전달된 컨텍스트 객체는 변경되지 않습니다.
 
-Let's review the source of some of the [common hooks](../../../api/hooks-common.md)
-to learn how to write our own.
-
+직접 훅을 만들기 이전에 [common hooks](../../../api/hooks-common.md)의 소스를 살펴봅니다.
 
 ## debug [source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/debug.js)
 
-`debug` logs the context to the console.
+`debug`는 컨텍스트를 콘솔에 출력합니다.
 
 ```javascript
 export default function (msg) {
@@ -51,23 +49,23 @@ export default function (msg) {
 }
 ```
 
-This hook is straightforward, simply displaying some of the `context` object properties.
-The context object does not change as the inner hook function returns `undefined` by default.
+이 훅은 직관적이며 `context` 객체 속성 중 일부만 표시합니다.
+내부의 훅 함수는 기본적으로 `undefined`를 반환하기 때문에 컨텍스트 객체는 변경되지 않습니다.
 
-`debug` is great for debugging other hooks.
-Once you place this hook before and after the hook under test,
-you'll see the context object the test hook received, and what it returned.
+`debug` 는 다른 훅을 디버깅하기 좋은 훅입니다.
+이 훅을 테스트하기 원하는 이전 또는 이후 훅에 위치시키면
+테스트 훅이 받은 컨텍스트 객체와 리턴된 컨텍스트 객체를 볼 수 있습니다.
 
-This example
-- Shows several context properties.
-- Leaves the context object unchanged with a sync `return`.
+이 예제는
+- 많은 컨텍스트 속성을 보여줍니다.
+- 컨텍스트 객체를 동기적으로 `return` 시 변경하지 않고 유지합니다.
 
 
 ## disableMultiItemChange [source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/disable-multi-item-change.js)
 
-`disableMultiItemChange` disables update, patch and remove methods from using `null` as an id,
-e.g. `remove(null)`.
-A `null` id affects all the items in the DB, so accidentally using it may have undesirable results.
+`disableMultiItemChange`는 update, patch, remove 메소드가 `null`을 id로 사용하지 못하게 합니다.
+예: `remove(null)`
+`null` id는 DB의 모든 아이템에 영향을 미치므로 실수로 사용하게 되면 바람직하지 못한 결과가 발생할 수 있습니다.
 
 ```javascript
 import errors from 'feathers-errors';
@@ -86,11 +84,11 @@ export default function () {
 }
 ```
 
-Some hooks may only be used `before` or `after`; some may be used only with certain methods.
-The [`checkContext` utility](../../../api/hooks-common.md#util-checkcontext)
-checks the hook function is being used properly.
+훅 중 일부는 반드시 `before`나 `after`에서만 사용해야합니다. 일부는 특정 메소드에서만 사용할 수 있습니다.
+[`checkContext` utility](../../../api/hooks-common.md#util-checkcontext) 훅이 제대로 사용되는지 확인해봅니다.
 
-This hook throws an error that will be properly returned to the client.
+
+이 훅은 클라이언트에 적절하게 리턴될 에러를 던집니다(throw).
 ```javascript
 service.patch(null, data, { query: { dept: 'acct' } })
   .then(data => ...)
@@ -99,15 +97,14 @@ service.patch(null, data, { query: { dept: 'acct' } })
   });
 ```
 
-This example
-- Introduces `checkContext`.
-- Shows how to throw an error in hooks.
+이 예제는
+- `checkContext`를 소개합니다.
+- 훅 안에서 에러를 던지는 방법을 살펴보았습니다.
 
 
 ## pluckQuery [source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/pluck-query.js)
 
-`pluckQuery` discards all fields from the query params except for the specified ones.
-This helps sanitize the query.
+`pluckQuery`는 지정된 필드를 제외한 쿼리 매개변수의 모든 필드를 버립니다. 이러면 쿼리를 보호할 수 있습니다.
 
 ```javascript
 import _pluck from '../common/_pluck';
@@ -125,23 +122,21 @@ export default function (...fieldNames) {
 }
 ```
 
-The `_pluck` utility, given an object and an array of property name,
-returns an object consisting of just those peoperties.
-The property names may be in dot notation, e.g. `destination.address.city`.
+`_pluck` 유틸리티는 객체와 속성 이름의 배열이 주어지면, 해당 속성으로만 구성된 객체를 반환합니다.
+속성 이름은 점 표기법으로 표시합니다. 예: `destination.address.city`
 
-The context object is modified and returned,
-thus modifying what context is passed to the next hook.
+컨텍스트 객체가 수정되어 반환되어 다음 컨텍스트로 전달되는 컨텍스트가 수정됩니다.
 
-This example
-- Modifies and synchronously returns the context object.
-- Introduces `_pluck`.
+
+이 예제는
+- 컨텍스트 객체를 수정해 동기적으로 리턴합니다.
+- `_pluck`를 소개합니다.
 
 
 ## pluck [source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/pluck.js)
 
-`pluck` discards all fields except for the specified ones,
-either from the data submitted or from the result.
-If the data is an array or a paginated find result the hook will remove the field(s) for every item.
+`pluck`는 제출된 데이터나 결과로부터 지정된 필드를 제외한 모든 필드를 버립니다.
+데이터가 배열 또는 페이징 된 find의 결과이면 훅은 모든 항목의 필드를 제거합니다.
 
 ```javascript
 import _pluck from '../common/_pluck';
@@ -162,26 +157,24 @@ export default function (...fieldNames) {
 }
 ```
 
-The [`getItems` utility](../../../api/hooks-common.md#util-getitems-replaceitems)
-returns the items in either `hook.data` or `hook.result`
-depending on whether the hook is being used as a before or after hook.
-`hook.result.data` or `hook.result` is returned for a `find` method.
+[`getItems` 유틸리티](../../../api/hooks-common.md#util-getitems-replaceitems)는 해당 아이템이 `hook.data` 또는 `hook.result`에 있는 아이템을 반환합니다. 훅이 before 또는 after 훅으로 사용됩니다.
 
-The returned items are always an array to simplify further processing.
+`find` 메소드에 대해 `hook.result.data` 또는 `hook.result`이 리턴됩니다.
 
-The [`replaceItems` utility](../../../api/hooks-common.md#util-getitems-replaceitems)
-is the reverse of `getItems`, returning the items where they came from.
+반환된 아이템은 추가적인 처리를 단순화하기 위해 항상 배열입니다.
 
-This example
-- Introduces the convenient `getItems` and `replaceItems` utilities.
+[`replaceItems` utility](../../../api/hooks-common.md#util-getitems-replaceitems)는 `getItems`의 역순으로 들어온 아이템을 반환합니다.
+
+이 예제는
+- 유용하게 사용할 수 있는 `getItems`와 `replaceItems`를 살펴보았습니다.
 
 
-## Throwing an error - disableMultiItemChange [source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/disable-multi-item-change.js)
+## 에러 쓰로우 - disableMultiItemChange [source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/disable-multi-item-change.js)
 
-You will, sooner or later, want to return an error to the caller, skipping the DB call.
-You can do this by throwing a [Feathers error](../../../api/errors.md).
+조만간, DB 호출을 하지 않고 호출한 사람에게 오류를 반환할 것입니다.
+[Feathers error](../../../api/errors.md)를 던져 이 작업을 할 수 있습니다.
 
-`disableMultiItemChange` disables update, patch and remove methods from using null as an id.
+`disableMultiItemChange`는 update, patch, remove 메소드가 null을 id로 사용하지 못하도록합니다.
 
 ```javascript
 import errors from 'feathers-errors';
@@ -200,27 +193,27 @@ export default function () {
 }
 ```
 
-Feathers errors are flexible, containing [useful fields](../../../api/errors.md).
-Of particular note are:
-- `className` returns the type of error, e.g. `not-found`.
-Your code can check this field rather than the text of the error message.
-- `errors` can return error messages for individual fields.
-You can customize the format to that expected by your client-side forms handler.
+Feathers의 에러는 유연하며 [유용한 필드](../../../api/errors.md)를 가지고 있습니다.
+
+특히 유의사항은 다음과 같습니다.
+- `className`은 에러의 타입을 반환합니다. 예: `not-found`
+코드는 오류 메시지의 텍스트가 아닌 이 필드를 확인할 수 있습니다.
+- `errors`는 개별 필드에 대한 에러 메시지를 반환할 수 있습니다.
+클라이언트 측 폼 핸들러에서 예상한대로 포맷을 지정할 수 있습니다.
+
 ```javascript
 throw new errors.BadRequest('Bad request.', { errors: {
   username: 'Already in use', password: 'Must be at least 8 characters long'
 }});
 ```
 
-This example
-- Shows how to stop a method call by throwing an error.
+이 예제는
+- 오류가 발생하여 메서드 호출을 멈추는 방법을 보여줍니다.
 
-## Returning a result
+## 결과 반환
 
-Assume that for a service with static data the record is added to `cache`
-whenever a `get` call has completed.
-We can then potentially improve performance for future `get` calls
-by checking if we already have the record.
+정적 데이터를 가진 서비스의 경우 `get` 호출이 완료 될 때마다 레코드가 `cache`에 추가된다고 가정하십시오.
+그런 다음 우리는 이미 레코드가 있는지 확인하여 향후 `get` 호출에 대한 성능을 잠재적으로 향상시킬 수 있습니다.
 
 ```javascript
 import { checkContext } from 'feathers-hooks-common';
@@ -228,7 +221,7 @@ import { checkContext } from 'feathers-hooks-common';
 export default function (cache) {
   return context => {
     checkContext(context, 'before', ['get'], 'memoize');
-    
+
     if (context.id in cache) {
       context.result = cache[context.id];
       return context;
@@ -237,22 +230,21 @@ export default function (cache) {
 };
 ```
 
-Feathers will not make the database call if `hook.result` is set.
-Any remaining before and after hooks are still run.
+Feathers는 `hook.result`가 설정된 경우 데이터베이스 호출을 하지 않습니다.
+남은 before, after 훅은 계속 실행됩니다.
 
-Should this hook find a cached record,
-placing it in `hook.result` is the same as if the database had returned the record.
+이 훅이 캐시된 레코드를 찾으면, `hook.result`에 저장하면 데이터베이스가 레코드를 반환했을 때와 같습니다.
 
-This example
-- Shows how `before` hooks can determine the result for the call.
+이 예제는
+- `before` 훅이 호출 결과를 어떻게 결정할 수 있는지 보여줍니다.
 
 
-## Simple async hook
+## 간단한 비동기 훅
 
-Now that we've covered synchronous hooks, let's look at async ones.
+이제까지 동기화 훅을 알아보았습니다. 이제 비동기 훅을 살펴보겠습니다.
 
-Here is a simple before hook which calls an async function.
-That function is supposed to determine if the values in `context.data` are valid.
+다음은 비동기 함수를 호출하는 간단한 before 훅입니다.
+이 함수는 `context.data`의 값이 유효한지를 결정합니다.
 
 ```javascript
 import errors from 'feathers-errors';
@@ -268,30 +260,28 @@ export default function (validator) {
 }
 ```
 
-The hook either returns a Promise which resolves to the existing context object,
-or it throws with an error object contains the errors found.
+훅은 기존의 컨텍스트 객체로 해석되는 Promise를 반환하거나 발견된 에러가 포함된 에러 객체를 반환합니다.
 
-The hook after this one will not run until this Promise resolves and the hook logically ends.
+Promise가 해결되고 훅의 로직이 끝날 때 까지 이 훅은 실행되지 않습니다.
 
-> **ProTip** Perhaps the most common error made when writing async hooks
-is to *not return* the Promise.
-The hook will not work as expected with `validator(context.data)`.
-It must be `return validator(context.data)`.
+> **ProTip** 아마 비동기 훅을 작성할 때 가장 많이 발생하는 에러는 Promise를 *리턴하지 않는 것* 일 것입니다.
+훅은 `validator(context.data)`인 경우 작동하지 않습니다. 반드시 `return validator(context.data)`이어야 합니다.
 
-This example
-- Shows how to code async hooks.
+이 예제는
+- 비동기 훅을 사용하는 방법을 보여줍니다.
 
 
-## Calling a service
+## 서비스 호출
 
-Here is an after hook which attaches user info to one record (for simplicity).
+다음은 사용자 정보를 하나의 레코드에 추가하는 (간단한) after 훅입니다.
+
 
 ```javascript
 export default function () {
     return context => {
       const service = context.app.service('users');
       const item = getItems(context)[0];
-      
+
       if (item.userId !== null && item.userId !== undefined) {
         return service.get(item.userId, context.params)
           .then(data => {
@@ -304,49 +294,48 @@ export default function () {
 };
 ```
 
-- `context.app` is the Feathers app, so `context.app.service(path/to/service)` returns that service.
-- The hook returns a Promise which resolves to a mutated context, or
-- the hook returns synchronously without modifying the context if there is no `userId`.
+- `context.app`는 Feathers 앱이므로 `context.app.service(path/to/service)`는 해당 서비스를 반환합니다.
+- 훅은 변이된 컨텍스트를 해결(resolved)한 프라미스를 반환합니다. 또는,
+- `userId`가 없으면 컨텍스트를 수정하지 않고 동기적으로 훅을 반환합니다.
 
 Its important that `context.params` is used in the `get`.
-You always need to consider `params` when calling a service within a hook.
-If you don't assign a value, the `get` will run as being called on the server
-(it is being called by the server after all)
-even if the method call causing the hook to be run originated on a client.
+`context.params`를 `get`에서 사용하는 것이 중요합니다.
+훅 안에서 서비스를 호출할 때는 항상 `params`를 고려해야 합니다.
+(결국 서버가 호출합니다)
+훅이 실행되도록 하는 메소드 호출이 클라이언트에서 시작된 경우에도 마찬가지입니다.
 
-This may not be OK.
-The user password may be returned when a user record is read by the server,
-but you would not want a client to have access to it.
+이는 좋지 않을 수 있습니다.
+서버가 사용자 레코드를 읽을 때 사용자 비밀번호가 반환 될 수 있지만 클라이언트가 액세스하지 못하게해야합니다.
 
-This hook has taken a simple approach, passing along the `context.params` of the method call.
-Thus the `get` is run with the same `context.provider` (e.g. "socketio", "rest", undefined),
-`context.authenticated`, etc. as the method call.
+이 훅은 메소드 호출의 `context.params`를 이용해 간단히 접근할 수 있습니다.
+따라서 `get`은 메소드 호출과 같은 `context.provider`(예: "socketio", "rest", undefined), `context.authenticated` 등으로 실행됩니다.
 
-This is often satisfactory and, if not, the next example contains something more comprehensive.
+이는 종종 불편할 수 있습니다 그렇지 않다면 조금 더 포괄적인 예를 살펴보겠습니다.
 
-> **ProTip** Always consider `params` when doing service calls within a hook.
+> **ProTip** 훅을 통해 서비스를 호출할 때는 항상 `params` 를 주의하세요.
 
-An interesting detail is shown here: `replaceItems` is never called.
-The array returned by `getItems` contains the same objects as those in the context.
-So changing an object in the array changes that object in the context.
-This is similar to:
+흥미있을만한 내용이 있습니다. `replaceItems`는 절대 호출되지 않습니다.
+`getItems`가 반환한 배열에는 컨텍스트 내부의 객체와 같은 객체가 포함됩니다.
+따라서 배열의 객체를 변경하면 컨텍스트에서 해당 객체가 변경됩니다.
+
+아래와 유사합니다.
 
 ```javascript
 const foo = { name: 'John' };
 const bar = [ foo ];
 bar[0].project = 'Feathers';
-console.log(foo); // { name: 'John', project: 'Feathers
+console.log(foo); // { name: 'John', project: 'Feathers' }
 ```
 
-This example
-- Shows how to call a service.
-- Shows how to deal with `params` in such calls.
-- Talks about using `getItems` with mutations.
+이 예제는
+- 서비스를 호출하는 방법을 보여줍니다.
+- 호출에서 `params`를 다루는 법을 보여줍니다.
+- 변이가 있는 `getItems`를 살펴보았습니다.
 
 
 ## stashBefore [source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/stash-before.js)
 
-`stashBefore` saves the current value of record before mutating it.
+`stashBefore` 변이되기 이전의 현재 값을 저장합니다.
 
 ```javascript
 import errors from 'feathers-errors';
@@ -388,10 +377,10 @@ export default function (prop) {
 }
 ```
 
-Its more complicated to call the hook's current service than to call another service.
-Let's look at some of the code in this hook.
+다른 서비스를 호출하는 것보다 훅의 현재 서비스를 호출하는 것이 더욱 복잡합니다.
+이 훅의 코드를 살펴봅니다.
 
-This is what the hook returns.
+훅이 반환하는 것 입니다.
 
 ```javascript
 return context.service.get(context.id, params)
@@ -404,22 +393,22 @@ return context.service.get(context.id, params)
   .catch(() => context);
 ```
 
-- `context.service` is always the current service.
-- `context.service.get()` is an async call, and it returns a Promise.
-- The hook returns that Promise, so its an async hook.
-The next hook will only run once this Promise resolves.
-- The data obtained by the `get` is placed into `context.params`.
-- We can see the Promise will always resolve to `context`.
+- `context.service`는 항상 현재 서비스입니다.
+- `context.service.get()` 는 비동기 호출이며 Promise를 반환합니다.
+- 반환된 훅은 Promise이며 이는 비동기 훅입니다.
+다음 Promise는 해결(resolve)되면 실행됩니다.
+- `get`으로 얻은 데이터는 `context.params`에 저장됩니다..
+- Promise가 항상 컨텍스트를 해결할 것을 알 수 있습니다.
 
-In summary, the hook will `get` the record being mutated by the call,
-will place that record in `context.params`,
-and will return the possibly modified `context`.
-The method call will continue as if nothing has happened.
+요약하면, 훅은 호출을 통해 변경되는 레코드를 `get`할 것이고,
+그 레코드를 `context.params`에 넣을것이며
+수정된 `context`를 리턴합니다.
+아무 일도 일어나지 않은 것 처럼 메소드 호출은 계속 됩니다.
 
-`stashBefore` does not use `context.params` in the `get` call
-as `context.params` may be inappropriate if, for example, you are using Sequelize
-and the method call includes parameters that are passed through to Sequelize.
-What may be appropriate for an `update` may not be acceptable for a `get`.
+`stashBefore`는`context.params`가 `Sequelize`를 사용하고
+메서드 호출이 Sequelize로 전달된 매개 변수를 포함하는 경우
+`context.params`가 `get` 호출에서`context.params`를 사용하지 않는 것은 옳지 않을 수 있습니다.
+`update`에 적절한 것은`get`을 위해 받아 들여지지 않을 수도 있습니다.
 
 ```javascript
 const params = context.method === 'get' ? context.params : {
@@ -429,18 +418,18 @@ const params = context.method === 'get' ? context.params : {
 };
 ```
 
-- On a `get` call we will use the same `params` for our inner `get`.
-- On other calls, we use something "safe".
-    - We copy over `provider` so our inner `get` acts like it has the same transport.
-    - We copy standard authentication values for auth hooks.
+- `get` 호출에서 내부 `get`에 대해 같은 `params`를 사용합니다.
+- 다른 호출은 "안전한"것을 사용합니다.
+    - 내부의 `get`이 같은 전송을 하는 것 처럼 `provider`를 복사합니다.
+    - 인증 훅에 대한 표준 인증 값을 복사합니다.
 
-Will this satisfy every use case?
-No, but it will satisfy most.
-You can always fork the hook and customize it.
+이는 모든 유즈케이스를 만족시킬 수 있을까요?
+그럴리가 없지만, 대부분 만족스러울 것 입니다.
+훅을 포크하여 사용자 정의 할 수 있습니다.
 
-There is one more thing to consider.
-The `stashBefore` hook will run again when we call the inner `get`.
-This will cause a recursion of inner `get` calls unless we do something.
+한가지 더 고려해야할 사항이 있습니다.
+`stashBefore` 훅은 내부의 `get`을 호출할 때 한번 더 호출됩니다.
+이는 우리가 무언가 처리하지 않으면 `get` 호출의 재귀를 일으킬 것입니다.
 
 ```javascript
 if (context.params.query && context.params.query.$disableStashBefore) {
@@ -454,40 +443,36 @@ params.query.$disableStashBefore = true;
 delete params.query.$disableStashBefore;
 ```
 
-We set a flag to show we are calling the inner `get`.
-`stashBefore` will see the flag when it runs for that inner `get` and exit,
-preventing recursion.
+우리는 내부 `get`을 위해 플래그를 만들었습니다.
+`stashBefore`는 내부의 `get`을 위해 실행할 때 플래그를 확인하고 재귀를 막을 것 입니다.
 
-> **ProTip** Its not uncommon to indicate what state operations are in
-by setting flags in `params`.
+> **ProTip** 상태 조작이 무엇인지 나타내는 것은 자주 있는 일입니다. `params` 에 플래그를 설정하세요
 
-This example
-- Shows how to call the current service.
-- Discusses how to handle `params` for service calls.
-- Shows how to prevent recursion.
+이 예제는
+- 현재 서비스를 호출하는 방법을 보여줍니다.
+- 서비스 호출을 위해 `params`를 핸들링 하는 방법을 다룹니다.
+- 재귀를 방지하는 방법을 다룹니다.
 
 
 ## iff, when, else
 
-Conditional hooks like `iff(predicate, hook1, hook2).else(hook3, hook4)` can be very useful.
+조건부 훅인 `iff(predicate, hook1, hook2).else(hook3, hook4)` 매우 유용하게 사용할 수 있습니다..
 
-Its easy to write your own predicates.
-They are functions with a signature of `context => boolean`,
-which receive the context as a parameter and return either a boolean (synchronous)
-or a Promise which resolves to a boolean.
+스스로 예상되는 결과를 쉽게 작성할 수 있습니다.
 
-You can combine predicates provided with the common hooks, such as `isProvider`
-([source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/is-provider.js)).
-You can write your own, or mix and match.
+이들은 컨텍스트를 매개변수로 받고 부울린(동기) 부울린으로 해결되는 Promise를 반환하는
+`context => boolean`로 구성된 함수입니다.
+
+`isProvider`와 같은 공통 훅으로 제공되는 술어를 결합할 수 있습니다.
+[source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/is-provider.js).
+직접 작성하거나 조합할 수 있습니다.
 
 ```javascript
 iff (hook => !isProvider('service')(hook) && hook.params.user.security >= 3, ...)
 ```
 
-The `isNot` conditional utility
-([source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/common/is-not.js))
-is useful because it will negate either a boolean or a Promise resolving to a boolean.
+`isNot` 조건부 유틸리티([source](https://github.com/feathersjs/feathers-hooks-common/blob/master/src/common/is-not.js))는
+boolean 또는 Promise가 부울린으로 해결되지 않을 때 유용합니다.
 
-
-### Is anything wrong, unclear, missing?
-[Leave a comment.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Writing-Hooks&body=Comment:Step-Basic-Writing-Hooks)
+### 잘못되거나 불분명하거나 누락된 부분이 있습니까?
+[댓글을 남겨주세요.](https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Writing-Hooks&body=Comment:Step-Basic-Writing-Hooks)

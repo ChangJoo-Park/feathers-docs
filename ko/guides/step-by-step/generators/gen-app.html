@@ -1670,116 +1670,96 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="generating-an-app">Generating an app</h1>
-<p>Now let&apos;s write a new project using the Feathers generators.</p>
-<p>This project will have users who may be members of one or more teams.
-We want to display teams with all their members.</p>
-<h2 id="create-the-app">Create the app</h2>
-<p>The first thing we do is generate the basic app. For that, we will first have to create and move into a new folder:</p>
+                                <h1 id="&#xC81C;&#xB108;&#xB808;&#xC774;&#xD130;&#xB85C;-&#xC571;-&#xB9CC;&#xB4E4;&#xAE30;">&#xC81C;&#xB108;&#xB808;&#xC774;&#xD130;&#xB85C; &#xC571; &#xB9CC;&#xB4E4;&#xAE30;</h1>
+<p>&#xC774;&#xC81C;&#xBD80;&#xD130; Feathers &#xC81C;&#xB108;&#xB808;&#xC774;&#xD130;&#xB97C; &#xC774;&#xC6A9;&#xD574; &#xC0C8; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xB97C; &#xC2DC;&#xC791;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xB294; &#xC0AC;&#xC6A9;&#xC790;&#xAC00; &#xC788;&#xC744; &#xAC83;&#xC774;&#xACE0; &#xC0AC;&#xC6A9;&#xC790;&#xB294; &#xD55C;&#xAC1C; &#xB610;&#xB294; &#xC5EC;&#xB7EC;&#xD300;&#xC5D0; &#xC18D;&#xD569;&#xB2C8;&#xB2E4;.
+&#xC6B0;&#xB9AC;&#xB294; &#xD300;&#xACFC; &#xD300;&#xC5D0; &#xC18C;&#xC18D;&#xB41C; &#xC0AC;&#xB78C;&#xC744; &#xCD9C;&#xB825;&#xD560; &#xAC83; &#xC785;&#xB2C8;&#xB2E4;.</p>
+<h2 id="&#xC571;-&#xB9CC;&#xB4E4;&#xAE30;">&#xC571; &#xB9CC;&#xB4E4;&#xAE30;</h2>
+<p>&#xCCAB;&#xC9F8;&#xB85C; &#xD560; &#xC77C;&#xC740; &#xAE30;&#xBCF8; &#xC571;&#xC744; &#xB9CC;&#xB4DC;&#xB294; &#xAC83; &#xC785;&#xB2C8;&#xB2E4;. &#xADF8;&#xB7EC;&#xAE30; &#xC704;&#xD574; &#xC0C8; &#xD3F4;&#xB354;&#xB97C; &#xB9CC;&#xB4E0; &#xD6C4; &#xC774;&#xB3D9;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code>mkdir feathers-app
 cd feathers-app
-</code></pre><p>Then we can run:</p>
+</code></pre><p>&#xC2E4;&#xD589;&#xD558;&#xC138;&#xC694;</p>
 <pre><code>feathers generate app
 </code></pre><p><img src="../assets/gen-app.jpg" alt="Generate app"></p>
-<p>The generator creates some
-<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/" target="_blank">modules</a>
-reflecting your choices.
-The modules are properly wired together and structured as recommended by the Feathers team.</p>
-<p>They are mostly <a href="https://en.wikipedia.org/wiki/Boilerplate_code" target="_blank">boilerplate</a>
-and organized as follows:</p>
+<p>&#xC81C;&#xB108;&#xB808;&#xC774;&#xD130;&#xB294; &#xB2F9;&#xC2E0;&#xC774; &#xC120;&#xD0DD;&#xD55C; &#xB300;&#xB85C; <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/" target="_blank">modules</a>&#xC744; &#xB9CC;&#xB4ED;&#xB2C8;&#xB2E4;.</p>
+<p>&#xBAA8;&#xB4C8;&#xB4E4;&#xC740; &#xC801;&#xC808;&#xD788; &#xC11C;&#xB85C; &#xC5F0;&#xACB0;&#xB418;&#xB294; Feathers &#xD300;&#xC5D0;&#xC11C; &#xAD8C;&#xC7A5;&#xD558;&#xB294; &#xAD6C;&#xC870;&#xB85C; &#xB418;&#xC5B4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB300;&#xBD80;&#xBD84; <a href="https://en.wikipedia.org/wiki/Boilerplate_code" target="_blank">&#xBCF4;&#xC77C;&#xB7EC;&#xD50C;&#xB808;&#xC774;&#xD2B8;</a>&#xC774;&#xBA70; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <p><img src="../assets/gen-app-dir.jpg" alt="Generate app structure"></p>
 <h2 id="config">config/</h2>
-<p>Contains the configuration files for the app.
-<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/config/production.json" target="_blank">production.json</a>
-values override
-<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/config/default.json" target="_blank">default.json</a>
-ones when in production mode,
-i.e. when you run <code>NODE_ENV=production node path/to/your/server.js</code>.</p>
+<p>&#xC571;&#xC758; &#xC124;&#xC815; &#xD30C;&#xC77C;&#xC744; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;.
+<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/config/production.json" target="_blank">production.json</a>&#xB294;
+<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/config/default.json" target="_blank">default.json</a>&#xC744; &#xC624;&#xBC84;&#xB77C;&#xC774;&#xB4DC; &#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xBC30;&#xD3EC; &#xBAA8;&#xB4DC;&#xB85C; &#xC124;&#xC815;&#xD558;&#xB824;&#xBA74; &#xC544;&#xB798; &#xBA85;&#xB839;&#xC5B4;&#xB85C; &#xC2E4;&#xD589;&#xD569;&#xB2C8;&#xB2E4;.
+<code>NODE_ENV=production node path/to/your/server.js</code>.</p>
 <h2 id="nodemodules">node_modules/</h2>
-<p>The generator installs the project dependencies here using either
-<a href="https://docs.npmjs.com/" target="_blank">npm</a>, or <a href="https://yarnpkg.com/en/" target="_blank">yarn</a> if that&apos;s installed.
-The dependencies are enumerated in <code>package.json</code>.</p>
+<p>&#xC81C;&#xB108;&#xB808;&#xC774;&#xD130;&#xB294; <a href="https://docs.npmjs.com/" target="_blank">npm</a> &#xB610;&#xB294; <a href="https://yarnpkg.com/en/" target="_blank">yarn</a> &#xC911; &#xD558;&#xB098;&#xB97C; &#xC0AC;&#xC6A9;&#xD574; &#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xC758;&#xC874;&#xC131;&#xB4E4;&#xC744; &#xC124;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;. &#xC0AC;&#xC804;&#xC5D0; &#xC124;&#xCE58;&#xB418;&#xC5B4;&#xC788;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC758;&#xC874;&#xC131;&#xC740; <code>package.json</code>&#xC5D0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <h2 id="public">public/</h2>
-<p>Contains the resources to be served.
-A sample favicon and
+<p>&#xC81C;&#xACF5;&#xD560; &#xB9AC;&#xC18C;&#xC2A4;&#xB97C; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;.
+&#xAC04;&#xB2E8;&#xD55C; favion&#xACFC;
 <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/public/index.html" target="_blank">HTML file</a>
-are included.</p>
+&#xC774; &#xD3EC;&#xD568;&#xB420; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;..</p>
 <h2 id="src">src/</h2>
-<p>Contains the Feathers server.</p>
+<p>Feathers server&#xB97C; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;..</p>
 <ul>
-<li><p><strong>hooks/</strong> contains your custom hooks,
-usually those general enough to be used with multiple services.
-A simple but useful
-<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/hooks/logger.js" target="_blank">logger</a>
-is provided as an example.</p>
+<li><p><strong>hooks/</strong> &#xC740; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xC758; &#xD6C5;&#xC744; &#xAC00;&#xC9D1;&#xB2C8;&#xB2E4;.
+&#xC77C;&#xBC18;&#xC801;&#xC73C;&#xB85C; &#xC5EC;&#xB7EC; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC744; &#xAC83; &#xC785;&#xB2C8;&#xB2E4;.
+&#xAC04;&#xB2E8;&#xD558;&#xC9C0;&#xB9CC; &#xC720;&#xC6A9;&#xD55C;
+<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/hooks/logger.js" target="_blank">logger</a>&#xAC00; &#xC608;&#xC81C;&#xB85C; &#xC81C;&#xACF5;&#xB429;&#xB2C8;&#xB2E4;.</p>
 </li>
-<li><p><strong>middleware/</strong> contains your Express middleware.</p>
+<li><p><strong>middleware/</strong> Express &#xBBF8;&#xB4E4;&#xC6E8;&#xC5B4;&#xB97C; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;.</p>
 </li>
-<li><p><strong>services/</strong> will contain the services.</p>
+<li><p><strong>services/</strong> &#xB294; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;.</p>
 </li>
-<li><p><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/index.js" target="_blank">index.js</a>
-is used by node to start the app.</p>
+<li><p><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/index.js" target="_blank">index.js</a> &#xB294; node&#xAC00; &#xC571;&#xC744; &#xC2E4;&#xD589;&#xD558;&#xB294;&#xB370; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
 </li>
 <li><p><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/app.js" target="_blank">app.js</a>
-configures Feathers and Express.</p>
+Feathers&#xC640; Express &#xC124;&#xC815;&#xC744; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 </li>
-<li><p><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/app.hooks.js" target="_blank">app.hooks.js</a>
-contains hooks which have to run for <strong>all</strong> services.
-<strong>We have not covered this capability before.</strong>
-You can configure such hooks
-<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/app.js#L43" target="_blank">like this.</a></p>
+<li><p><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/app.hooks.js" target="_blank">app.hooks.js</a>&#xB294; <strong>all</strong> &#xC11C;&#xBE44;&#xC2A4;&#xC5D0;&#xC11C; &#xC2E4;&#xD589;&#xD560; &#xD6C5;&#xC744; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+<strong>&#xC774; &#xBD80;&#xBD84;&#xC740; &#xC774;&#xC804;&#xC5D0; &#xB2E4;&#xB8E8;&#xC9C0; &#xC54A;&#xC558;&#xC2B5;&#xB2C8;&#xB2E4;.</strong>
+<a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/src/app.js#L43" target="_blank">&#xC774;&#xB7EC;&#xD55C;</a> &#xD6C5;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 </li>
 </ul>
 <h2 id="test">test/</h2>
-<p>Contains the tests for the app.
+<p>&#xC571;&#xC744; &#xC704;&#xD55C; &#xD14C;&#xC2A4;&#xD2B8;&#xB97C; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;.
 <a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/test/app.test.js" target="_blank">app.test.js</a>
-tests that the index page appears, as well as 404 errors for HTML pages and JSON.</p>
+&#xC778;&#xB371;&#xC2A4; &#xD398;&#xC774;&#xC9C0;&#xAC00; &#xD45C;&#xC2DC;&#xB418;&#xB294;&#xC9C0; &#xD14C;&#xC2A4;&#xD2B8;&#xD558;&#xACE0;, HTML &#xD398;&#xC774;&#xC9C0; &#xBC0F; JSON&#xC5D0; &#xAD00;&#xD55C; 404 &#xC624;&#xB958;&#xB97C; &#xD45C;&#xC2DC;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h2 id="editorconfig"><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/.editorconfig" target="_blank">.editorconfig</a></h2>
-<p>is compatible with the <a href="http://editorconfig.org/" target="_blank">EditorConfig project</a>
-and helps developers define and maintain consistent coding styles among different editors and IDEs.</p>
+<p>&#xB294; <a href="http://editorconfig.org/" target="_blank">EditorConfig project</a>&#xC640; &#xD638;&#xD658;&#xB429;&#xB2C8;&#xB2E4;.
+&#xADF8;&#xB9AC;&#xACE0; &#xB2E4;&#xB978; &#xD3B8;&#xC9D1;&#xAE30; &#xBC0F; IDE&#xAC04; &#xC77C;&#xAD00;&#xB41C; &#xCF54;&#xB529; &#xC2A4;&#xD0C0;&#xC77C;&#xC744; &#xC815;&#xC758;&#xD558;&#xACE0; &#xC720;&#xC9C0;&#xB420; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xB3C4;&#xC640;&#xC90D;&#xB2C8;&#xB2E4;.</p>
 <h2 id="eslintrcjson"><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/.eslintrc.json" target="_blank">.eslintrc.json</a></h2>
-<p>contains defaults for liniting your code with
-<a href="http://eslint.org/docs/user-guide/getting-started" target="_blank">ESLint</a>.</p>
+<p>&#xAE30;&#xBCF8;&#xC801;&#xC778; &#xCF54;&#xB4DC; &#xB9B0;&#xD305;&#xC744; &#xC704;&#xD55C; <a href="http://eslint.org/docs/user-guide/getting-started" target="_blank">ESLint</a> &#xC124;&#xC815;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <h2 id="gitignore"><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/.gitignore" target="_blank">.gitignore</a></h2>
-<p>specifies
-<a href="https://git-scm.com/docs/gitignore" target="_blank">intentionally untracked files</a>
-which
-<a href="https://git-scm.com/" target="_blank">git</a>,
-<a href="https://github.com/" target="_blank">GitHub</a>
-and other similar projects ignore.</p>
+<p><a href="https://git-scm.com/" target="_blank">git</a>,
+<a href="https://github.com/" target="_blank">GitHub</a> &#xB610;&#xB294; &#xC720;&#xC0AC; &#xD504;&#xB85C;&#xC81D;&#xD2B8;&#xC5D0;&#xC11C;
+<a href="https://git-scm.com/docs/gitignore" target="_blank">&#xC758;&#xB3C4;&#xC801;&#xC73C;&#xB85C; &#xCD94;&#xC801;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xD30C;&#xC77C;</a>&#xC744; &#xC815;&#xC758;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h2 id="npmignore"><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/.npmignore" target="_blank">.npmignore</a></h2>
-<p>specifies
-<a href="https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package" target="_blank">files which are not to be published</a>
-for distribution.</p>
+<p><a href="https://docs.npmjs.com/misc/developers#keeping-files-out-of-your-package" target="_blank">&#xC6B4;&#xC601;&#xC5D0; &#xBC30;&#xD3EC;&#xB418;&#xC9C0; &#xC54A;&#xC744; &#xD30C;&#xC77C;&#xB4E4;</a>&#xC744; &#xC815;&#xC758;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <h2 id="license"><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/LICENSE" target="_blank">LICENSE</a></h2>
-<p>contains the <a href="https://docs.npmjs.com/files/package.json#license" target="_blank">license</a>
-so that people know how they are permitted to use it, and any restrictions you&apos;re placing on it.</p>
-<p>It defaults to the Feathers license.</p>
+<p><a href="https://docs.npmjs.com/files/package.json#license" target="_blank">&#xB77C;&#xC774;&#xC13C;&#xC2A4;</a>&#xB97C; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;.
+&#xC0AC;&#xB78C;&#xB4E4;&#xC774; &#xC5B4;&#xB5A4; &#xAD8C;&#xD55C;&#xC744; &#xAC16;&#xB294;&#xC9C0; &#xC5B4;&#xB5A4; &#xC81C;&#xD55C;&#xC0AC;&#xD56D;&#xC774; &#xC788;&#xB294;&#xC9C0; &#xC54C; &#xC218; &#xC788;&#xB3C4;&#xB85D; &#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xAE30;&#xBCF8; &#xAC12;&#xC740; Feathers &#xB77C;&#xC774;&#xC13C;&#xC2A4;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <h2 id="packagejson"><a href="https://github.com/feathersjs/feathers-docs/blob/master/examples/step/02/gen1/package.json" target="_blank">package.json</a></h2>
-<p>contains <a href="https://docs.npmjs.com/files/package.json" target="_blank">information</a>
-which
-<a href="https://docs.npmjs.com/" target="_blank">npm</a>,
-<a href="https://yarnpkg.com/en/" target="_blank">yarn</a>
-and other package managers need to install and use your package.</p>
-<h2 id="whats-next">What&apos;s next?</h2>
-<p>The generated code will look familiar.
-It contains nothing more than what we have covered previously.
-The main advantages of the Feathers generators are</p>
+<p>&#xC740; <a href="https://docs.npmjs.com/" target="_blank">npm</a>,<a href="https://yarnpkg.com/en/" target="_blank">yarn</a> &#xB610;&#xB294; &#xB2E4;&#xB978; &#xD328;&#xD0A4;&#xC9C0; &#xB9E4;&#xB2C8;&#xC800;&#xAC00; &#xC5B4;&#xB5A4; &#xC758;&#xC874;&#xC131;&#xC744; &#xC124;&#xCE58;&#xD574;&#xC57C;&#xD558;&#xB294;&#xC9C0;&#xC5D0; &#xAD00;&#xD55C;
+<a href="https://docs.npmjs.com/files/package.json" target="_blank">&#xC815;&#xBCF4;</a>&#xB97C; &#xD3EC;&#xD568;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h2 id="&#xC774;&#xC81C;-&#xBB34;&#xC5C7;&#xC744;-&#xD574;&#xC57C;&#xD558;&#xB098;&#xC694;">&#xC774;&#xC81C; &#xBB34;&#xC5C7;&#xC744; &#xD574;&#xC57C;&#xD558;&#xB098;&#xC694;?</h2>
+<p>&#xB9CC;&#xB4E4;&#xC5B4;&#xC9C4; &#xCF54;&#xB4DC;&#xB294; &#xC775;&#xC219;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.
+&#xC774;&#xC804;&#xC5D0; &#xB2E4;&#xB8E8;&#xC5C8;&#xB358; &#xB0B4;&#xC6A9; &#xC774;&#xC0C1;&#xC758; &#xAC83;&#xB4E4;&#xC740; &#xBCC4;&#xB85C; &#xC5C6;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>Feathers &#xC0DD;&#xC131;&#xAE30;&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xBA74;&#xC11C; &#xC5BB;&#xC744; &#xC218; &#xC788;&#xB294; &#xC7A5;&#xC810;&#xC740;</p>
 <ul>
-<li><p>Generators structure your app.
-The generated modules are structured as recommended by the Feathers team.</p>
+<li><p>&#xC571;&#xC758; &#xAD6C;&#xC870;&#xB97C; &#xB9CC;&#xB4E4;&#xC5B4; &#xC90D;&#xB2C8;&#xB2E4;.
+&#xC0DD;&#xC131;&#xB41C; &#xBAA8;&#xB4C8;&#xC740; Feathers &#xD300;&#xC774; &#xAD8C;&#xC7A5;&#xD558;&#xB294; &#xAD6C;&#xC870;&#xB97C; &#xB530;&#xB985;&#xB2C8;&#xB2E4;.</p>
 </li>
-<li><p>Generators write the repetitive boilerplate
-so you don&apos;t have to.</p>
+<li><p>&#xAF2D; &#xD560; &#xD544;&#xC694; &#xC5C6;&#xB294; &#xBCF4;&#xC77C;&#xB7EC;&#xD50C;&#xB808;&#xC774;&#xD2B8; &#xC791;&#xC5C5;&#xC744; &#xB300;&#xC2E0; &#xD574;&#xC90D;&#xB2C8;&#xB2E4;.</p>
 </li>
-<li><p>Generators handle database specifics.
-The generators will generate code for different databases
-so you don&apos;t have to investigate how to do so.</p>
+<li><p>&#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xAD00;&#xB828; &#xCC98;&#xB9AC;&#xB97C; &#xD569;&#xB2C8;&#xB2E4;.
+&#xC81C;&#xB108;&#xB808;&#xC774;&#xD130;&#xB294; &#xB2E4;&#xC591;&#xD55C; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xB97C; &#xCC98;&#xB9AC;&#xD558;&#xAE30; &#xC704;&#xD55C; &#xC9C1;&#xC811; &#xAE4A;&#xAC8C; &#xC0B4;&#xD3B4;&#xBCF4;&#xC9C0; &#xC54A;&#xC544;&#xB3C4; &#xB420; &#xCF54;&#xB4DC;&#xB97C; &#xB9CC;&#xB4ED;&#xB2C8;&#xB2E4;.</p>
 </li>
 </ul>
-<p>Next we will <a href="gen-authentication.html">add authentication to the application we just generated</a>.</p>
-<h3 id="is-anything-wrong-unclear-missing">Is anything wrong, unclear, missing?</h3>
-<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-App&amp;body=Comment:Step-Generators-App" target="_blank">Leave a comment.</a></p>
+<p>&#xB2E4;&#xC74C;&#xC740; <a href="gen-authentication.html">&#xC0DD;&#xC131;&#xB41C; &#xC571;&#xC5D0; &#xC778;&#xC99D; &#xCD94;&#xAC00;&#xD558;&#xAE30;</a>&#xC785;&#xB2C8;&#xB2E4;.</p>
+<h3 id="&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098;-&#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098;-&#xB204;&#xB77D;&#xB41C;-&#xBD80;&#xBD84;&#xC774;-&#xC788;&#xC2B5;&#xB2C8;&#xAE4C;">&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098; &#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098; &#xB204;&#xB77D;&#xB41C; &#xBD80;&#xBD84;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xAE4C;?</h3>
+<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Generators-App&amp;body=Comment:Step-Generators-App" target="_blank">&#xB313;&#xAE00;&#xC744; &#xB0A8;&#xACA8;&#xC8FC;&#xC138;&#xC694;.</a></p>
 
                                 
                                 </section>
@@ -1823,7 +1803,7 @@ so you don&apos;t have to investigate how to do so.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"애플리케이션 생성","level":"1.2.3.1","depth":3,"next":{"title":"인증 추가","level":"1.2.3.2","depth":3,"path":"guides/step-by-step/generators/gen-authentication.md","ref":"guides/step-by-step/generators/gen-authentication.md","articles":[]},"previous":{"title":"제너레이터 (CLI)","level":"1.2.3","depth":2,"path":"guides/step-by-step/generators/readme.md","ref":"guides/step-by-step/generators/readme.md","articles":[{"title":"애플리케이션 생성","level":"1.2.3.1","depth":3,"path":"guides/step-by-step/generators/gen-app.md","ref":"guides/step-by-step/generators/gen-app.md","articles":[]},{"title":"인증 추가","level":"1.2.3.2","depth":3,"path":"guides/step-by-step/generators/gen-authentication.md","ref":"guides/step-by-step/generators/gen-authentication.md","articles":[]},{"title":"Teams 서비스 추가","level":"1.2.3.3","depth":3,"path":"guides/step-by-step/generators/gen-service.md","ref":"guides/step-by-step/generators/gen-service.md","articles":[]},{"title":"Populate 훅 생성","level":"1.2.3.4","depth":3,"path":"guides/step-by-step/generators/gen-hook.md","ref":"guides/step-by-step/generators/gen-hook.md","articles":[]},{"title":"애플리케이션 실행","level":"1.2.3.5","depth":3,"path":"guides/step-by-step/generators/gen-run.md","ref":"guides/step-by-step/generators/gen-run.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/generators/gen-app.md","mtime":"2017-07-07T07:10:07.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T13:34:40.104Z"},"basePath":"../../..","book":{"language":"ko"}});
+            gitbook.page.hasChanged({"page":{"title":"애플리케이션 생성","level":"1.2.3.1","depth":3,"next":{"title":"인증 추가","level":"1.2.3.2","depth":3,"path":"guides/step-by-step/generators/gen-authentication.md","ref":"guides/step-by-step/generators/gen-authentication.md","articles":[]},"previous":{"title":"제너레이터 (CLI)","level":"1.2.3","depth":2,"path":"guides/step-by-step/generators/readme.md","ref":"guides/step-by-step/generators/readme.md","articles":[{"title":"애플리케이션 생성","level":"1.2.3.1","depth":3,"path":"guides/step-by-step/generators/gen-app.md","ref":"guides/step-by-step/generators/gen-app.md","articles":[]},{"title":"인증 추가","level":"1.2.3.2","depth":3,"path":"guides/step-by-step/generators/gen-authentication.md","ref":"guides/step-by-step/generators/gen-authentication.md","articles":[]},{"title":"Teams 서비스 추가","level":"1.2.3.3","depth":3,"path":"guides/step-by-step/generators/gen-service.md","ref":"guides/step-by-step/generators/gen-service.md","articles":[]},{"title":"Populate 훅 생성","level":"1.2.3.4","depth":3,"path":"guides/step-by-step/generators/gen-hook.md","ref":"guides/step-by-step/generators/gen-hook.md","articles":[]},{"title":"애플리케이션 실행","level":"1.2.3.5","depth":3,"path":"guides/step-by-step/generators/gen-run.md","ref":"guides/step-by-step/generators/gen-run.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/generators/gen-app.md","mtime":"2017-07-10T14:08:09.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T14:19:42.651Z"},"basePath":"../../..","book":{"language":"ko"}});
         });
     </script>
 </div>

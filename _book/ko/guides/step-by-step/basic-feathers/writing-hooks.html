@@ -1793,17 +1793,16 @@
 </code></pre>
 <p><a href="../../../api/hooks-common.html#util-getitems-replaceitems"><code>getItems</code> &#xC720;&#xD2F8;&#xB9AC;&#xD2F0;</a>&#xB294; &#xD574;&#xB2F9; &#xC544;&#xC774;&#xD15C;&#xC774; <code>hook.data</code> &#xB610;&#xB294; <code>hook.result</code>&#xC5D0; &#xC788;&#xB294; &#xC544;&#xC774;&#xD15C;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xD6C5;&#xC774; before &#xB610;&#xB294; after &#xD6C5;&#xC73C;&#xB85C; &#xC0AC;&#xC6A9;&#xB429;&#xB2C8;&#xB2E4;.</p>
 <p><code>find</code> &#xBA54;&#xC18C;&#xB4DC;&#xC5D0; &#xB300;&#xD574; <code>hook.result.data</code> &#xB610;&#xB294; <code>hook.result</code>&#xC774; &#xB9AC;&#xD134;&#xB429;&#xB2C8;&#xB2E4;.</p>
-<p>The returned items are always an array to simplify further processing.</p>
-<p>The <a href="../../../api/hooks-common.html#util-getitems-replaceitems"><code>replaceItems</code> utility</a>
-is the reverse of <code>getItems</code>, returning the items where they came from.</p>
-<p>This example</p>
+<p>&#xBC18;&#xD658;&#xB41C; &#xC544;&#xC774;&#xD15C;&#xC740; &#xCD94;&#xAC00;&#xC801;&#xC778; &#xCC98;&#xB9AC;&#xB97C; &#xB2E8;&#xC21C;&#xD654;&#xD558;&#xAE30; &#xC704;&#xD574; &#xD56D;&#xC0C1; &#xBC30;&#xC5F4;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p><a href="../../../api/hooks-common.html#util-getitems-replaceitems"><code>replaceItems</code> utility</a>&#xB294; <code>getItems</code>&#xC758; &#xC5ED;&#xC21C;&#xC73C;&#xB85C; &#xB4E4;&#xC5B4;&#xC628; &#xC544;&#xC774;&#xD15C;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774; &#xC608;&#xC81C;&#xB294;</p>
 <ul>
-<li>Introduces the convenient <code>getItems</code> and <code>replaceItems</code> utilities.</li>
+<li>&#xC720;&#xC6A9;&#xD558;&#xAC8C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xB294; <code>getItems</code>&#xC640; <code>replaceItems</code>&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xC558;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
 </ul>
-<h2 id="throwing-an-error---disablemultiitemchange-source">Throwing an error - disableMultiItemChange <a href="https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/disable-multi-item-change.js" target="_blank">source</a></h2>
-<p>You will, sooner or later, want to return an error to the caller, skipping the DB call.
-You can do this by throwing a <a href="../../../api/errors.html">Feathers error</a>.</p>
-<p><code>disableMultiItemChange</code> disables update, patch and remove methods from using null as an id.</p>
+<h2 id="&#xC5D0;&#xB7EC;-&#xC4F0;&#xB85C;&#xC6B0;---disablemultiitemchange-source">&#xC5D0;&#xB7EC; &#xC4F0;&#xB85C;&#xC6B0; - disableMultiItemChange <a href="https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/disable-multi-item-change.js" target="_blank">source</a></h2>
+<p>&#xC870;&#xB9CC;&#xAC04;, DB &#xD638;&#xCD9C;&#xC744; &#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xD638;&#xCD9C;&#xD55C; &#xC0AC;&#xB78C;&#xC5D0;&#xAC8C; &#xC624;&#xB958;&#xB97C; &#xBC18;&#xD658;&#xD560; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.
+<a href="../../../api/errors.html">Feathers error</a>&#xB97C; &#xB358;&#xC838; &#xC774; &#xC791;&#xC5C5;&#xC744; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p><code>disableMultiItemChange</code>&#xB294; update, patch, remove &#xBA54;&#xC18C;&#xB4DC;&#xAC00; null&#xC744; id&#xB85C; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xBABB;&#xD558;&#xB3C4;&#xB85D;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">import</span> errors <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;feathers-errors&apos;</span>;
 <span class="hljs-keyword">import</span> checkContext <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./check-context&apos;</span>;
 
@@ -1819,27 +1818,25 @@ You can do this by throwing a <a href="../../../api/errors.html">Feathers error<
   };
 }
 </code></pre>
-<p>Feathers errors are flexible, containing <a href="../../../api/errors.html">useful fields</a>.
-Of particular note are:</p>
+<p>Feathers&#xC758; &#xC5D0;&#xB7EC;&#xB294; &#xC720;&#xC5F0;&#xD558;&#xBA70; <a href="../../../api/errors.html">&#xC720;&#xC6A9;&#xD55C; &#xD544;&#xB4DC;</a>&#xB97C; &#xAC00;&#xC9C0;&#xACE0; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD2B9;&#xD788; &#xC720;&#xC758;&#xC0AC;&#xD56D;&#xC740; &#xB2E4;&#xC74C;&#xACFC; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <ul>
-<li><code>className</code> returns the type of error, e.g. <code>not-found</code>.
-Your code can check this field rather than the text of the error message.</li>
-<li><code>errors</code> can return error messages for individual fields.
-You can customize the format to that expected by your client-side forms handler.<pre><code class="lang-javascript"><span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> errors.BadRequest(<span class="hljs-string">&apos;Bad request.&apos;</span>, { errors: {
-username: <span class="hljs-string">&apos;Already in use&apos;</span>, password: <span class="hljs-string">&apos;Must be at least 8 characters long&apos;</span>
+<li><code>className</code>&#xC740; &#xC5D0;&#xB7EC;&#xC758; &#xD0C0;&#xC785;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xC608;: <code>not-found</code>
+&#xCF54;&#xB4DC;&#xB294; &#xC624;&#xB958; &#xBA54;&#xC2DC;&#xC9C0;&#xC758; &#xD14D;&#xC2A4;&#xD2B8;&#xAC00; &#xC544;&#xB2CC; &#xC774; &#xD544;&#xB4DC;&#xB97C; &#xD655;&#xC778;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+<li><code>errors</code>&#xB294; &#xAC1C;&#xBCC4; &#xD544;&#xB4DC;&#xC5D0; &#xB300;&#xD55C; &#xC5D0;&#xB7EC; &#xBA54;&#xC2DC;&#xC9C0;&#xB97C; &#xBC18;&#xD658;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8; &#xCE21; &#xD3FC; &#xD578;&#xB4E4;&#xB7EC;&#xC5D0;&#xC11C; &#xC608;&#xC0C1;&#xD55C;&#xB300;&#xB85C; &#xD3EC;&#xB9F7;&#xC744; &#xC9C0;&#xC815;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
+</ul>
+<pre><code class="lang-javascript"><span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> errors.BadRequest(<span class="hljs-string">&apos;Bad request.&apos;</span>, { errors: {
+  username: <span class="hljs-string">&apos;Already in use&apos;</span>, password: <span class="hljs-string">&apos;Must be at least 8 characters long&apos;</span>
 }});
 </code></pre>
-</li>
-</ul>
-<p>This example</p>
+<p>&#xC774; &#xC608;&#xC81C;&#xB294;</p>
 <ul>
-<li>Shows how to stop a method call by throwing an error.</li>
+<li>&#xC624;&#xB958;&#xAC00; &#xBC1C;&#xC0DD;&#xD558;&#xC5EC; &#xBA54;&#xC11C;&#xB4DC; &#xD638;&#xCD9C;&#xC744; &#xBA48;&#xCD94;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xBCF4;&#xC5EC;&#xC90D;&#xB2C8;&#xB2E4;.</li>
 </ul>
-<h2 id="returning-a-result">Returning a result</h2>
-<p>Assume that for a service with static data the record is added to <code>cache</code>
-whenever a <code>get</code> call has completed.
-We can then potentially improve performance for future <code>get</code> calls
-by checking if we already have the record.</p>
+<h2 id="&#xACB0;&#xACFC;-&#xBC18;&#xD658;">&#xACB0;&#xACFC; &#xBC18;&#xD658;</h2>
+<p>&#xC815;&#xC801; &#xB370;&#xC774;&#xD130;&#xB97C; &#xAC00;&#xC9C4; &#xC11C;&#xBE44;&#xC2A4;&#xC758; &#xACBD;&#xC6B0; <code>get</code> &#xD638;&#xCD9C;&#xC774; &#xC644;&#xB8CC; &#xB420; &#xB54C;&#xB9C8;&#xB2E4; &#xB808;&#xCF54;&#xB4DC;&#xAC00; <code>cache</code>&#xC5D0; &#xCD94;&#xAC00;&#xB41C;&#xB2E4;&#xACE0; &#xAC00;&#xC815;&#xD558;&#xC2ED;&#xC2DC;&#xC624;.
+&#xADF8;&#xB7F0; &#xB2E4;&#xC74C; &#xC6B0;&#xB9AC;&#xB294; &#xC774;&#xBBF8; &#xB808;&#xCF54;&#xB4DC;&#xAC00; &#xC788;&#xB294;&#xC9C0; &#xD655;&#xC778;&#xD558;&#xC5EC; &#xD5A5;&#xD6C4; <code>get</code> &#xD638;&#xCD9C;&#xC5D0; &#xB300;&#xD55C; &#xC131;&#xB2A5;&#xC744; &#xC7A0;&#xC7AC;&#xC801;&#xC73C;&#xB85C; &#xD5A5;&#xC0C1;&#xC2DC;&#xD0AC; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">import</span> { checkContext } <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;feathers-hooks-common&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">cache</span>) </span>{
@@ -1853,18 +1850,17 @@ by checking if we already have the record.</p>
   };
 };
 </code></pre>
-<p>Feathers will not make the database call if <code>hook.result</code> is set.
-Any remaining before and after hooks are still run.</p>
-<p>Should this hook find a cached record,
-placing it in <code>hook.result</code> is the same as if the database had returned the record.</p>
-<p>This example</p>
+<p>Feathers&#xB294; <code>hook.result</code>&#xAC00; &#xC124;&#xC815;&#xB41C; &#xACBD;&#xC6B0; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4; &#xD638;&#xCD9C;&#xC744; &#xD558;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xB0A8;&#xC740; before, after &#xD6C5;&#xC740; &#xACC4;&#xC18D; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774; &#xD6C5;&#xC774; &#xCE90;&#xC2DC;&#xB41C; &#xB808;&#xCF54;&#xB4DC;&#xB97C; &#xCC3E;&#xC73C;&#xBA74;, <code>hook.result</code>&#xC5D0; &#xC800;&#xC7A5;&#xD558;&#xBA74; &#xB370;&#xC774;&#xD130;&#xBCA0;&#xC774;&#xC2A4;&#xAC00; &#xB808;&#xCF54;&#xB4DC;&#xB97C; &#xBC18;&#xD658;&#xD588;&#xC744; &#xB54C;&#xC640; &#xAC19;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774; &#xC608;&#xC81C;&#xB294;</p>
 <ul>
-<li>Shows how <code>before</code> hooks can determine the result for the call.</li>
+<li><code>before</code> &#xD6C5;&#xC774; &#xD638;&#xCD9C; &#xACB0;&#xACFC;&#xB97C; &#xC5B4;&#xB5BB;&#xAC8C; &#xACB0;&#xC815;&#xD560; &#xC218; &#xC788;&#xB294;&#xC9C0; &#xBCF4;&#xC5EC;&#xC90D;&#xB2C8;&#xB2E4;.</li>
 </ul>
-<h2 id="simple-async-hook">Simple async hook</h2>
-<p>Now that we&apos;ve covered synchronous hooks, let&apos;s look at async ones.</p>
-<p>Here is a simple before hook which calls an async function.
-That function is supposed to determine if the values in <code>context.data</code> are valid.</p>
+<h2 id="&#xAC04;&#xB2E8;&#xD55C;-&#xBE44;&#xB3D9;&#xAE30;-&#xD6C5;">&#xAC04;&#xB2E8;&#xD55C; &#xBE44;&#xB3D9;&#xAE30; &#xD6C5;</h2>
+<p>&#xC774;&#xC81C;&#xAE4C;&#xC9C0; &#xB3D9;&#xAE30;&#xD654; &#xD6C5;&#xC744; &#xC54C;&#xC544;&#xBCF4;&#xC558;&#xC2B5;&#xB2C8;&#xB2E4;. &#xC774;&#xC81C; &#xBE44;&#xB3D9;&#xAE30; &#xD6C5;&#xC744; &#xC0B4;&#xD3B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xB2E4;&#xC74C;&#xC740; &#xBE44;&#xB3D9;&#xAE30; &#xD568;&#xC218;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xB294; &#xAC04;&#xB2E8;&#xD55C; before &#xD6C5;&#xC785;&#xB2C8;&#xB2E4;.
+&#xC774; &#xD568;&#xC218;&#xB294; <code>context.data</code>&#xC758; &#xAC12;&#xC774; &#xC720;&#xD6A8;&#xD55C;&#xC9C0;&#xB97C; &#xACB0;&#xC815;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">import</span> errors <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;feathers-errors&apos;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">validator</span>) </span>{
@@ -1877,21 +1873,18 @@ That function is supposed to determine if the values in <code>context.data</code
   };
 }
 </code></pre>
-<p>The hook either returns a Promise which resolves to the existing context object,
-or it throws with an error object contains the errors found.</p>
-<p>The hook after this one will not run until this Promise resolves and the hook logically ends.</p>
+<p>&#xD6C5;&#xC740; &#xAE30;&#xC874;&#xC758; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8; &#xAC1D;&#xCCB4;&#xB85C; &#xD574;&#xC11D;&#xB418;&#xB294; Promise&#xB97C; &#xBC18;&#xD658;&#xD558;&#xAC70;&#xB098; &#xBC1C;&#xACAC;&#xB41C; &#xC5D0;&#xB7EC;&#xAC00; &#xD3EC;&#xD568;&#xB41C; &#xC5D0;&#xB7EC; &#xAC1D;&#xCCB4;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>Promise&#xAC00; &#xD574;&#xACB0;&#xB418;&#xACE0; &#xD6C5;&#xC758; &#xB85C;&#xC9C1;&#xC774; &#xB05D;&#xB0A0; &#xB54C; &#xAE4C;&#xC9C0; &#xC774; &#xD6C5;&#xC740; &#xC2E4;&#xD589;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <blockquote>
-<p><strong>ProTip</strong> Perhaps the most common error made when writing async hooks
-is to <em>not return</em> the Promise.
-The hook will not work as expected with <code>validator(context.data)</code>.
-It must be <code>return validator(context.data)</code>.</p>
+<p><strong>ProTip</strong> &#xC544;&#xB9C8; &#xBE44;&#xB3D9;&#xAE30; &#xD6C5;&#xC744; &#xC791;&#xC131;&#xD560; &#xB54C; &#xAC00;&#xC7A5; &#xB9CE;&#xC774; &#xBC1C;&#xC0DD;&#xD558;&#xB294; &#xC5D0;&#xB7EC;&#xB294; Promise&#xB97C; <em>&#xB9AC;&#xD134;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xAC83;</em> &#xC77C; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.
+&#xD6C5;&#xC740; <code>validator(context.data)</code>&#xC778; &#xACBD;&#xC6B0; &#xC791;&#xB3D9;&#xD558;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;. &#xBC18;&#xB4DC;&#xC2DC; <code>return validator(context.data)</code>&#xC774;&#xC5B4;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.</p>
 </blockquote>
-<p>This example</p>
+<p>&#xC774; &#xC608;&#xC81C;&#xB294;</p>
 <ul>
-<li>Shows how to code async hooks.</li>
+<li>&#xBE44;&#xB3D9;&#xAE30; &#xD6C5;&#xC744; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xBCF4;&#xC5EC;&#xC90D;&#xB2C8;&#xB2E4;.</li>
 </ul>
-<h2 id="calling-a-service">Calling a service</h2>
-<p>Here is an after hook which attaches user info to one record (for simplicity).</p>
+<h2 id="&#xC11C;&#xBE44;&#xC2A4;-&#xD638;&#xCD9C;">&#xC11C;&#xBE44;&#xC2A4; &#xD638;&#xCD9C;</h2>
+<p>&#xB2E4;&#xC74C;&#xC740; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xBCF4;&#xB97C; &#xD558;&#xB098;&#xC758; &#xB808;&#xCF54;&#xB4DC;&#xC5D0; &#xCD94;&#xAC00;&#xD558;&#xB294; (&#xAC04;&#xB2E8;&#xD55C;) after &#xD6C5;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
     <span class="hljs-keyword">return</span> context =&gt; {
       <span class="hljs-keyword">const</span> service = context.app.service(<span class="hljs-string">&apos;users&apos;</span>);
@@ -1909,42 +1902,40 @@ It must be <code>return validator(context.data)</code>.</p>
 };
 </code></pre>
 <ul>
-<li><code>context.app</code> is the Feathers app, so <code>context.app.service(path/to/service)</code> returns that service.</li>
-<li>The hook returns a Promise which resolves to a mutated context, or</li>
-<li>the hook returns synchronously without modifying the context if there is no <code>userId</code>.</li>
+<li><code>context.app</code>&#xB294; Feathers &#xC571;&#xC774;&#xBBC0;&#xB85C; <code>context.app.service(path/to/service)</code>&#xB294; &#xD574;&#xB2F9; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xD6C5;&#xC740; &#xBCC0;&#xC774;&#xB41C; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8;&#xB97C; &#xD574;&#xACB0;(resolved)&#xD55C; &#xD504;&#xB77C;&#xBBF8;&#xC2A4;&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;. &#xB610;&#xB294;,</li>
+<li><code>userId</code>&#xAC00; &#xC5C6;&#xC73C;&#xBA74; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8;&#xB97C; &#xC218;&#xC815;&#xD558;&#xC9C0; &#xC54A;&#xACE0; &#xB3D9;&#xAE30;&#xC801;&#xC73C;&#xB85C; &#xD6C5;&#xC744; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
 </ul>
 <p>Its important that <code>context.params</code> is used in the <code>get</code>.
-You always need to consider <code>params</code> when calling a service within a hook.
-If you don&apos;t assign a value, the <code>get</code> will run as being called on the server
-(it is being called by the server after all)
-even if the method call causing the hook to be run originated on a client.</p>
-<p>This may not be OK.
-The user password may be returned when a user record is read by the server,
-but you would not want a client to have access to it.</p>
-<p>This hook has taken a simple approach, passing along the <code>context.params</code> of the method call.
-Thus the <code>get</code> is run with the same <code>context.provider</code> (e.g. &quot;socketio&quot;, &quot;rest&quot;, undefined),
-<code>context.authenticated</code>, etc. as the method call.</p>
-<p>This is often satisfactory and, if not, the next example contains something more comprehensive.</p>
+<code>context.params</code>&#xB97C; <code>get</code>&#xC5D0;&#xC11C; &#xC0AC;&#xC6A9;&#xD558;&#xB294; &#xAC83;&#xC774; &#xC911;&#xC694;&#xD569;&#xB2C8;&#xB2E4;.
+&#xD6C5; &#xC548;&#xC5D0;&#xC11C; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD560; &#xB54C;&#xB294; &#xD56D;&#xC0C1; <code>params</code>&#xB97C; &#xACE0;&#xB824;&#xD574;&#xC57C; &#xD569;&#xB2C8;&#xB2E4;.
+(&#xACB0;&#xAD6D; &#xC11C;&#xBC84;&#xAC00; &#xD638;&#xCD9C;&#xD569;&#xB2C8;&#xB2E4;)
+&#xD6C5;&#xC774; &#xC2E4;&#xD589;&#xB418;&#xB3C4;&#xB85D; &#xD558;&#xB294; &#xBA54;&#xC18C;&#xB4DC; &#xD638;&#xCD9C;&#xC774; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xC5D0;&#xC11C; &#xC2DC;&#xC791;&#xB41C; &#xACBD;&#xC6B0;&#xC5D0;&#xB3C4; &#xB9C8;&#xCC2C;&#xAC00;&#xC9C0;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774;&#xB294; &#xC88B;&#xC9C0; &#xC54A;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xC11C;&#xBC84;&#xAC00; &#xC0AC;&#xC6A9;&#xC790; &#xB808;&#xCF54;&#xB4DC;&#xB97C; &#xC77D;&#xC744; &#xB54C; &#xC0AC;&#xC6A9;&#xC790; &#xBE44;&#xBC00;&#xBC88;&#xD638;&#xAC00; &#xBC18;&#xD658; &#xB420; &#xC218; &#xC788;&#xC9C0;&#xB9CC; &#xD074;&#xB77C;&#xC774;&#xC5B8;&#xD2B8;&#xAC00; &#xC561;&#xC138;&#xC2A4;&#xD558;&#xC9C0; &#xBABB;&#xD558;&#xAC8C;&#xD574;&#xC57C;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774; &#xD6C5;&#xC740; &#xBA54;&#xC18C;&#xB4DC; &#xD638;&#xCD9C;&#xC758; <code>context.params</code>&#xB97C; &#xC774;&#xC6A9;&#xD574; &#xAC04;&#xB2E8;&#xD788; &#xC811;&#xADFC;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+&#xB530;&#xB77C;&#xC11C; <code>get</code>&#xC740; &#xBA54;&#xC18C;&#xB4DC; &#xD638;&#xCD9C;&#xACFC; &#xAC19;&#xC740; <code>context.provider</code>(&#xC608;: &quot;socketio&quot;, &quot;rest&quot;, undefined), <code>context.authenticated</code> &#xB4F1;&#xC73C;&#xB85C; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774;&#xB294; &#xC885;&#xC885; &#xBD88;&#xD3B8;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4; &#xADF8;&#xB807;&#xC9C0; &#xC54A;&#xB2E4;&#xBA74; &#xC870;&#xAE08; &#xB354; &#xD3EC;&#xAD04;&#xC801;&#xC778; &#xC608;&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xACA0;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <blockquote>
-<p><strong>ProTip</strong> Always consider <code>params</code> when doing service calls within a hook.</p>
+<p><strong>ProTip</strong> &#xD6C5;&#xC744; &#xD1B5;&#xD574; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD560; &#xB54C;&#xB294; &#xD56D;&#xC0C1; <code>params</code> &#xB97C; &#xC8FC;&#xC758;&#xD558;&#xC138;&#xC694;.</p>
 </blockquote>
-<p>An interesting detail is shown here: <code>replaceItems</code> is never called.
-The array returned by <code>getItems</code> contains the same objects as those in the context.
-So changing an object in the array changes that object in the context.
-This is similar to:</p>
+<p>&#xD765;&#xBBF8;&#xC788;&#xC744;&#xB9CC;&#xD55C; &#xB0B4;&#xC6A9;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;. <code>replaceItems</code>&#xB294; &#xC808;&#xB300; &#xD638;&#xCD9C;&#xB418;&#xC9C0; &#xC54A;&#xC2B5;&#xB2C8;&#xB2E4;.
+<code>getItems</code>&#xAC00; &#xBC18;&#xD658;&#xD55C; &#xBC30;&#xC5F4;&#xC5D0;&#xB294; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8; &#xB0B4;&#xBD80;&#xC758; &#xAC1D;&#xCCB4;&#xC640; &#xAC19;&#xC740; &#xAC1D;&#xCCB4;&#xAC00; &#xD3EC;&#xD568;&#xB429;&#xB2C8;&#xB2E4;.
+&#xB530;&#xB77C;&#xC11C; &#xBC30;&#xC5F4;&#xC758; &#xAC1D;&#xCCB4;&#xB97C; &#xBCC0;&#xACBD;&#xD558;&#xBA74; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8;&#xC5D0;&#xC11C; &#xD574;&#xB2F9; &#xAC1D;&#xCCB4;&#xAC00; &#xBCC0;&#xACBD;&#xB429;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC544;&#xB798;&#xC640; &#xC720;&#xC0AC;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> foo = { name: <span class="hljs-string">&apos;John&apos;</span> };
 <span class="hljs-keyword">const</span> bar = [ foo ];
 bar[<span class="hljs-number">0</span>].project = <span class="hljs-string">&apos;Feathers&apos;</span>;
-<span class="hljs-built_in">console</span>.log(foo); <span class="hljs-comment">// { name: &apos;John&apos;, project: &apos;Feathers</span>
+<span class="hljs-built_in">console</span>.log(foo); <span class="hljs-comment">// { name: &apos;John&apos;, project: &apos;Feathers&apos; }</span>
 </code></pre>
-<p>This example</p>
+<p>&#xC774; &#xC608;&#xC81C;&#xB294;</p>
 <ul>
-<li>Shows how to call a service.</li>
-<li>Shows how to deal with <code>params</code> in such calls.</li>
-<li>Talks about using <code>getItems</code> with mutations.</li>
+<li>&#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xBCF4;&#xC5EC;&#xC90D;&#xB2C8;&#xB2E4;.</li>
+<li>&#xD638;&#xCD9C;&#xC5D0;&#xC11C; <code>params</code>&#xB97C; &#xB2E4;&#xB8E8;&#xB294; &#xBC95;&#xC744; &#xBCF4;&#xC5EC;&#xC90D;&#xB2C8;&#xB2E4;.</li>
+<li>&#xBCC0;&#xC774;&#xAC00; &#xC788;&#xB294; <code>getItems</code>&#xB97C; &#xC0B4;&#xD3B4;&#xBCF4;&#xC558;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
 </ul>
 <h2 id="stashbefore-source">stashBefore <a href="https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/stash-before.js" target="_blank">source</a></h2>
-<p><code>stashBefore</code> saves the current value of record before mutating it.</p>
+<p><code>stashBefore</code> &#xBCC0;&#xC774;&#xB418;&#xAE30; &#xC774;&#xC804;&#xC758; &#xD604;&#xC7AC; &#xAC12;&#xC744; &#xC800;&#xC7A5;&#xD569;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">import</span> errors <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;feathers-errors&apos;</span>;
 <span class="hljs-keyword">import</span> checkContext <span class="hljs-keyword">from</span> <span class="hljs-string">&apos;./check-context&apos;</span>;
 
@@ -1983,9 +1974,9 @@ bar[<span class="hljs-number">0</span>].project = <span class="hljs-string">&apo
   };
 }
 </code></pre>
-<p>Its more complicated to call the hook&apos;s current service than to call another service.
-Let&apos;s look at some of the code in this hook.</p>
-<p>This is what the hook returns.</p>
+<p>&#xB2E4;&#xB978; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xB294; &#xAC83;&#xBCF4;&#xB2E4; &#xD6C5;&#xC758; &#xD604;&#xC7AC; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xB294; &#xAC83;&#xC774; &#xB354;&#xC6B1; &#xBCF5;&#xC7A1;&#xD569;&#xB2C8;&#xB2E4;.
+&#xC774; &#xD6C5;&#xC758; &#xCF54;&#xB4DC;&#xB97C; &#xC0B4;&#xD3B4;&#xBD05;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD6C5;&#xC774; &#xBC18;&#xD658;&#xD558;&#xB294; &#xAC83; &#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">return</span> context.service.get(context.id, params)
   .then(data =&gt; {
     <span class="hljs-keyword">delete</span> params.query.$disableStashBefore;
@@ -1996,21 +1987,21 @@ Let&apos;s look at some of the code in this hook.</p>
   .catch(() =&gt; context);
 </code></pre>
 <ul>
-<li><code>context.service</code> is always the current service.</li>
-<li><code>context.service.get()</code> is an async call, and it returns a Promise.</li>
-<li>The hook returns that Promise, so its an async hook.
-The next hook will only run once this Promise resolves.</li>
-<li>The data obtained by the <code>get</code> is placed into <code>context.params</code>.</li>
-<li>We can see the Promise will always resolve to <code>context</code>.</li>
+<li><code>context.service</code>&#xB294; &#xD56D;&#xC0C1; &#xD604;&#xC7AC; &#xC11C;&#xBE44;&#xC2A4;&#xC785;&#xB2C8;&#xB2E4;.</li>
+<li><code>context.service.get()</code> &#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xD638;&#xCD9C;&#xC774;&#xBA70; Promise&#xB97C; &#xBC18;&#xD658;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xBC18;&#xD658;&#xB41C; &#xD6C5;&#xC740; Promise&#xC774;&#xBA70; &#xC774;&#xB294; &#xBE44;&#xB3D9;&#xAE30; &#xD6C5;&#xC785;&#xB2C8;&#xB2E4;.
+&#xB2E4;&#xC74C; Promise&#xB294; &#xD574;&#xACB0;(resolve)&#xB418;&#xBA74; &#xC2E4;&#xD589;&#xB429;&#xB2C8;&#xB2E4;.</li>
+<li><code>get</code>&#xC73C;&#xB85C; &#xC5BB;&#xC740; &#xB370;&#xC774;&#xD130;&#xB294; <code>context.params</code>&#xC5D0; &#xC800;&#xC7A5;&#xB429;&#xB2C8;&#xB2E4;..</li>
+<li>Promise&#xAC00; &#xD56D;&#xC0C1; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8;&#xB97C; &#xD574;&#xACB0;&#xD560; &#xAC83;&#xC744; &#xC54C; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</li>
 </ul>
-<p>In summary, the hook will <code>get</code> the record being mutated by the call,
-will place that record in <code>context.params</code>,
-and will return the possibly modified <code>context</code>.
-The method call will continue as if nothing has happened.</p>
-<p><code>stashBefore</code> does not use <code>context.params</code> in the <code>get</code> call
-as <code>context.params</code> may be inappropriate if, for example, you are using Sequelize
-and the method call includes parameters that are passed through to Sequelize.
-What may be appropriate for an <code>update</code> may not be acceptable for a <code>get</code>.</p>
+<p>&#xC694;&#xC57D;&#xD558;&#xBA74;, &#xD6C5;&#xC740; &#xD638;&#xCD9C;&#xC744; &#xD1B5;&#xD574; &#xBCC0;&#xACBD;&#xB418;&#xB294; &#xB808;&#xCF54;&#xB4DC;&#xB97C; <code>get</code>&#xD560; &#xAC83;&#xC774;&#xACE0;,
+&#xADF8; &#xB808;&#xCF54;&#xB4DC;&#xB97C; <code>context.params</code>&#xC5D0; &#xB123;&#xC744;&#xAC83;&#xC774;&#xBA70;
+&#xC218;&#xC815;&#xB41C; <code>context</code>&#xB97C; &#xB9AC;&#xD134;&#xD569;&#xB2C8;&#xB2E4;.
+&#xC544;&#xBB34; &#xC77C;&#xB3C4; &#xC77C;&#xC5B4;&#xB098;&#xC9C0; &#xC54A;&#xC740; &#xAC83; &#xCC98;&#xB7FC; &#xBA54;&#xC18C;&#xB4DC; &#xD638;&#xCD9C;&#xC740; &#xACC4;&#xC18D; &#xB429;&#xB2C8;&#xB2E4;.</p>
+<p><code>stashBefore</code>&#xB294;<code>context.params</code>&#xAC00; <code>Sequelize</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xACE0;
+&#xBA54;&#xC11C;&#xB4DC; &#xD638;&#xCD9C;&#xC774; Sequelize&#xB85C; &#xC804;&#xB2EC;&#xB41C; &#xB9E4;&#xAC1C; &#xBCC0;&#xC218;&#xB97C; &#xD3EC;&#xD568;&#xD558;&#xB294; &#xACBD;&#xC6B0;
+<code>context.params</code>&#xAC00; <code>get</code> &#xD638;&#xCD9C;&#xC5D0;&#xC11C;<code>context.params</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD558;&#xC9C0; &#xC54A;&#xB294; &#xAC83;&#xC740; &#xC633;&#xC9C0; &#xC54A;&#xC744; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+<code>update</code>&#xC5D0; &#xC801;&#xC808;&#xD55C; &#xAC83;&#xC740;<code>get</code>&#xC744; &#xC704;&#xD574; &#xBC1B;&#xC544; &#xB4E4;&#xC5EC;&#xC9C0;&#xC9C0; &#xC54A;&#xC744; &#xC218;&#xB3C4; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">const</span> params = context.method === <span class="hljs-string">&apos;get&apos;</span> ? context.params : {
   provider: context.params.provider,
   authenticated: context.params.authenticated,
@@ -2018,19 +2009,19 @@ What may be appropriate for an <code>update</code> may not be acceptable for a <
 };
 </code></pre>
 <ul>
-<li>On a <code>get</code> call we will use the same <code>params</code> for our inner <code>get</code>.</li>
-<li>On other calls, we use something &quot;safe&quot;.<ul>
-<li>We copy over <code>provider</code> so our inner <code>get</code> acts like it has the same transport.</li>
-<li>We copy standard authentication values for auth hooks.</li>
+<li><code>get</code> &#xD638;&#xCD9C;&#xC5D0;&#xC11C; &#xB0B4;&#xBD80; <code>get</code>&#xC5D0; &#xB300;&#xD574; &#xAC19;&#xC740; <code>params</code>&#xB97C; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xB2E4;&#xB978; &#xD638;&#xCD9C;&#xC740; &quot;&#xC548;&#xC804;&#xD55C;&quot;&#xAC83;&#xC744; &#xC0AC;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.<ul>
+<li>&#xB0B4;&#xBD80;&#xC758; <code>get</code>&#xC774; &#xAC19;&#xC740; &#xC804;&#xC1A1;&#xC744; &#xD558;&#xB294; &#xAC83; &#xCC98;&#xB7FC; <code>provider</code>&#xB97C; &#xBCF5;&#xC0AC;&#xD569;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC778;&#xC99D; &#xD6C5;&#xC5D0; &#xB300;&#xD55C; &#xD45C;&#xC900; &#xC778;&#xC99D; &#xAC12;&#xC744; &#xBCF5;&#xC0AC;&#xD569;&#xB2C8;&#xB2E4;.</li>
 </ul>
 </li>
 </ul>
-<p>Will this satisfy every use case?
-No, but it will satisfy most.
-You can always fork the hook and customize it.</p>
-<p>There is one more thing to consider.
-The <code>stashBefore</code> hook will run again when we call the inner <code>get</code>.
-This will cause a recursion of inner <code>get</code> calls unless we do something.</p>
+<p>&#xC774;&#xB294; &#xBAA8;&#xB4E0; &#xC720;&#xC988;&#xCF00;&#xC774;&#xC2A4;&#xB97C; &#xB9CC;&#xC871;&#xC2DC;&#xD0AC; &#xC218; &#xC788;&#xC744;&#xAE4C;&#xC694;?
+&#xADF8;&#xB7F4;&#xB9AC;&#xAC00; &#xC5C6;&#xC9C0;&#xB9CC;, &#xB300;&#xBD80;&#xBD84; &#xB9CC;&#xC871;&#xC2A4;&#xB7EC;&#xC6B8; &#xAC83; &#xC785;&#xB2C8;&#xB2E4;.
+&#xD6C5;&#xC744; &#xD3EC;&#xD06C;&#xD558;&#xC5EC; &#xC0AC;&#xC6A9;&#xC790; &#xC815;&#xC758; &#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xD55C;&#xAC00;&#xC9C0; &#xB354; &#xACE0;&#xB824;&#xD574;&#xC57C;&#xD560; &#xC0AC;&#xD56D;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+<code>stashBefore</code> &#xD6C5;&#xC740; &#xB0B4;&#xBD80;&#xC758; <code>get</code>&#xC744; &#xD638;&#xCD9C;&#xD560; &#xB54C; &#xD55C;&#xBC88; &#xB354; &#xD638;&#xCD9C;&#xB429;&#xB2C8;&#xB2E4;.
+&#xC774;&#xB294; &#xC6B0;&#xB9AC;&#xAC00; &#xBB34;&#xC5B8;&#xAC00; &#xCC98;&#xB9AC;&#xD558;&#xC9C0; &#xC54A;&#xC73C;&#xBA74; <code>get</code> &#xD638;&#xCD9C;&#xC758; &#xC7AC;&#xADC0;&#xB97C; &#xC77C;&#xC73C;&#xD0AC; &#xAC83;&#xC785;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript"><span class="hljs-keyword">if</span> (context.params.query &amp;&amp; context.params.query.$disableStashBefore) {
   <span class="hljs-keyword">delete</span> context.params.query.$disableStashBefore;
   <span class="hljs-keyword">return</span> context;
@@ -2041,35 +2032,31 @@ params.query.$disableStashBefore = <span class="hljs-literal">true</span>;
 <span class="hljs-comment">//</span>
 <span class="hljs-keyword">delete</span> params.query.$disableStashBefore;
 </code></pre>
-<p>We set a flag to show we are calling the inner <code>get</code>.
-<code>stashBefore</code> will see the flag when it runs for that inner <code>get</code> and exit,
-preventing recursion.</p>
+<p>&#xC6B0;&#xB9AC;&#xB294; &#xB0B4;&#xBD80; <code>get</code>&#xC744; &#xC704;&#xD574; &#xD50C;&#xB798;&#xADF8;&#xB97C; &#xB9CC;&#xB4E4;&#xC5C8;&#xC2B5;&#xB2C8;&#xB2E4;.
+<code>stashBefore</code>&#xB294; &#xB0B4;&#xBD80;&#xC758; <code>get</code>&#xC744; &#xC704;&#xD574; &#xC2E4;&#xD589;&#xD560; &#xB54C; &#xD50C;&#xB798;&#xADF8;&#xB97C; &#xD655;&#xC778;&#xD558;&#xACE0; &#xC7AC;&#xADC0;&#xB97C; &#xB9C9;&#xC744; &#xAC83; &#xC785;&#xB2C8;&#xB2E4;.</p>
 <blockquote>
-<p><strong>ProTip</strong> Its not uncommon to indicate what state operations are in
-by setting flags in <code>params</code>.</p>
+<p><strong>ProTip</strong> &#xC0C1;&#xD0DC; &#xC870;&#xC791;&#xC774; &#xBB34;&#xC5C7;&#xC778;&#xC9C0; &#xB098;&#xD0C0;&#xB0B4;&#xB294; &#xAC83;&#xC740; &#xC790;&#xC8FC; &#xC788;&#xB294; &#xC77C;&#xC785;&#xB2C8;&#xB2E4;. <code>params</code> &#xC5D0; &#xD50C;&#xB798;&#xADF8;&#xB97C; &#xC124;&#xC815;&#xD558;&#xC138;&#xC694;</p>
 </blockquote>
-<p>This example</p>
+<p>&#xC774; &#xC608;&#xC81C;&#xB294;</p>
 <ul>
-<li>Shows how to call the current service.</li>
-<li>Discusses how to handle <code>params</code> for service calls.</li>
-<li>Shows how to prevent recursion.</li>
+<li>&#xD604;&#xC7AC; &#xC11C;&#xBE44;&#xC2A4;&#xB97C; &#xD638;&#xCD9C;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xBCF4;&#xC5EC;&#xC90D;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC11C;&#xBE44;&#xC2A4; &#xD638;&#xCD9C;&#xC744; &#xC704;&#xD574; <code>params</code>&#xB97C; &#xD578;&#xB4E4;&#xB9C1; &#xD558;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xB2E4;&#xB8F9;&#xB2C8;&#xB2E4;.</li>
+<li>&#xC7AC;&#xADC0;&#xB97C; &#xBC29;&#xC9C0;&#xD558;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xB2E4;&#xB8F9;&#xB2C8;&#xB2E4;.</li>
 </ul>
 <h2 id="iff-when-else">iff, when, else</h2>
-<p>Conditional hooks like <code>iff(predicate, hook1, hook2).else(hook3, hook4)</code> can be very useful.</p>
-<p>Its easy to write your own predicates.
-They are functions with a signature of <code>context =&gt; boolean</code>,
-which receive the context as a parameter and return either a boolean (synchronous)
-or a Promise which resolves to a boolean.</p>
-<p>You can combine predicates provided with the common hooks, such as <code>isProvider</code>
-(<a href="https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/is-provider.js" target="_blank">source</a>).
-You can write your own, or mix and match.</p>
+<p>&#xC870;&#xAC74;&#xBD80; &#xD6C5;&#xC778; <code>iff(predicate, hook1, hook2).else(hook3, hook4)</code> &#xB9E4;&#xC6B0; &#xC720;&#xC6A9;&#xD558;&#xAC8C; &#xC0AC;&#xC6A9;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;..</p>
+<p>&#xC2A4;&#xC2A4;&#xB85C; &#xC608;&#xC0C1;&#xB418;&#xB294; &#xACB0;&#xACFC;&#xB97C; &#xC27D;&#xAC8C; &#xC791;&#xC131;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
+<p>&#xC774;&#xB4E4;&#xC740; &#xCEE8;&#xD14D;&#xC2A4;&#xD2B8;&#xB97C; &#xB9E4;&#xAC1C;&#xBCC0;&#xC218;&#xB85C; &#xBC1B;&#xACE0; &#xBD80;&#xC6B8;&#xB9B0;(&#xB3D9;&#xAE30;) &#xBD80;&#xC6B8;&#xB9B0;&#xC73C;&#xB85C; &#xD574;&#xACB0;&#xB418;&#xB294; Promise&#xB97C; &#xBC18;&#xD658;&#xD558;&#xB294;
+<code>context =&gt; boolean</code>&#xB85C; &#xAD6C;&#xC131;&#xB41C; &#xD568;&#xC218;&#xC785;&#xB2C8;&#xB2E4;.</p>
+<p><code>isProvider</code>&#xC640; &#xAC19;&#xC740; &#xACF5;&#xD1B5; &#xD6C5;&#xC73C;&#xB85C; &#xC81C;&#xACF5;&#xB418;&#xB294; &#xC220;&#xC5B4;&#xB97C; &#xACB0;&#xD569;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.
+<a href="https://github.com/feathersjs/feathers-hooks-common/blob/master/src/services/is-provider.js" target="_blank">source</a>.
+&#xC9C1;&#xC811; &#xC791;&#xC131;&#xD558;&#xAC70;&#xB098; &#xC870;&#xD569;&#xD560; &#xC218; &#xC788;&#xC2B5;&#xB2C8;&#xB2E4;.</p>
 <pre><code class="lang-javascript">iff (hook =&gt; !isProvider(<span class="hljs-string">&apos;service&apos;</span>)(hook) &amp;&amp; hook.params.user.security &gt;= <span class="hljs-number">3</span>, ...)
 </code></pre>
-<p>The <code>isNot</code> conditional utility
-(<a href="https://github.com/feathersjs/feathers-hooks-common/blob/master/src/common/is-not.js" target="_blank">source</a>)
-is useful because it will negate either a boolean or a Promise resolving to a boolean.</p>
-<h3 id="is-anything-wrong-unclear-missing">Is anything wrong, unclear, missing?</h3>
-<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Writing-Hooks&amp;body=Comment:Step-Basic-Writing-Hooks" target="_blank">Leave a comment.</a></p>
+<p><code>isNot</code> &#xC870;&#xAC74;&#xBD80; &#xC720;&#xD2F8;&#xB9AC;&#xD2F0;(<a href="https://github.com/feathersjs/feathers-hooks-common/blob/master/src/common/is-not.js" target="_blank">source</a>)&#xB294;
+boolean &#xB610;&#xB294; Promise&#xAC00; &#xBD80;&#xC6B8;&#xB9B0;&#xC73C;&#xB85C; &#xD574;&#xACB0;&#xB418;&#xC9C0; &#xC54A;&#xC744; &#xB54C; &#xC720;&#xC6A9;&#xD569;&#xB2C8;&#xB2E4;.</p>
+<h3 id="&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098;-&#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098;-&#xB204;&#xB77D;&#xB41C;-&#xBD80;&#xBD84;&#xC774;-&#xC788;&#xC2B5;&#xB2C8;&#xAE4C;">&#xC798;&#xBABB;&#xB418;&#xAC70;&#xB098; &#xBD88;&#xBD84;&#xBA85;&#xD558;&#xAC70;&#xB098; &#xB204;&#xB77D;&#xB41C; &#xBD80;&#xBD84;&#xC774; &#xC788;&#xC2B5;&#xB2C8;&#xAE4C;?</h3>
+<p><a href="https://github.com/feathersjs/feathers-docs/issues/new?title=Comment:Step-Basic-Writing-Hooks&amp;body=Comment:Step-Basic-Writing-Hooks" target="_blank">&#xB313;&#xAE00;&#xC744; &#xB0A8;&#xACA8;&#xC8FC;&#xC138;&#xC694;.</a></p>
 
                                 
                                 </section>
@@ -2113,7 +2100,7 @@ is useful because it will negate either a boolean or a Promise resolving to a bo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"직접 훅을 만드세요","level":"1.2.2.14","depth":3,"next":{"title":"훅 테스팅","level":"1.2.2.15","depth":3,"path":"guides/step-by-step/basic-feathers/testing-hooks.md","ref":"guides/step-by-step/basic-feathers/testing-hooks.md","articles":[]},"previous":{"title":"훅, 파트 2","level":"1.2.2.13","depth":3,"path":"guides/step-by-step/basic-feathers/hooks-2.md","ref":"guides/step-by-step/basic-feathers/hooks-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"livereload":{},"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/writing-hooks.md","mtime":"2017-07-10T10:04:16.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T09:33:03.086Z"},"basePath":"../../..","book":{"language":"ko"}});
+            gitbook.page.hasChanged({"page":{"title":"직접 훅을 만드세요","level":"1.2.2.14","depth":3,"next":{"title":"훅 테스팅","level":"1.2.2.15","depth":3,"path":"guides/step-by-step/basic-feathers/testing-hooks.md","ref":"guides/step-by-step/basic-feathers/testing-hooks.md","articles":[]},"previous":{"title":"훅, 파트 2","level":"1.2.2.13","depth":3,"path":"guides/step-by-step/basic-feathers/hooks-2.md","ref":"guides/step-by-step/basic-feathers/hooks-2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["feathers-collapsible-menu","heading-anchors","include-codeblock","edit-link","ga","feathers-versions"],"styles":{"website":"styles/website.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"heading-anchors":{},"highlight":{},"feathers-versions":{},"ga":{"configuration":"auto","token":"UA-64904930-1"},"versions":{"gitbookConfigURL":"https://raw.githubusercontent.com/feathersjs/feathers-docs/master/book.json","options":[{"value":"https://docs.feathersjs.com","text":"Latest Stable (Auk)"},{"value":"https://legacy.docs.feathersjs.com","text":"Legacy (Pre-Auk)"}]},"include-codeblock":{"check":false,"edit":false,"fixlang":false,"lang":"","template":"default","theme":"chrome","unindent":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"label":"Edit This Page","placement":"left","base":"https://github.com/feathersjs/feathers-docs/edit/master"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"feathers-collapsible-menu":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"ko","gitbook":"*"},"file":{"path":"guides/step-by-step/basic-feathers/writing-hooks.md","mtime":"2017-07-10T12:46:50.000Z","type":"markdown"},"gitbook":{"version":"3.2.2","time":"2017-07-10T12:54:35.932Z"},"basePath":"../../..","book":{"language":"ko"}});
         });
     </script>
 </div>
@@ -2144,10 +2131,6 @@ is useful because it will negate either a boolean or a Promise resolving to a bo
     
         
         <script src="../../../../gitbook/gitbook-plugin-feathers-versions/plugin.js"></script>
-        
-    
-        
-        <script src="../../../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
         
     
         
